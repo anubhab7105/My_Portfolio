@@ -1,6 +1,6 @@
 # Anubhab Das Portfolio
 
-Professional portfolio website for Anubhab Das, Cyber Security student and web developer.
+Professional portfolio website of Anubhab Das, Cyber Security student and web developer.
 
 ## Features
 - Modern dark theme with animations
