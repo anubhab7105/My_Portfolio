@@ -33,14 +33,8 @@ function handleThemeToggle() {
     updateNavigationColors();
 }
 
-// Add both click and touch events
+// Add only click event for theme toggle (works on mobile and desktop)
 themeToggle.addEventListener('click', handleThemeToggle);
-themeToggle.addEventListener('touchend', handleThemeToggle);
-
-// Prevent scrolling when touching the button
-themeToggle.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-});
 // DOM Elements
 const projectsContainer = document.getElementById('projects-container');
 const contactForm = document.getElementById('contact-form');
