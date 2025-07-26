@@ -1,9 +1,8 @@
-
 {
   "name": "portfolio",
   "version": "1.0.0",
   "scripts": {
-    "build": "mkdir -p public && cp *.html *.css *.js public/ && cp -r images public/",
-    "postbuild": "sed -i '' 's/?v=1.0/?v='$(date +%s)'/g' public/index.html"
+    "build": "mkdir -p public && cp index.html styles.css script.js public/ && cp -r images public/",
+    "cachebust": "sed -i '' 's/\\?v=[0-9]*//g' public/index.html && sed -i '' \"s/\\?v=1.0/?v=$(date +%s)/g\" public/index.html"
   }
 }
