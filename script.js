@@ -1,6 +1,9 @@
 // DOM Elements
 const projectsContainer = document.getElementById('projects-container');
 const contactForm = document.getElementById('contact-form');
+const header = document.querySelector('header');
+const logo = document.querySelector('.logo');
+const navLinks = document.querySelectorAll('nav a');
 
 // Projects Data
 const projects = [
@@ -90,6 +93,32 @@ contactForm.addEventListener('submit', (e) => {
     });
 });
 
+// Update navigation colors based on theme
+function updateNavigationColors() {
+    const isLightTheme = document.documentElement.getAttribute('data-theme') === 'light';
+    const textColor = isLightTheme ? '#334155' : '#e2e8f0';
+    
+    // Update logo colors
+    logo.style.color = isLightTheme ? '#6d28d9' : 'white';
+    logo.style.background = isLightTheme ? 'rgba(109, 40, 217, 0.1)' : '#8b5cf6';
+    
+    // Update nav link colors
+    navLinks.forEach(link => {
+        link.style.color = textColor;
+    });
+    
+    // Update header background
+    if (window.scrollY > 100) {
+        header.style.background = isLightTheme 
+            ? 'rgba(248, 250, 252, 0.95)' 
+            : 'rgba(15, 23, 42, 0.95)';
+    } else {
+        header.style.background = isLightTheme 
+            ? 'rgba(248, 250, 252, 0.9)' 
+            : 'rgba(15, 23, 42, 0.9)';
+    }
+}
+
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
@@ -111,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Header scroll effect
     window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
         if (window.scrollY > 100) {
             header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
             if (document.documentElement.getAttribute('data-theme') === 'light') {
@@ -166,10 +194,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', currentTheme);
     
-    // Set initial icon
+    // Set initial icon and navigation colors
     if (currentTheme === 'light') {
         themeIcon.classList.replace('fa-moon', 'fa-sun');
     }
+    updateNavigationColors();
     
     themeToggle.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -186,19 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             themeIcon.classList.replace('fa-sun', 'fa-moon');
         }
         
-        // Update header background based on scroll position
-        const header = document.querySelector('header');
-        if (window.scrollY > 100) {
-            if (newTheme === 'light') {
-                header.style.background = 'rgba(248, 250, 252, 0.95)';
-            } else {
-                header.style.background = 'rgba(15, 23, 42, 0.95)';
-            }
-        }
-        
-        // Refresh the page after a short delay to apply all theme changes
-        setTimeout(() => {
-            location.reload();
-        }, 300);
+        // Update navigation colors
+        updateNavigationColors();
     });
 });
