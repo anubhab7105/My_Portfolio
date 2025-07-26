@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "scripts": {
     "build": "mkdir -p public && cp index.html styles.css script.js public/ && cp -r images public/",
-    "cachebust": "sed -i '' 's/\\?v=[0-9]*//g' public/index.html && sed -i '' \"s/\\?v=1.0/?v=$(date +%s)/g\" public/index.html"
+    "cachebust": "sed -i '' \"s/\\?v=[0-9]*//g; s/href=\"\\/styles.css\"/href=\"\\/styles.css?v=$(date +%s)\"/g; s/src=\"\\/script.js\"/src=\"\\/script.js?v=$(date +%s)\"/g\" public/index.html"
   }
 }
