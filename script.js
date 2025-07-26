@@ -159,22 +159,18 @@ function updateNavigationColors() {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
-    
     // Smooth scrolling for navigation links
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-            
             window.scrollTo({
                 top: targetElement.offsetTop - 80,
                 behavior: 'smooth'
             });
         });
     });
-    
     // Header scroll effect
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
@@ -193,66 +189,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    
     // Initialize animations
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('.skill-category, .project-card, .about-content > div');
-        
         elements.forEach(element => {
             const elementTop = element.getBoundingClientRect().top;
             const elementVisible = 150;
-            
             if (elementTop < window.innerHeight - elementVisible) {
                 element.style.opacity = '1';
                 element.style.transform = 'translateY(0)';
             }
         });
     };
-    
     // Set initial state
     document.querySelectorAll('.skill-category, .project-card, .about-content > div').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
-    
     // Trigger on load and scroll
     window.addEventListener('load', animateOnScroll);
     window.addEventListener('scroll', animateOnScroll);
-    
-    // Theme toggle functionality
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = themeToggle.querySelector('i');
-    
-    // Check for saved theme preference or system preference
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    
     // Set initial icon and navigation colors
     if (currentTheme === 'light') {
         themeIcon.classList.replace('fa-moon', 'fa-sun');
     }
     updateNavigationColors();
-    
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        // Update theme
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        
-        // Update icon
-        if (newTheme === 'light') {
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-        } else {
-            themeIcon.classList.replace('fa-sun', 'fa-moon');
-        }
-        
-        // Update navigation colors
-        updateNavigationColors();
-    });
 });
