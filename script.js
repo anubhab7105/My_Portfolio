@@ -114,10 +114,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const header = document.querySelector('header');
         if (window.scrollY > 100) {
             header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-            header.style.background = 'rgba(15, 23, 42, 0.95)';
+            if (document.documentElement.getAttribute('data-theme') === 'light') {
+                header.style.background = 'rgba(248, 250, 252, 0.95)';
+            } else {
+                header.style.background = 'rgba(15, 23, 42, 0.95)';
+            }
         } else {
             header.style.boxShadow = 'none';
-            header.style.background = 'rgba(15, 23, 42, 0.9)';
+            if (document.documentElement.getAttribute('data-theme') === 'light') {
+                header.style.background = 'rgba(248, 250, 252, 0.9)';
+            } else {
+                header.style.background = 'rgba(15, 23, 42, 0.9)';
+            }
         }
     });
     
@@ -146,4 +154,46 @@ document.addEventListener('DOMContentLoaded', () => {
     // Trigger on load and scroll
     window.addEventListener('load', animateOnScroll);
     window.addEventListener('scroll', animateOnScroll);
+    
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    // Set initial icon
+    if (currentTheme === 'light') {
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // Update theme
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        // Update icon
+        if (newTheme === 'light') {
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+        
+        // Update header background based on scroll position
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+            if (newTheme === 'light') {
+                header.style.background = 'rgba(248, 250, 252, 0.95)';
+            } else {
+                header.style.background = 'rgba(15, 23, 42, 0.95)';
+            }
+        }
+    });
 });
