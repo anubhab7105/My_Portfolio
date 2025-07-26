@@ -1,3 +1,46 @@
+// Theme toggle functionality
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = themeToggle.querySelector('i');
+
+// Check for saved theme preference or system preference
+const savedTheme = localStorage.getItem('theme');
+const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+document.documentElement.setAttribute('data-theme', currentTheme);
+
+// Set initial icon
+if (currentTheme === 'light') {
+    themeIcon.classList.replace('fa-moon', 'fa-sun');
+}
+
+// Mobile-friendly toggle function
+function handleThemeToggle() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    // Update theme
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Update icon
+    if (newTheme === 'light') {
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+    } else {
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+    }
+    
+    // Update navigation colors
+    updateNavigationColors();
+}
+
+// Add both click and touch events
+themeToggle.addEventListener('click', handleThemeToggle);
+themeToggle.addEventListener('touchend', handleThemeToggle);
+
+// Prevent scrolling when touching the button
+themeToggle.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+});
 // DOM Elements
 const projectsContainer = document.getElementById('projects-container');
 const contactForm = document.getElementById('contact-form');
