@@ -195,5 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 header.style.background = 'rgba(15, 23, 42, 0.95)';
             }
         }
+        
+        // Refresh the page after a short delay to apply all theme changes
+        setTimeout(() => {
+            location.reload();
+        }, 300);
     });
 });
