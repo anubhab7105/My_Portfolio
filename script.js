@@ -60,7 +60,7 @@ const projects = [
     },
     {
         title: "AI-Powered Cyber Threat Analysis",
-        description: "Responsive website for analyzing cyber threats using AI technologies (Under Development)",
+        description: "Responsive website for analyzing cyber threats from URL",
         technologies: ["HTML", "CSS", "JavaScript", "AI Integration"],
         github: "https://github.com/anubhab7105/AI-Powered-Cyber-Threat-Analyze",
         underDevelopment: true,
