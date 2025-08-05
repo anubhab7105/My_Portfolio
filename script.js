@@ -81,7 +81,7 @@ function renderProjects() {
                 <img src="${project.image}" alt="${project.title}">
             </div>
             <div class="project-info">
-                <h3>${project.title} ${project.underDevelopment ? '<span style="color: #f97316; font-size: 0.8em;">(Under Development)</span>' : ''}</h3>
+                
                 <p>${project.description}</p>
                 <div class="project-tech">
                     ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
