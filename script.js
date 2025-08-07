@@ -62,9 +62,9 @@ const projects = [
         image: "images/project2.png"
     },
     {
-        title: "Cyber Threat Analyzer",
-        description: "A Responsive website for analyzing cyber threats by scanning url",
-        technologies: ["HTML", "CSS", "JavaScript", "AI Integration", "Python"],
+        title: "AI-Powered Cyber Threat Analysis",
+        description: "Responsive website for analyzing cyber threats from URL",
+        technologies: ["HTML", "CSS", "JavaScript", "AI Integration"],
         github: "https://github.com/anubhab7105/AI-Powered-Cyber-Threat-Analyze",
         live: "https://anubhab7105.github.io/AI-Powered-Cyber-Threat-Analyze/",
         image: "images/project3.png"
