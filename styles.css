@@ -1,18 +1,3 @@
-/* Improve theme toggle for mobile */
-#theme-toggle {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-    padding: 10px;
-}
-
-/* Make button larger on mobile */
-@media (max-width: 768px) {
-    #theme-toggle {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-    }
-}
 :root {
     /* Dark theme variables (default) */
     --primary: #8b5cf6; 
@@ -455,6 +440,71 @@ nav ul li a:hover::after {
     box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
 }
 
+/* Experience Section */
+#experience {
+    background: var(--darker);
+    padding: 5rem 0;
+}
+
+.experience-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.experience-card {
+    background: var(--card-bg);
+    padding: 2.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.experience-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary);
+}
+
+.experience-card h3 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.experience-card h4 {
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.experience-card .duration {
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.experience-card p {
+    color: var(--text);
+    margin-bottom: 1.5rem;
+}
+
+.certificate-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.4);
+}
+
 /* Projects Section */
 .projects-container {
     display: grid;
@@ -544,6 +594,7 @@ nav ul li a:hover::after {
 .project-links {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .project-links a {
@@ -562,6 +613,14 @@ nav ul li a:hover::after {
     background: var(--accent);
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+}
+
+.live-btn {
+    background: #10b981;
+}
+
+.live-btn:hover {
+    background: #059669;
 }
 
 /* Contact Section */
@@ -755,6 +814,10 @@ footer {
         grid-template-columns: 1fr;
     }
     
+    .experience-container {
+        grid-template-columns: 1fr;
+    }
+    
     .hero-content h1 {
         font-size: 2.5rem;
     }
@@ -766,159 +829,6 @@ footer {
     }
 }
 
-/* Header Styles */
-header {
-    background-color: var(--header-bg);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: var(--header-shadow);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-}
-
-[data-theme="dark"] header {
-    --header-bg: rgba(15, 23, 42, 0.9);
-    --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    --header-bg-scrolled: rgba(15, 23, 42, 0.95);
-    --header-shadow-scrolled: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="light"] header {
-    --header-bg: rgba(248, 250, 252, 0.9);
-    --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    --header-bg-scrolled: rgba(248, 250, 252, 0.95);
-    --header-shadow-scrolled: 0 5px 20px rgba(0, 0, 0, 0.05);
-}
-
-header.scrolled {
-    background-color: var(--header-bg-scrolled);
-    box-shadow: var(--header-shadow-scrolled);
-}
-
-/* Logo */
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--logo-text);
-    background: var(--logo-bg);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-[data-theme="dark"] .logo {
-    --logo-text: white;
-    --logo-bg: var(--primary);
-}
-
-[data-theme="light"] .logo {
-    --logo-text: var(--primary-light);
-    --logo-bg: rgba(109, 40, 217, 0.1);
-}
-
-/* Navigation Links */
-nav ul li a {
-    color: var(--nav-link-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-    position: relative;
-}
-
-[data-theme="dark"] nav ul li a {
-    --nav-link-color: var(--text);
-}
-
-[data-theme="light"] nav ul li a {
-    --nav-link-color: var(--text-light);
-}
-
-#experience {
-    background: linear-gradient(to bottom, var(--darker) 0%, #0a1429 100%);
-}
-
-.experience-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-}
-
-.experience-card {
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.experience-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    border-color: var(--primary);
-}
-
-.experience-card h3 {
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem;
-}
-
-.experience-card h4 {
-    color: var(--text);
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.experience-card .duration {
-    color: var(--text-dark);
-    margin-bottom: 1.5rem;
-    font-style: italic;
-}
-
-.experience-card p {
-    color: var(--text);
-    margin-bottom: 1.5rem;
-}
-
-.certificate-badge {
-    position: absolute;
-    top: -12px;
-    right: 20px;
-    background: var(--primary);
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.4);
-}
-
-.project-links {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.live-btn {
-    background: #10b981;
-}
-
-.live-btn:hover {
-    background: #059669;
-}
-
-.live-btn {
-    background: #10b981;
-}
-
-.live-btn:hover {
-    background: #059669;
+html {
+        scroll-behavior: smooth;
 }

@@ -101,6 +101,10 @@ function renderProjects() {
 }
 
 // Form Submission
+const formMessage = document.createElement('div');
+formMessage.className = 'form-message';
+contactForm.appendChild(formMessage);
+
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
@@ -121,13 +125,16 @@ contactForm.addEventListener('submit', (e) => {
         }
     }).then(response => {
         if (response.ok) {
-            alert('Message sent successfully! I will get back to you soon.');
+            formMessage.textContent = 'Message sent successfully! I will get back to you soon.';
+            formMessage.style.color = 'green';
             contactForm.reset();
         } else {
-            alert('Oops! Something went wrong. Please try again later.');
+            formMessage.textContent = 'Oops! Something went wrong. Please try again later.';
+            formMessage.style.color = 'red';
         }
     }).catch(error => {
-        alert('Error: ' + error.message);
+        formMessage.textContent = 'Error: ' + error.message;
+        formMessage.style.color = 'red';
     }).finally(() => {
         submitBtn.innerHTML = 'Send Message';
         submitBtn.disabled = false;
@@ -160,6 +167,15 @@ function updateNavigationColors() {
     }
 }
 
+// Debounce utility
+function debounce(fn, delay) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn.apply(this, args), delay);
+    };
+}
+
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
@@ -176,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     // Header scroll effect
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', debounce(() => {
         if (window.scrollY > 100) {
             header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
             if (document.documentElement.getAttribute('data-theme') === 'light') {
@@ -192,7 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 header.style.background = 'rgba(15, 23, 42, 0.9)';
             }
         }
-    });
+        animateOnScroll();
+    }, 20));
     // Initialize animations
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('.skill-category, .project-card, .about-content > div, .experience-card');
@@ -213,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // Trigger on load and scroll
     window.addEventListener('load', animateOnScroll);
-    window.addEventListener('scroll', animateOnScroll);
+    // window.addEventListener('scroll', animateOnScroll);
     // Set initial icon and navigation colors
     if (currentTheme === 'light') {
         themeIcon.classList.replace('fa-moon', 'fa-sun');
