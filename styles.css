@@ -838,3 +838,87 @@ nav ul li a {
 [data-theme="light"] nav ul li a {
     --nav-link-color: var(--text-light);
 }
+
+#experience {
+    background: linear-gradient(to bottom, var(--darker) 0%, #0a1429 100%);
+}
+
+.experience-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.experience-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.experience-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary);
+}
+
+.experience-card h3 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.experience-card h4 {
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.experience-card .duration {
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.experience-card p {
+    color: var(--text);
+    margin-bottom: 1.5rem;
+}
+
+.certificate-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.4);
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.live-btn {
+    background: #10b981;
+}
+
+.live-btn:hover {
+    background: #059669;
+}
+
+.live-btn {
+    background: #10b981;
+}
+
+.live-btn:hover {
+    background: #059669;
+}

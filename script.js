@@ -35,6 +35,7 @@ function handleThemeToggle() {
 
 // Add only click event for theme toggle (works on mobile and desktop)
 themeToggle.addEventListener('click', handleThemeToggle);
+
 // DOM Elements
 const projectsContainer = document.getElementById('projects-container');
 const contactForm = document.getElementById('contact-form');
@@ -46,24 +47,26 @@ const navLinks = document.querySelectorAll('nav a');
 const projects = [
     {
         title: "Local Grocery E-Commerce Platform",
-        description: "E-commerce platform for local grocery stores with inventory management",
-        technologies: ["HTML", "CSS", "JavaScript", "Python"],
+        description: "Full-featured e-commerce solution for local grocery stores with inventory management",
+        technologies: ["HTML", "CSS", "JavaScript", "Python", "Flask"],
         github: "https://github.com/anubhab7105/PRODIGY_FS_03",
+        live: "https://anubhab7105.github.io/PRODIGY_FS_03/",
         image: "images/project1.png"
     },
     {
         title: "Secure User Authentication System",
-        description: "Secure authentication system with encryption and security best practices",
-        technologies: ["HTML", "CSS", "JavaScript", "Security"],
+        description: "Robust authentication system implementing security best practices and encryption",
+        technologies: ["HTML", "CSS", "JavaScript", "Security", "JWT"],
         github: "https://github.com/anubhab7105/PRODIGY_FS_01",
+        live: "https://anubhab7105.github.io/PRODIGY_FS_01/",
         image: "images/project2.png"
     },
     {
-        title: "AI-Powered Cyber Threat Analysis",
-        description: "Responsive website for analyzing cyber threats using AI technologies (Under Development)",
-        technologies: ["HTML", "CSS", "JavaScript", "AI Integration"],
+        title: "Cyber Threat Analyzer",
+        description: "A Responsive website for analyzing cyber threats by scanning url",
+        technologies: ["HTML", "CSS", "JavaScript", "AI Integration", "Python"],
         github: "https://github.com/anubhab7105/AI-Powered-Cyber-Threat-Analyze",
-        underDevelopment: true,
+        live: "https://anubhab7105.github.io/AI-Powered-Cyber-Threat-Analyze/",
         image: "images/project3.png"
     }
 ];
@@ -81,13 +84,14 @@ function renderProjects() {
                 <img src="${project.image}" alt="${project.title}">
             </div>
             <div class="project-info">
-                <h3>${project.title} ${project.underDevelopment ? '<span style="color: #f97316; font-size: 0.8em;">(Under Development)</span>' : ''}</h3>
+                <h3>${project.title}</h3>
                 <p>${project.description}</p>
                 <div class="project-tech">
                     ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
                 </div>
                 <div class="project-links">
-                    <a href="${project.github}" target="_blank">View on GitHub</a>
+                    <a href="${project.github}" target="_blank" class="btn">GitHub</a>
+                    <a href="${project.live}" target="_blank" class="btn live-btn">Live Demo</a>
                 </div>
             </div>
         `;
@@ -191,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // Initialize animations
     const animateOnScroll = () => {
-        const elements = document.querySelectorAll('.skill-category, .project-card, .about-content > div');
+        const elements = document.querySelectorAll('.skill-category, .project-card, .about-content > div, .experience-card');
         elements.forEach(element => {
             const elementTop = element.getBoundingClientRect().top;
             const elementVisible = 150;
@@ -202,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     // Set initial state
-    document.querySelectorAll('.skill-category, .project-card, .about-content > div').forEach(el => {
+    document.querySelectorAll('.skill-category, .project-card, .about-content > div, .experience-card').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
