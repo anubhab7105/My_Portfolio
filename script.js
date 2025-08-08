@@ -105,12 +105,11 @@ const formMessage = document.createElement('div');
 formMessage.className = 'form-message';
 contactForm.appendChild(formMessage);
 
+const formSpinner = document.getElementById('form-spinner');
+
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    
-    // Show loading state
-    const submitBtn = contactForm.querySelector('button');
-    submitBtn.innerHTML = 'Sending...';
+    formSpinner.style.display = 'flex';
     submitBtn.disabled = true;
     
     // Form data
@@ -136,8 +135,9 @@ contactForm.addEventListener('submit', (e) => {
         formMessage.textContent = 'Error: ' + error.message;
         formMessage.style.color = 'red';
     }).finally(() => {
-        submitBtn.innerHTML = 'Send Message';
+        formSpinner.style.display = 'none';
         submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send Message';
     });
 });
 
@@ -236,4 +236,32 @@ document.addEventListener('DOMContentLoaded', () => {
         themeIcon.classList.replace('fa-moon', 'fa-sun');
     }
     updateNavigationColors();
+
+    // Mobile navigation menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+    });
+
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 });

@@ -111,6 +111,27 @@ section {
     color: white;
 }
 
+.btn-download {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    margin-left: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn-download:hover {
+    background: var(--primary);
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-download i {
+    font-size: 1.1em;
+}
+
 /* Header Styles */
 header {
     background-color: rgba(15, 23, 42, 0.9);
@@ -204,12 +225,61 @@ nav ul li a:hover::after {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1200; 
 }
 
 #theme-toggle:hover {
     transform: rotate(15deg) scale(1.1);
     color: var(--primary);
     background: rgba(139, 92, 246, 0.1);
+}
+
+/* Hamburger styles */
+#hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 2rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    z-index: 1100;
+}
+
+#hamburger:focus {
+    outline: 2px solid var(--primary);
+}
+
+/* Mobile menu styles */
+#mobile-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 2rem;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 2rem 1.5rem;
+    z-index: 1100;
+    min-width: 180px;
+}
+
+#mobile-menu a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.3s;
+}
+
+#mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+#mobile-menu a:hover {
+    color: var(--primary);
 }
 
 /* Hero Section */
@@ -461,6 +531,9 @@ nav ul li a:hover::after {
     transition: all 0.3s ease;
     position: relative;
     margin-top: 2rem;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .experience-card:hover {
@@ -769,6 +842,53 @@ footer {
     border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+/* Back to Top Button */
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 1300;
+}
+
+#back-to-top.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#back-to-top:hover {
+    background: var(--accent);
+}
+
+/* Spinner */
+.form-spinner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.form-spinner i {
+    font-size: 1.2rem;
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
     .about-content {
@@ -782,8 +902,14 @@ footer {
 }
 
 @media (max-width: 768px) {
+    #hamburger {
+        display: block;
+    }
     nav ul {
         display: none;
+    }
+    #mobile-menu.active {
+        display: flex;
     }
     
     .hero-content h1 {
@@ -826,6 +952,7 @@ footer {
         position: absolute;
         top: 1.5rem;
         right: 1rem;
+        z-index: 1200; 
     }
 }
 
