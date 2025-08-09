@@ -464,7 +464,7 @@ nav ul li a:hover::after {
 
 /* Experience Section */
 #experience {
-    padding: 60px 0;
+    padding: 5rem 0;
     background: var(--secondary);
 }
 
@@ -481,18 +481,20 @@ nav ul li a:hover::after {
     color: var(--text);
     border-radius: 16px;
     box-shadow: var(--shadow);
-    padding: 2rem;
+    padding: 2rem 1.5rem;
     min-width: 280px;
     max-width: 400px;
     flex: 1 1 320px;
     margin: 0.5rem;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.6s, background 0.3s;
     opacity: 1;
 }
 
 .experience-card:hover {
     transform: translateY(-8px) scale(1.03);
     box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    background: var(--accent);
+    color: #fff;
 }
 
 .experience-card h3 {
@@ -893,11 +895,13 @@ footer {
     }
     
     #experience {
-        padding: 30px 0;
+        padding: 2rem 0;
     }
     .experience-card {
         padding: 1rem;
         font-size: 0.95rem;
+        min-width: 90vw;
+        max-width: 98vw;
     }
     .experience-card h3 {
         font-size: 1.1rem;
