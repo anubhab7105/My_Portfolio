@@ -50,7 +50,7 @@ const projects = [
         description: "Full-featured e-commerce solution for local grocery stores with inventory management",
         technologies: ["HTML", "CSS", "JavaScript", "Python", "Flask"],
         github: "https://github.com/anubhab7105/PRODIGY_FS_03",
-        live: "https://anubhab7105.github.io/PRODIGY_FS_03/",
+        live: "https://ecommerce-website-five-lime.vercel.app/",
         image: "images/project1.png"
     },
     {
