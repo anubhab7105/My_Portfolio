@@ -8,10 +8,14 @@
       }
     },
     {
-      "src": "/(.*\\.(jpg|jpeg|png|gif|svg))",
+      "src": "/(.*\\.(jpg|jpeg|png|gif|svg|pdf))",
       "headers": {
         "Cache-Control": "public, max-age=31536000, immutable"
       }
+    },
+    {
+      "src": "/(.*\\.(jpg|jpeg|png|gif|svg|pdf))",
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",
