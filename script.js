@@ -237,21 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     updateNavigationColors();
 
-    // Mobile navigation menu
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-    });
-
-    // Close mobile menu when a link is clicked
-    mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-        });
-    });
-
     // Back to Top Button
     const backToTopBtn = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {

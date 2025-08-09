@@ -234,54 +234,6 @@ nav ul li a:hover::after {
     background: rgba(139, 92, 246, 0.1);
 }
 
-/* Hamburger styles */
-#hamburger {
-    display: none;
-    background: transparent;
-    border: none;
-    color: var(--text);
-    font-size: 2rem;
-    cursor: pointer;
-    margin-left: 1rem;
-    z-index: 1100;
-}
-
-#hamburger:focus {
-    outline: 2px solid var(--primary);
-}
-
-/* Mobile menu styles */
-#mobile-menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    right: 2rem;
-    background: var(--card-bg);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    padding: 2rem 1.5rem;
-    z-index: 1100;
-    min-width: 180px;
-}
-
-#mobile-menu a {
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border);
-    transition: color 0.3s;
-}
-
-#mobile-menu a:last-child {
-    border-bottom: none;
-}
-
-#mobile-menu a:hover {
-    color: var(--primary);
-}
-
 /* Hero Section */
 #home {
     background: linear-gradient(135deg, var(--darker) 0%, var(--secondary) 50%, var(--darker) 100%);
@@ -898,36 +850,6 @@ footer {
     
     .contact-container {
         grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    #hamburger {
-        display: block;
-    }
-    nav ul {
-        display: none;
-    }
-    #mobile-menu.active {
-        display: flex;
-    }
-    
-    .hero-content h1 {
-        font-size: 3rem;
-    }
-    
-    .hero-content h2 {
-        font-size: 1.5rem;
-    }
-    
-    .btn {
-        display: block;
-        width: 100%;
-        margin-bottom: 1rem;
-    }
-    
-    .btn-outline {
-        margin-left: 0;
     }
 }
 
