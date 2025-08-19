@@ -43,36 +43,52 @@ const header = document.querySelector('header');
 const logo = document.querySelector('.logo');
 const navLinks = document.querySelectorAll('nav a');
 
-// Projects Data
-const projects = [
-    {
-        title: "Local Grocery E-Commerce Platform",
-        description: "Full-featured e-commerce solution for local grocery stores with inventory management",
-        technologies: ["HTML", "CSS", "JavaScript", "Python", "Flask"],
-        github: "https://github.com/anubhab7105/PRODIGY_FS_03",
-        live: "https://ecommerce-website-five-lime.vercel.app/",
-        image: "images/project1.png"
-    },
-    {
-        title: "Secure User Authentication System",
-        description: "Robust authentication system implementing security best practices and encryption",
-        technologies: ["HTML", "CSS", "JavaScript", "Security", "JWT"],
-        github: "https://github.com/anubhab7105/PRODIGY_FS_01",
-        live: "https://anubhab7105.github.io/PRODIGY_FS_01/",
-        image: "images/project2.png"
-    },
-    {
-        title: "AI-Powered Cyber Threat Analysis",
-        description: "Responsive website for analyzing cyber threats from URL",
-        technologies: ["HTML", "CSS", "JavaScript", "AI Integration"],
-        github: "https://github.com/anubhab7105/AI-Powered-Cyber-Threat-Analyze",
-        live: "https://anubhab7105.github.io/AI-Powered-Cyber-Threat-Analyze/",
-        image: "images/project3.png"
+// Function to fetch projects from JSON file
+async function fetchProjects() {
+    try {
+        const response = await fetch('projects.json');
+        if (!response.ok) {
+            throw new Error('Failed to fetch projects');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error loading projects:', error);
+        // Fallback to default projects if JSON file fails to load
+        return [
+            {
+                title: "Local Grocery E-Commerce Platform",
+                description: "Full-featured e-commerce solution for local grocery stores with inventory management, featuring secure payment processing and user data protection.",
+                technologies: ["HTML", "CSS", "JavaScript", "Python", "Flask"],
+                github: "https://github.com/anubhab7105/PRODIGY_FS_03",
+                live: "https://ecommerce-website-five-lime.vercel.app/",
+                image: "images/project1.png",
+                security: ["Input validation", "Secure payment processing", "Data encryption"]
+            },
+            {
+                title: "Secure User Authentication System",
+                description: "Robust authentication system implementing security best practices with password hashing, JWT tokens, and protection against common vulnerabilities.",
+                technologies: ["HTML", "CSS", "JavaScript", "Security", "JWT"],
+                github: "https://github.com/anubhab7105/PRODIGY_FS_01",
+                live: "https://anubhab7105.github.io/PRODIGY_FS_01/",
+                image: "images/project2.png",
+                security: ["Password hashing (bcrypt)", "JWT authentication", "XSS prevention", "CSRF protection"]
+            },
+            {
+                title: "AI-Powered Cyber Threat Analysis",
+                description: "Responsive website for analyzing cyber threats from URLs with real-time scanning and threat detection capabilities.",
+                technologies: ["HTML", "CSS", "JavaScript", "AI Integration"],
+                github: "https://github.com/anubhab7105/AI-Powered-Cyber-Threat-Analyze",
+                live: "https://anubhab7105.github.io/AI-Powered-Cyber-Threat-Analyze/",
+                image: "images/project3.png",
+                security: ["Secure API communication", "Input sanitization", "Data validation"]
+            }
+        ];
     }
-];
+}
 
 // Render Projects
-function renderProjects() {
+async function renderProjects() {
+    const projects = await fetchProjects();
     projectsContainer.innerHTML = '';
     
     projects.forEach(project => {
@@ -81,11 +97,17 @@ function renderProjects() {
         
         projectCard.innerHTML = `
             <div class="project-img">
-                <img src="${project.image}" alt="${project.title}">
+                <img src="${project.image}" alt="${project.title}" loading="lazy">
             </div>
             <div class="project-info">
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
+                <div class="project-security">
+                    <h4>Security Features:</h4>
+                    <ul>
+                        ${project.security ? project.security.map(feature => `<li>${feature}</li>`).join('') : '<li>Security-focused implementation</li>'}
+                    </ul>
+                </div>
                 <div class="project-tech">
                     ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
                 </div>
@@ -106,6 +128,7 @@ formMessage.className = 'form-message';
 contactForm.appendChild(formMessage);
 
 const formSpinner = document.getElementById('form-spinner');
+const submitBtn = contactForm.querySelector('button[type="submit"]');
 
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -137,7 +160,6 @@ contactForm.addEventListener('submit', (e) => {
     }).finally(() => {
         formSpinner.style.display = 'none';
         submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Send Message';
     });
 });
 

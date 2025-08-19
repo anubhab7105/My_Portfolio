@@ -1,0 +1,29 @@
+[
+    {
+        "title": "Local Grocery E-Commerce Platform",
+        "description": "Developed a full-featured e-commerce solution specifically for local grocery stores with comprehensive inventory management. This platform was designed to help small businesses transition to online operations with secure payment processing and user data protection.",
+        "technologies": ["HTML", "CSS", "JavaScript", "Python", "Flask", "SQLite"],
+        "github": "https://github.com/anubhab7105/PRODIGY_FS_03",
+        "live": "https://ecommerce-website-five-lime.vercel.app/",
+        "image": "images/project1.png",
+        "security": ["Input validation & sanitization", "Secure payment processing integration", "Data encryption at rest", "SQL injection prevention", "XSS protection"]
+    },
+    {
+        "title": "Secure User Authentication System",
+        "description": "Built a robust authentication system implementing modern security best practices. This project was focused on understanding and mitigating common authentication vulnerabilities while providing a seamless user experience.",
+        "technologies": ["HTML", "CSS", "JavaScript", "Security", "JWT", "bcrypt"],
+        "github": "https://github.com/anubhab7105/PRODIGY_FS_01",
+        "live": "https://anubhab7105.github.io/PRODIGY_FS_01/",
+        "image": "images/project2.png",
+        "security": ["Password hashing with bcrypt", "JWT token authentication", "XSS prevention through output encoding", "CSRF protection tokens", "Session management security", "Rate limiting on login attempts"]
+    },
+    {
+        "title": "AI-Powered Cyber Threat Analysis",
+        "description": "Created a responsive web application for analyzing potential cyber threats from URLs. This tool integrates with threat intelligence APIs to provide real-time scanning and threat detection capabilities with a focus on secure data handling.",
+        "technologies": ["HTML", "CSS", "JavaScript", "AI Integration", "REST APIs"],
+        "github": "https://github.com/anubhab7105/AI-Powered-Cyber-Threat-Analyze",
+        "live": "https://anubhab7105.github.io/AI-Powered-Cyber-Threat-Analyze/",
+        "image": "images/project3.png",
+        "security": ["Secure API communication (HTTPS/TLS)", "Input sanitization for URL validation", "Data validation before processing", "Privacy-focused design (no data retention)", "CORS implementation for API security"]
+    }
+]

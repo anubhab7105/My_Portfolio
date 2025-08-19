@@ -599,6 +599,35 @@ nav ul li a:hover::after {
     flex-grow: 1;
 }
 
+.project-security {
+    margin-bottom: 1.2rem;
+}
+
+.project-security h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.project-security ul {
+    list-style-type: none;
+    margin-left: 1rem;
+}
+
+.project-security li {
+    margin-bottom: 0.3rem;
+    padding-left: 1rem;
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.project-security li::before {
+    content: "🔒";
+    position: absolute;
+    left: 0;
+}
+
 .project-tech {
     display: flex;
     flex-wrap: wrap;
@@ -912,5 +941,5 @@ footer {
 }
 
 html {
-        scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
