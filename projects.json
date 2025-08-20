@@ -18,11 +18,11 @@
         "security": ["Password hashing with bcrypt", "JWT token authentication", "XSS prevention through output encoding", "CSRF protection tokens", "Session management security", "Rate limiting on login attempts"]
     },
     {
-        "title": "AI-Powered Cyber Threat Analysis",
+        "title": "Cyber Threat Analysis",
         "description": "Created a responsive web application for analyzing potential cyber threats from URLs. This tool integrates with threat intelligence APIs to provide real-time scanning and threat detection capabilities with a focus on secure data handling.",
         "technologies": ["HTML", "CSS", "JavaScript", "AI Integration", "REST APIs"],
         "github": "https://github.com/anubhab7105/AI-Powered-Cyber-Threat-Analyze",
-        "live": "https://anubhab7105.github.io/AI-Powered-Cyber-Threat-Analyze/",
+        "live": "https://cyber-threat-analyze.vercel.app/",
         "image": "images/project3.png",
         "security": ["Secure API communication (HTTPS/TLS)", "Input sanitization for URL validation", "Data validation before processing", "Privacy-focused design (no data retention)", "CORS implementation for API security"]
     }
