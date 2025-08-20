@@ -60,7 +60,7 @@ async function fetchProjects() {
                 description: "Full-featured e-commerce solution for local grocery stores with inventory management, featuring secure payment processing and user data protection.",
                 technologies: ["HTML", "CSS", "JavaScript", "Python", "Flask"],
                 github: "https://github.com/anubhab7105/PRODIGY_FS_03",
-                live: "https://ecommerce-website-five-lime.vercel.app/",
+                live: "https://freshmart-gamma.vercel.app/",
                 image: "images/project1.png",
                 security: ["Input validation", "Secure payment processing", "Data encryption"]
             },
