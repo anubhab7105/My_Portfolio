@@ -943,3 +943,47 @@ footer {
 html {
     scroll-behavior: smooth;
 }
+
+.resume-download-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+.resume-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem;
+  background: var(--card-bg);
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.resume-download-container:hover .resume-options {
+  opacity: 1;
+  visibility: visible;
+}
+
+.resume-options a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* Add download animation */
+@keyframes downloadPulse {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+.btn-download:active {
+  animation: downloadPulse 0.5s ease;
+}

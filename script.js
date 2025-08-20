@@ -272,3 +272,12 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
+
+document.getElementById('resume-download').addEventListener('click', function(e) {
+  //download tracking 
+  console.log('Resume download initiated');
+  
+  setTimeout(function() { 
+    alert('If download didn\'t start, please email me directly'); 
+  }, 3000);
+});
