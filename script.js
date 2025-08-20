@@ -74,11 +74,11 @@ async function fetchProjects() {
                 security: ["Password hashing (bcrypt)", "JWT authentication", "XSS prevention", "CSRF protection"]
             },
             {
-                title: "AI-Powered Cyber Threat Analysis",
+                title: "Cyber Threat Analysis",
                 description: "Responsive website for analyzing cyber threats from URLs with real-time scanning and threat detection capabilities.",
                 technologies: ["HTML", "CSS", "JavaScript", "AI Integration"],
                 github: "https://github.com/anubhab7105/AI-Powered-Cyber-Threat-Analyze",
-                live: "https://anubhab7105.github.io/AI-Powered-Cyber-Threat-Analyze/",
+                live: "https://cyber-threat-analyze.vercel.app/",
                 image: "images/project3.png",
                 security: ["Secure API communication", "Input sanitization", "Data validation"]
             }
