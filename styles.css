@@ -156,11 +156,7 @@ nav {
     padding: 1.5rem 2rem;
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: white;
-    background: var(--primary);
+.logo img{
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -170,7 +166,7 @@ nav {
     transition: all 0.3s ease;
 }
 
-.logo:hover {
+.logo img:hover {
     transform: scale(1.1);
     box-shadow: 0 0 20px var(--primary);
 }
