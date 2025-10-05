@@ -81,6 +81,24 @@ async function fetchProjects() {
                 live: "https://cyber-threat-analyze.vercel.app/",
                 image: "images/project3.png",
                 security: ["Secure API communication", "Input sanitization", "Data validation"]
+            },
+            {
+                title: "ChatBot(Incomplete)",
+                description: "An interactive chatbot built using Python and NLP techniques. Designed to handle casual conversations, FAQs, and integrate with APIs for contextual responses.",
+                technologies: ["Python", "NLP", "Flask", "HTML", "CSS", "JavaScript"],
+                github: "https://github.com/anubhab7105/ChatBot",
+                live: "https://anubhab7105.github.io/ChatBot/",
+                image: "images/project4.png",
+                security: ["Sanitized user input to prevent code injection", "API key obfuscation", "Rate limiting to prevent abuse", "Error handling for invalid responses"]
+            },
+            {
+                title: "Health Metrics Dashboard",
+                description: "A responsive web dashboard for visualizing health and fitness metrics. Includes charts and analytics for better insight into user progress and habits.",
+                technologies: ["HTML", "CSS", "JavaScript", "Chart.js", "Bootstrap"],
+                github: "https://github.com/anubhab7105/HealthMetricsDashboard",
+                live: "https://anubhab7105.github.io/HealthMetricsDashboard/",
+                image: "images/project5.png",
+                security: ["Data anonymization for demo", "Secure handling of input metrics", "Client-side validation", "CORS protection configuration"]
             }
         ];
     }
