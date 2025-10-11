@@ -1,5 +1,5 @@
+/* Root variables: dark theme defaults and light theme overrides below */
 :root {
-    /* Dark theme variables (default) */
     --primary: #8b5cf6; 
     --secondary: #0f172a;
     --accent: #6366f1; 
@@ -11,8 +11,6 @@
     --card-bg: rgba(30, 41, 59, 0.5);
     --shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     --border: rgba(255, 255, 255, 0.1);
-    
-    /* Light theme variables */
     --primary-light: #6d28d9;
     --secondary-light: #f8fafc;
     --accent-light: #4f46e5;
@@ -24,6 +22,7 @@
     --border-light: rgba(0, 0, 0, 0.05);
 }
 
+/* Light theme overrides when data-theme="light" is set on <html> */
 [data-theme="light"] {
     --primary: var(--primary-light);
     --secondary: var(--secondary-light);
@@ -36,6 +35,7 @@
     --border: var(--border-light);
 }
 
+/* Global resets and base styles */
 * {
     margin: 0;
     padding: 0;
@@ -51,12 +51,14 @@ body {
     overflow-x: hidden;
 }
 
+/* Container utility */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
+/* Section titles / headings */
 section {
     padding: 5rem 0;
 }
@@ -81,6 +83,7 @@ section {
     border-radius: 2px;
 }
 
+/* Buttons: primary, outline and download variants */
 .btn {
     display: inline-block;
     padding: 0.8rem 2rem;
@@ -132,7 +135,7 @@ section {
     font-size: 1.1em;
 }
 
-/* Header Styles */
+/* Header / navigation styles (fixed with backdrop) */
 header {
     background-color: rgba(15, 23, 42, 0.9);
     position: fixed;
@@ -144,11 +147,13 @@ header {
     transition: all 0.3s ease;
 }
 
+/* Theme-specific header style */
 [data-theme="light"] header {
     background: rgba(248, 250, 252, 0.9);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
+/* Navigation layout and links */
 nav {
     display: flex;
     justify-content: space-between;
@@ -192,6 +197,7 @@ nav ul li a:hover::after {
     width: 100%;
 }
 
+/* Theme toggle button styling and hover affordance */
 #theme-toggle {
     background: transparent;
     border: none;
@@ -215,7 +221,7 @@ nav ul li a:hover::after {
     background: rgba(139, 92, 246, 0.1);
 }
 
-/* Hero Section */
+/* Hero / home section */
 #home {
     background: linear-gradient(135deg, var(--darker) 0%, var(--secondary) 50%, var(--darker) 100%);
     color: var(--text);
@@ -239,6 +245,7 @@ nav ul li a:hover::after {
     background-size: cover;
 }
 
+/* Hero content typography */
 .hero-content {
     max-width: 800px;
     margin: 0 auto;
@@ -275,7 +282,7 @@ nav ul li a:hover::after {
     margin-top: 2rem;
 }
 
-/* About Section */
+/* About section layout */
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -283,45 +290,7 @@ nav ul li a:hover::after {
     align-items: center;
 }
 
-.about-text h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    color: var(--text);
-}
-
-.about-text p {
-    margin-bottom: 1.5rem;
-    color: var(--text);
-}
-
-.education, .languages {
-    margin-top: 2rem;
-}
-
-.education h4, .languages h4 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-    color: var(--text);
-}
-
-.education ul, .languages ul {
-    list-style-type: none;
-}
-
-.education li, .languages li {
-    margin-bottom: 0.8rem;
-    padding-left: 1.5rem;
-    position: relative;
-    color: var(--text);
-}
-
-.education li::before, .languages li::before {
-    content: "▹";
-    position: absolute;
-    left: 0;
-    color: var(--primary);
-}
-
+/* Profile image styling and hover behavior */
 .about-img .profile-img {
     width: 100%;
     height: 400px;
@@ -336,7 +305,7 @@ nav ul li a:hover::after {
     box-shadow: 0 15px 50px rgba(139, 92, 246, 0.4);
 }
 
-/* Skills Section */
+/* Skills and soft-skills cards */
 .skills-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -344,6 +313,7 @@ nav ul li a:hover::after {
     margin-bottom: 3rem;
 }
 
+/* Skill category card style and hover */
 .skill-category {
     background: var(--card-bg);
     padding: 2rem;
@@ -396,6 +366,7 @@ nav ul li a:hover::after {
     color: var(--primary);
 }
 
+/* Soft skills container and individual pill styles */
 .soft-skills {
     background: var(--card-bg);
     padding: 2rem;
@@ -443,7 +414,7 @@ nav ul li a:hover::after {
     box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
 }
 
-/* Experience Section */
+/* Experience section background and cards */
 #experience {
     padding: 5rem 0;
     background: var(--secondary);
@@ -473,7 +444,6 @@ nav ul li a:hover::after {
 }
 
 .experience-card:hover {
-    /* Only border and shadow glow, no background or text color change */
     border-color: var(--primary);
     box-shadow: 0 0 20px var(--primary);
 }
@@ -501,6 +471,7 @@ nav ul li a:hover::after {
     margin-bottom: 0.8rem;
 }
 
+/* Certificate badge styling for credentials */
 .certificate-badge {
     display: inline-flex;
     align-items: center;
@@ -517,7 +488,7 @@ nav ul li a:hover::after {
     margin-right: 0.3rem;
 }
 
-/* Projects Section */
+/* Projects grid and individual card styles */
 .projects-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -580,6 +551,7 @@ nav ul li a:hover::after {
     flex-grow: 1;
 }
 
+/* Project security features list styles */
 .project-security {
     margin-bottom: 1.2rem;
 }
@@ -609,6 +581,7 @@ nav ul li a:hover::after {
     left: 0;
 }
 
+/* Project technology stack pills */
 .project-tech {
     display: flex;
     flex-wrap: wrap;
@@ -632,6 +605,7 @@ nav ul li a:hover::after {
     transform: translateY(-2px);
 }
 
+/* Project links button styles */
 .project-links {
     display: flex;
     gap: 1rem;
@@ -656,6 +630,7 @@ nav ul li a:hover::after {
     box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
 }
 
+/* Live project button variant */
 .live-btn {
     background: #10b981;
 }
@@ -664,7 +639,7 @@ nav ul li a:hover::after {
     background: #059669;
 }
 
-/* Contact Section */
+/* Contact area and form */
 .contact-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -718,6 +693,7 @@ nav ul li a:hover::after {
     transform: scale(1.2);
 }
 
+/* Social media links in contact section */
 .social-links {
     display: flex;
     gap: 1rem;
@@ -745,6 +721,7 @@ nav ul li a:hover::after {
     box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
 }
 
+/* Contact form layout and styles */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -805,12 +782,7 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-[data-theme="light"] footer {
-    background: rgba(248, 250, 252, 0.9);
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* Back to Top Button */
+/* Back-to-top button behavior */
 #back-to-top {
     position: fixed;
     bottom: 2rem;
@@ -842,7 +814,7 @@ footer {
     background: var(--accent);
 }
 
-/* Spinner */
+/* Form spinner small UI */
 .form-spinner {
     display: flex;
     align-items: center;
@@ -857,7 +829,7 @@ footer {
     font-size: 1.2rem;
 }
 
-/* Responsive Design */
+/* Responsive adjustments: tablet and mobile breakpoints */
 @media (max-width: 992px) {
     .about-content {
         grid-template-columns: 1fr;
@@ -921,10 +893,12 @@ footer {
     }
 }
 
+/* Smooth scroll behavior */
 html {
     scroll-behavior: smooth;
 }
 
+/* Resume download dropdown tooltips */
 .resume-download-container {
   position: relative;
   display: inline-block;
@@ -958,7 +932,7 @@ html {
   text-decoration: underline;
 }
 
-/* Add download animation */
+/* Small animation for download button press */
 @keyframes downloadPulse {
   0% { transform: translateY(0); }
   50% { transform: translateY(-3px); }
@@ -969,6 +943,7 @@ html {
   animation: downloadPulse 0.5s ease;
 }
 
+/* Logo round badge and hover effect */
 .logo {
     font-size: 1.8rem;
     font-weight: 700;

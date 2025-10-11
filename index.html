@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header & Navigation -->
+    <!-- Header / main navigation -->
     <header>
         <nav id="navbar">
             <div class="logo">AD</div>
@@ -21,14 +21,13 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <!-- Theme Toggle Button -->
             <button id="theme-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero / Intro section -->
     <section id="home">
         <div class="hero-content">
             <h1>Anubhab Das</h1>
@@ -37,14 +36,15 @@
             <div class="hero-btns">
                 <a href="#projects" class="btn">View Projects</a>
                 <a href="#contact" class="btn">Contact Me</a>
-                <a href="/images/AnubhabDasResume.pdf" class="btn" download>
+                <!-- Resume download button: add id so script can attach an event safely -->
+                <a id="resume-download" href="/images/AnubhabDasResume.pdf" class="btn" download>
                     <i class="fas fa-file-download"></i> Download Resume
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About / education / languages -->
     <section id="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
@@ -72,14 +72,13 @@
                     </div>
                 </div>
                 <div class="about-img">
-                    <!-- Add your profile image here -->
                     <img src="images/protfolio.jpg" alt="Anubhab Das" class="profile-img" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills -->
     <section id="skills">
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
@@ -124,7 +123,7 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
+    <!-- Experience -->
     <section id="experience">
         <div class="container">
             <h2 class="section-title">Experience</h2>
@@ -160,17 +159,16 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects: populated by script.js -->
     <section id="projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-container" id="projects-container">
-                <!-- Projects will be loaded by JavaScript -->
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact form (sends to Formspree) and contact info -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>

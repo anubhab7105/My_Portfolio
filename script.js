@@ -1,49 +1,43 @@
-// Theme toggle functionality
+// Theme toggle elements and initial theme selection
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = themeToggle.querySelector('i');
 
-// Check for saved theme preference or system preference
+// currentTheme is chosen from localStorage, then system preference, then default
 const savedTheme = localStorage.getItem('theme');
 const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
 document.documentElement.setAttribute('data-theme', currentTheme);
 
-// Set initial icon
+// Ensure the icon matches the selected theme
 if (currentTheme === 'light') {
     themeIcon.classList.replace('fa-moon', 'fa-sun');
 }
 
-// Mobile-friendly toggle function
+// Toggle theme and persist choice
 function handleThemeToggle() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    // Update theme
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
-    
-    // Update icon
     if (newTheme === 'light') {
         themeIcon.classList.replace('fa-moon', 'fa-sun');
     } else {
         themeIcon.classList.replace('fa-sun', 'fa-moon');
     }
-    
-    // Update navigation colors
     updateNavigationColors();
 }
 
-// Add only click event for theme toggle (works on mobile and desktop)
+// Event listener for theme button
 themeToggle.addEventListener('click', handleThemeToggle);
 
-// DOM Elements
+// Projects and contact DOM refs
 const projectsContainer = document.getElementById('projects-container');
 const contactForm = document.getElementById('contact-form');
 const header = document.querySelector('header');
 const logo = document.querySelector('.logo');
 const navLinks = document.querySelectorAll('nav a');
 
-// Function to fetch projects from JSON file
+// Fetch projects.json with graceful fallback to local array if network fails
 async function fetchProjects() {
     try {
         const response = await fetch('projects.json');
@@ -53,7 +47,7 @@ async function fetchProjects() {
         return await response.json();
     } catch (error) {
         console.error('Error loading projects:', error);
-        // Fallback to default projects if JSON file fails to load
+        // Fallback project list used when projects.json can't be loaded (useful during dev or offline)
         return [
             {
                 title: "Local Grocery E-Commerce Platform",
@@ -104,15 +98,13 @@ async function fetchProjects() {
     }
 }
 
-// Render Projects
+// Render project cards into the projects container
 async function renderProjects() {
     const projects = await fetchProjects();
     projectsContainer.innerHTML = '';
-    
     projects.forEach(project => {
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
-        
         projectCard.innerHTML = `
             <div class="project-img">
                 <img src="${project.image}" alt="${project.title}" loading="lazy">
@@ -135,28 +127,26 @@ async function renderProjects() {
                 </div>
             </div>
         `;
-        
         projectsContainer.appendChild(projectCard);
     });
 }
 
-// Form Submission
+// Small UI element used to show messages below the contact form
 const formMessage = document.createElement('div');
 formMessage.className = 'form-message';
 contactForm.appendChild(formMessage);
 
+// Form submission: display spinner, send to Formspree, handle response and errors
 const formSpinner = document.getElementById('form-spinner');
 const submitBtn = contactForm.querySelector('button[type="submit"]');
 
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    // Show spinner and disable submit while request in-flight
     formSpinner.style.display = 'flex';
     submitBtn.disabled = true;
-    
-    // Form data
+    // Use FormData to preserve encoding for Formspree
     const formData = new FormData(contactForm);
-    
-    // Send form data to Formspree
     fetch(contactForm.action, {
         method: 'POST',
         body: formData,
@@ -164,38 +154,36 @@ contactForm.addEventListener('submit', (e) => {
             'Accept': 'application/json'
         }
     }).then(response => {
+        // On success, show friendly confirmation and clear the form
         if (response.ok) {
             formMessage.textContent = 'Message sent successfully! I will get back to you soon.';
             formMessage.style.color = 'green';
             contactForm.reset();
         } else {
+            // Non-2xx responses
             formMessage.textContent = 'Oops! Something went wrong. Please try again later.';
             formMessage.style.color = 'red';
         }
     }).catch(error => {
+        // Network or unexpected error
         formMessage.textContent = 'Error: ' + error.message;
         formMessage.style.color = 'red';
     }).finally(() => {
+        // Always hide spinner and re-enable button
         formSpinner.style.display = 'none';
         submitBtn.disabled = false;
     });
 });
 
-// Update navigation colors based on theme
+// Update navigation styling based on theme and scroll position
 function updateNavigationColors() {
     const isLightTheme = document.documentElement.getAttribute('data-theme') === 'light';
     const textColor = isLightTheme ? '#334155' : '#e2e8f0';
-    
-    // Update logo colors
     logo.style.color = isLightTheme ? '#6d28d9' : 'white';
     logo.style.background = isLightTheme ? 'rgba(109, 40, 217, 0.1)' : '#8b5cf6';
-    
-    // Update nav link colors
     navLinks.forEach(link => {
         link.style.color = textColor;
     });
-    
-    // Update header background
     if (window.scrollY > 100) {
         header.style.background = isLightTheme 
             ? 'rgba(248, 250, 252, 0.95)' 
@@ -207,7 +195,7 @@ function updateNavigationColors() {
     }
 }
 
-// Debounce utility
+// Utility debounce to limit scroll/resize handler frequency
 function debounce(fn, delay) {
     let timeout;
     return function(...args) {
@@ -216,22 +204,23 @@ function debounce(fn, delay) {
     };
 }
 
-// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize projects and smooth internal nav scrolling
     renderProjects();
-    // Smooth scrolling for navigation links
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
+            // Smooth scroll and account for fixed header offset
             window.scrollTo({
                 top: targetElement.offsetTop - 80,
                 behavior: 'smooth'
             });
         });
     });
-    // Header scroll effect
+
+    // Scroll listener uses debounce for performance; updates header styles and triggers animations
     window.addEventListener('scroll', debounce(() => {
         if (window.scrollY > 100) {
             header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
@@ -250,7 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         animateOnScroll();
     }, 20));
-    // Initialize animations
+
+    // animateOnScroll reveals elements when they enter viewport
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('.skill-category, .project-card, .about-content > div, .experience-card');
         elements.forEach(element => {
@@ -262,22 +252,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     };
-    // Set initial state
+
+    // Setup initial hidden state for animated elements
     document.querySelectorAll('.skill-category, .project-card, .about-content > div, .experience-card').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
-    // Trigger on load and scroll
+
+    // Run on load to reveal visible elements
     window.addEventListener('load', animateOnScroll);
-    // window.addEventListener('scroll', animateOnScroll);
-    // Set initial icon and navigation colors
+
+    // Ensure theme icon is correct after DOM loaded (redundant safe-check)
     if (currentTheme === 'light') {
         themeIcon.classList.replace('fa-moon', 'fa-sun');
     }
     updateNavigationColors();
 
-    // Back to Top Button
+    // Back-to-top button show/hide logic
     const backToTopBtn = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 400) {
@@ -291,10 +283,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Resume download: show console log and fallback alert if automatic download doesn't start
 document.getElementById('resume-download').addEventListener('click', function(e) {
-  //download tracking 
   console.log('Resume download initiated');
-  
   setTimeout(function() { 
     alert('If download didn\'t start, please email me directly'); 
   }, 3000);
