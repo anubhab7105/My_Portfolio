@@ -98,26 +98,43 @@ async function fetchProjects() {
     }
 }
 
-// Render project cards into the projects container
+// Render project cards into the projects container (now builds a carousel)
 async function renderProjects() {
     const projects = await fetchProjects();
+    // create carousel container
     projectsContainer.innerHTML = '';
+    const wrapper = document.createElement('div');
+    wrapper.className = 'carousel-wrapper';
+    wrapper.setAttribute('aria-roledescription', 'carousel');
+    // optional: allow override with data-visible attribute (default used by Slide.js)
+    wrapper.dataset.visible = '3';
+
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'prev';
+    prevBtn.setAttribute('aria-label', 'Previous slide');
+    prevBtn.textContent = '<';
+
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'next';
+    nextBtn.setAttribute('aria-label', 'Next slide');
+    nextBtn.textContent = '>';
+
+    const viewport = document.createElement('div');
+    viewport.className = 'carousel-viewport';
+    const track = document.createElement('div');
+    track.className = 'carousel-track';
+
+    // build project cards into track
     projects.forEach(project => {
-        const projectCard = document.createElement('div');
-        projectCard.className = 'project-card';
-        projectCard.innerHTML = `
+        const article = document.createElement('article');
+        article.className = 'project-card';
+        article.innerHTML = `
             <div class="project-img">
                 <img src="${project.image}" alt="${project.title}" loading="lazy">
             </div>
             <div class="project-info">
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
-                <div class="project-security">
-                    <h4>Security Features:</h4>
-                    <ul>
-                        ${project.security ? project.security.map(feature => `<li>${feature}</li>`).join('') : '<li>Security-focused implementation</li>'}
-                    </ul>
-                </div>
                 <div class="project-tech">
                     ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
                 </div>
@@ -127,8 +144,28 @@ async function renderProjects() {
                 </div>
             </div>
         `;
-        projectsContainer.appendChild(projectCard);
+        track.appendChild(article);
     });
+
+    viewport.appendChild(track);
+    wrapper.appendChild(prevBtn);
+    wrapper.appendChild(viewport);
+    wrapper.appendChild(nextBtn);
+    projectsContainer.appendChild(wrapper);
+
+    // Ensure newly created project cards receive initial hidden animation styles (consistent with DOMContentLoaded setup)
+    track.querySelectorAll('.project-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+
+    // Initialize carousel (Slide.js exposes initCarousels)
+    if (typeof window.initCarousels === 'function') {
+        window.initCarousels();
+        // give layout a tick to let carousel compute sizes, then trigger reveal for visible cards
+        setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 60);
+    }
 }
 
 // Small UI element used to show messages below the contact form

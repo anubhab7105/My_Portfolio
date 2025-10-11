@@ -490,9 +490,10 @@ nav ul li a:hover::after {
 
 /* Projects grid and individual card styles */
 .projects-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
 }
 
 .project-card {
@@ -827,6 +828,71 @@ footer {
 
 .form-spinner i {
     font-size: 1.2rem;
+}
+
+/* Projects container: center the carousel */
+.projects-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+/* Carousel layout & controls */
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 auto;
+}
+.carousel-viewport {
+    overflow: hidden;
+    flex: 1;
+    width: 100%;
+    max-width: 1200px; /* keep carousel centered and constrained */
+    margin: 0 auto;
+}
+.carousel-track {
+    display: flex;
+    gap: var(--carousel-gap, 1rem);
+    will-change: transform;
+    transition: transform 0.4s ease;
+    align-items: stretch;
+}
+
+/* Ensure project cards inside carousel take exactly one-third of the viewport (minus gaps) */
+.carousel-track .project-card {
+    flex: 0 0 calc((100% - (var(--carousel-gap, 1rem) * 2)) / 3);
+    max-width: calc((100% - (var(--carousel-gap, 1rem) * 2)) / 3);
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Nav buttons */
+.carousel-wrapper .prev,
+.carousel-wrapper .next {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.carousel-wrapper .prev:hover,
+.carousel-wrapper .next:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* Make carousel responsive: stack to single card on small screens */
+@media (max-width: 768px) {
+    .carousel-track .project-card {
+        flex: 0 0 90%;
+        max-width: 90%;
+    }
 }
 
 /* Responsive adjustments: tablet and mobile breakpoints */

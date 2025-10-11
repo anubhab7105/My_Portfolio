@@ -22,4 +22,4 @@ Professional portfolio website of Anubhab Das, Cyber Security student and web de
 ## Setup
 1. Clone repository:
 ```bash
-git clone https://github.com/Anubhab7105/My_Portfolio.git
+git clone https://github.com/anubhab7105/My_Portfolio.git
