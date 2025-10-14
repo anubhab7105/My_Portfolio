@@ -1,4 +1,6 @@
-/* Root variables: dark theme defaults and light theme overrides below */
+/* =========================
+   Root variables (dark defaults) and light-theme overrides
+   ========================= */
 :root {
     --primary: #8b5cf6; 
     --secondary: #0f172a;
@@ -22,7 +24,7 @@
     --border-light: rgba(0, 0, 0, 0.05);
 }
 
-/* Light theme overrides when data-theme="light" is set on <html> */
+/* Light theme overrides when [data-theme="light"] is set on <html> */
 [data-theme="light"] {
     --primary: var(--primary-light);
     --secondary: var(--secondary-light);
@@ -35,7 +37,9 @@
     --border: var(--border-light);
 }
 
-/* Global resets and base styles */
+/* =========================
+   Global resets and base styles
+   ========================= */
 * {
     margin: 0;
     padding: 0;
@@ -282,6 +286,9 @@ nav ul li a:hover::after {
     margin-top: 2rem;
 }
 
+/* =========================
+   About section styles
+   ========================= */
 /* About section layout */
 .about-content {
     display: grid;
@@ -414,6 +421,9 @@ nav ul li a:hover::after {
     box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
 }
 
+/* =========================
+   Experience section styles
+   ========================= */
 /* Experience section background and cards */
 #experience {
     padding: 5rem 0;
@@ -488,6 +498,9 @@ nav ul li a:hover::after {
     margin-right: 0.3rem;
 }
 
+/* =========================
+   Projects section styles
+   ========================= */
 /* Projects grid and individual card styles */
 .projects-container {
     display: flex;
@@ -640,6 +653,9 @@ nav ul li a:hover::after {
     background: #059669;
 }
 
+/* =========================
+   Contact section styles
+   ========================= */
 /* Contact area and form */
 .contact-container {
     display: grid;
@@ -773,7 +789,9 @@ nav ul li a:hover::after {
     box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
 }
 
-/* Footer */
+/* =========================
+   Footer styles
+   ========================= */
 footer {
     background: rgba(15, 23, 42, 0.9);
     color: var(--text);
@@ -783,7 +801,9 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Back-to-top button behavior */
+/* =========================
+   Back-to-top button behavior
+   ========================= */
 #back-to-top {
     position: fixed;
     bottom: 2rem;
@@ -830,6 +850,9 @@ footer {
     font-size: 1.2rem;
 }
 
+/* =========================
+   Carousel / Projects styles
+   ========================= */
 /* Projects container: center the carousel */
 .projects-container {
     display: flex;
@@ -895,6 +918,9 @@ footer {
     }
 }
 
+/* =========================
+   Responsive layout rules
+   ========================= */
 /* Responsive adjustments: tablet and mobile breakpoints */
 @media (max-width: 992px) {
     .about-content {
@@ -1028,3 +1054,47 @@ html {
     transform: scale(1.1);
     box-shadow: 0 0 20px var(--primary);
 }
+
+        /* Hide checkbox input for menu toggle */
+        #menu-toggle { display: none; }
+        /* Hide hamburger icon by default (desktop) */
+        .menu-icon { display: none; cursor: pointer; font-size: 1.5rem; color: var(--text); margin-right: 1rem; }
+        /* Ensure logo is on the left and push other items to the right */
+        nav .logo { margin-right: auto; }
+        /* Override nav justify for correct alignment */
+        nav { justify-content: flex-start; }
+        @media (max-width: 768px) {
+            /* Show hamburger icon on mobile */
+            .menu-icon { display: block; }
+            /* Allow positioning of the dropdown */
+            nav { position: relative; }
+            /* Style mobile dropdown menu */
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                background: var(--secondary);
+                transition: max-height 0.3s ease-out;
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+            /* Style each menu item in the dropdown */
+            nav ul li {
+                margin: 0;
+                border-bottom: 1px solid var(--border);
+                text-align: center;
+            }
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+            nav ul li a {
+                display: block;
+                padding: 1rem;
+            }
+            /* Reveal menu when checkbox is checked */
+            #menu-toggle:checked ~ ul {
+                max-height: 500px;
+            }
+        }

@@ -2,18 +2,18 @@
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = themeToggle.querySelector('i');
 
-// currentTheme is chosen from localStorage, then system preference, then default
+// Determine initial theme: saved preference -> system preference -> default (light)
 const savedTheme = localStorage.getItem('theme');
 const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
 document.documentElement.setAttribute('data-theme', currentTheme);
 
-// Ensure the icon matches the selected theme
+// Ensure icon matches current theme
 if (currentTheme === 'light') {
     themeIcon.classList.replace('fa-moon', 'fa-sun');
 }
 
-// Toggle theme and persist choice
+// Toggle theme and persist selection
 function handleThemeToggle() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -27,17 +27,17 @@ function handleThemeToggle() {
     updateNavigationColors();
 }
 
-// Event listener for theme button
+// Attach click handler to theme button
 themeToggle.addEventListener('click', handleThemeToggle);
 
-// Projects and contact DOM refs
+// DOM refs used throughout the page
 const projectsContainer = document.getElementById('projects-container');
 const contactForm = document.getElementById('contact-form');
 const header = document.querySelector('header');
 const logo = document.querySelector('.logo');
 const navLinks = document.querySelectorAll('nav a');
 
-// Fetch projects.json with graceful fallback to local array if network fails
+// Fetch projects.json with a local fallback when network fails
 async function fetchProjects() {
     try {
         const response = await fetch('projects.json');
@@ -47,7 +47,7 @@ async function fetchProjects() {
         return await response.json();
     } catch (error) {
         console.error('Error loading projects:', error);
-        // Fallback project list used when projects.json can't be loaded (useful during dev or offline)
+        // Fallback projects for offline/dev environments
         return [
             {
                 title: "Local Grocery E-Commerce Platform",
@@ -98,15 +98,13 @@ async function fetchProjects() {
     }
 }
 
-// Render project cards into the projects container (now builds a carousel)
+// Render projects into a carousel; DOM structure created dynamically
 async function renderProjects() {
     const projects = await fetchProjects();
-    // create carousel container
     projectsContainer.innerHTML = '';
     const wrapper = document.createElement('div');
     wrapper.className = 'carousel-wrapper';
     wrapper.setAttribute('aria-roledescription', 'carousel');
-    // optional: allow override with data-visible attribute (default used by Slide.js)
     wrapper.dataset.visible = '3';
 
     const prevBtn = document.createElement('button');
@@ -124,7 +122,7 @@ async function renderProjects() {
     const track = document.createElement('div');
     track.className = 'carousel-track';
 
-    // build project cards into track
+    // Build project cards
     projects.forEach(project => {
         const article = document.createElement('article');
         article.className = 'project-card';
@@ -153,36 +151,34 @@ async function renderProjects() {
     wrapper.appendChild(nextBtn);
     projectsContainer.appendChild(wrapper);
 
-    // Ensure newly created project cards receive initial hidden animation styles (consistent with DOMContentLoaded setup)
+    // Prepare reveal animation for cards
     track.querySelectorAll('.project-card').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
 
-    // Initialize carousel (Slide.js exposes initCarousels)
+    // Initialize the carousel implementation
     if (typeof window.initCarousels === 'function') {
         window.initCarousels();
-        // give layout a tick to let carousel compute sizes, then trigger reveal for visible cards
+        // Trigger a resize after a short delay so carousel measures correctly
         setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 60);
     }
 }
 
-// Small UI element used to show messages below the contact form
+// Simple element for showing messages under the contact form
 const formMessage = document.createElement('div');
 formMessage.className = 'form-message';
 contactForm.appendChild(formMessage);
 
-// Form submission: display spinner, send to Formspree, handle response and errors
+// Form submission: show spinner, POST to Formspree, handle response/errors
 const formSpinner = document.getElementById('form-spinner');
 const submitBtn = contactForm.querySelector('button[type="submit"]');
 
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    // Show spinner and disable submit while request in-flight
     formSpinner.style.display = 'flex';
     submitBtn.disabled = true;
-    // Use FormData to preserve encoding for Formspree
     const formData = new FormData(contactForm);
     fetch(contactForm.action, {
         method: 'POST',
@@ -191,28 +187,24 @@ contactForm.addEventListener('submit', (e) => {
             'Accept': 'application/json'
         }
     }).then(response => {
-        // On success, show friendly confirmation and clear the form
         if (response.ok) {
             formMessage.textContent = 'Message sent successfully! I will get back to you soon.';
             formMessage.style.color = 'green';
             contactForm.reset();
         } else {
-            // Non-2xx responses
             formMessage.textContent = 'Oops! Something went wrong. Please try again later.';
             formMessage.style.color = 'red';
         }
     }).catch(error => {
-        // Network or unexpected error
         formMessage.textContent = 'Error: ' + error.message;
         formMessage.style.color = 'red';
     }).finally(() => {
-        // Always hide spinner and re-enable button
         formSpinner.style.display = 'none';
         submitBtn.disabled = false;
     });
 });
 
-// Update navigation styling based on theme and scroll position
+// Update navigation and logo styles based on theme and scroll state
 function updateNavigationColors() {
     const isLightTheme = document.documentElement.getAttribute('data-theme') === 'light';
     const textColor = isLightTheme ? '#334155' : '#e2e8f0';
@@ -232,7 +224,7 @@ function updateNavigationColors() {
     }
 }
 
-// Utility debounce to limit scroll/resize handler frequency
+// Lightweight debounce utility
 function debounce(fn, delay) {
     let timeout;
     return function(...args) {
@@ -242,14 +234,13 @@ function debounce(fn, delay) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize projects and smooth internal nav scrolling
+    // Populate projects and wire up smooth nav scrolling
     renderProjects();
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-            // Smooth scroll and account for fixed header offset
             window.scrollTo({
                 top: targetElement.offsetTop - 80,
                 behavior: 'smooth'
@@ -257,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Scroll listener uses debounce for performance; updates header styles and triggers animations
+    // Scroll handler (debounced) updates header appearance and triggers reveal animations
     window.addEventListener('scroll', debounce(() => {
         if (window.scrollY > 100) {
             header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
@@ -277,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animateOnScroll();
     }, 20));
 
-    // animateOnScroll reveals elements when they enter viewport
+    // Reveal elements when they enter the viewport
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('.skill-category, .project-card, .about-content > div, .experience-card');
         elements.forEach(element => {
@@ -290,23 +281,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Setup initial hidden state for animated elements
+    // Initialize hidden state for animated elements
     document.querySelectorAll('.skill-category, .project-card, .about-content > div, .experience-card').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
 
-    // Run on load to reveal visible elements
+    // Reveal visible elements on load
     window.addEventListener('load', animateOnScroll);
 
-    // Ensure theme icon is correct after DOM loaded (redundant safe-check)
+    // Ensure theme icon is correct after DOM loads
     if (currentTheme === 'light') {
         themeIcon.classList.replace('fa-moon', 'fa-sun');
     }
     updateNavigationColors();
 
-    // Back-to-top button show/hide logic
+    // Back-to-top button visibility and action
     const backToTopBtn = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 400) {
@@ -320,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Resume download: show console log and fallback alert if automatic download doesn't start
+// Resume download: log event and show fallback alert if download fails to start
 document.getElementById('resume-download').addEventListener('click', function(e) {
   console.log('Resume download initiated');
   setTimeout(function() { 

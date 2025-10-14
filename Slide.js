@@ -1,5 +1,5 @@
 (function () {
-  // Expose a global initializer that can be called after DOM/project rendering
+  // Initialize all carousels on the page. Call after DOM or dynamic content has been rendered.
   window.initCarousels = function initCarousels() {
     const wrappers = Array.from(document.querySelectorAll('.carousel-wrapper'));
     if (!wrappers.length) return;
@@ -7,31 +7,30 @@
   };
 
   function initCarousel(wrapper) {
-    // Prevent double initialization
+    // Avoid initializing the same wrapper more than once
     if (wrapper.dataset.initialized === 'true') return;
     wrapper.dataset.initialized = 'true';
 
-    // Number of items visible at once (can be overridden via data-visible attribute)
+    // Number of visible items; can be overridden with data-visible
     const visible = Math.max(1, parseInt(wrapper.dataset.visible, 10) || 3);
 
-    // Main elements: track (container of cards), and nav buttons
+    // Core elements: track (cards container) and navigation buttons
     const track = wrapper.querySelector('.carousel-track');
     const prevBtn = wrapper.querySelector('.prev');
     const nextBtn = wrapper.querySelector('.next');
 
-    if (!track) return; // nothing to do
+    if (!track) return;
 
-    // Original items inside the track (before cloning)
+    // Original items before cloning for infinite-loop illusion
     let items = Array.from(track.children);
 
-    // If not enough items, still allow basic layout (no infinite loop cloning)
     if (!items.length) return;
 
-    // Clone head/tail to create infinite-loop illusion (only if enough items)
+    // Clone head/tail segments to simulate an infinite loop
     const cloneHead = items.slice(0, visible).map(node => node.cloneNode(true));
     const cloneTail = items.slice(-visible).map(node => node.cloneNode(true));
 
-    // Insert clones: tail clones at the start, head clones at the end
+    // Prepend tail clones and append head clones
     cloneTail.forEach(n => track.insertBefore(n, track.firstChild));
     cloneHead.forEach(n => track.appendChild(n));
 
@@ -39,35 +38,33 @@
     let trackItems = Array.from(track.children);
     const total = trackItems.length;
 
-    // Start index positioned after the prepended clones
+    // Start index positioned after prepended clones
     let currentIndex = visible;
     let isTransitioning = false;
 
-    // Compute width of one item (card) including CSS gap if present
+    // Width of one item, including gap from CSS
     function itemWidth() {
       const card = trackItems[0];
       return card.getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 0);
     }
 
-    // Translate the track to show a given index.
-    // animate = false disables CSS transition to perform jump (used for looping).
+    // Move track to show a given index. animate=false disables CSS transition for instant jumps.
     function setTranslate(index, animate = true) {
       const w = itemWidth();
       if (!animate) track.style.transition = 'none';
       else track.style.transition = '';
       const offset = -index * w;
       track.style.transform = `translateX(${offset}px)`;
-      // If we disabled transition, re-enable it on next frame
       if (!animate) requestAnimationFrame(()=>{requestAnimationFrame(()=>{track.style.transition='';});});
     }
 
-    // Initial setup / recalc when items change or on resize
+    // Recalculate items and set initial position (used after DOM changes or resize)
     function setup() {
       trackItems = Array.from(track.children);
       setTranslate(currentIndex, false);
     }
 
-    // Move to a given index if not already transitioning
+    // Start a move if not currently transitioning
     function moveTo(index) {
       if (isTransitioning) return;
       isTransitioning = true;
@@ -77,41 +74,41 @@
     function next() { moveTo(currentIndex + 1); }
     function prev() { moveTo(currentIndex - 1); }
 
-    // After CSS transition ends, check if we've moved into cloned area and jump to real item
+    // When transition completes, detect if we're in cloned area and jump to the corresponding real item
     track.addEventListener('transitionend', () => {
       isTransitioning = false;
       const realCount = items.length;
       if (currentIndex >= realCount + visible) {
-        // Moved past the real items into the head clones -> jump back to first real item
+        // jumped into head clones -> snap back to first real item
         currentIndex = visible;
         setTranslate(currentIndex, false);
       }
       if (currentIndex < visible) {
-        // Moved before the real items into the tail clones -> jump to equivalent real item near end
+        // jumped into tail clones -> snap to equivalent real item near the end
         currentIndex = visible + (realCount - (visible - currentIndex));
         currentIndex = visible + (currentIndex % realCount);
         setTranslate(currentIndex, false);
       }
     });
 
-    // Button navigation
+    // Navigation buttons
     if (nextBtn) nextBtn.addEventListener('click', next);
     if (prevBtn) prevBtn.addEventListener('click', prev);
 
-    // Keyboard navigation (left/right arrows) for wrapper when focused
+    // Keyboard navigation while wrapper is focused
     wrapper.tabIndex = wrapper.tabIndex || 0;
     wrapper.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') next();
       if (e.key === 'ArrowLeft') prev();
     });
 
-    // Pointer / drag handling variables
+    // Pointer/drag state
     let startX = 0, dragging = false;
 
-    // Pointer down: start dragging and disable transition for smooth follow
+    // Begin drag: disable transition so track follows pointer
     const pointerDown = (x) => { dragging = true; startX = x; track.style.transition='none'; };
 
-    // Pointer move: update transform while dragging
+    // Follow pointer while dragging
     const pointerMove = (x) => {
       if (!dragging) return;
       const dx = x - startX;
@@ -120,18 +117,18 @@
       track.style.transform = `translateX(${base + dx}px)`;
     };
 
-    // Pointer up: determine if swipe threshold passed to change slide or snap back
+    // End drag: decide whether to advance slide or snap back
     const pointerUp = (x) => {
       if (!dragging) return;
       dragging = false;
       const dx = x - startX;
       const w = itemWidth();
-      if (dx < -Math.min(w / 3, 80)) next(); // swipe left -> next
-      else if (dx > Math.min(w / 3, 80)) prev(); // swipe right -> prev
-      else setTranslate(currentIndex, true); // snap back
+      if (dx < -Math.min(w / 3, 80)) next();
+      else if (dx > Math.min(w / 3, 80)) prev();
+      else setTranslate(currentIndex, true);
     };
 
-    // Mouse drag support (desktop)
+    // Mouse drag events (desktop)
     track.addEventListener('mousedown', e => {
       e.preventDefault();
       pointerDown(e.clientX);
@@ -141,24 +138,23 @@
       document.addEventListener('mouseup', onUp);
     });
 
-    // Touch support (mobile)
+    // Touch events (mobile)
     track.addEventListener('touchstart', e => pointerDown(e.touches[0].clientX), { passive: true });
     track.addEventListener('touchmove', e => pointerMove(e.touches[0].clientX), { passive: true });
     track.addEventListener('touchend', e => pointerUp(e.changedTouches[0].clientX));
 
-    // Recompute sizes/positions on resize (debounced slightly)
+    // Recalculate layout on resize (light debounce)
     window.addEventListener('resize', () => setTimeout(setup, 120));
 
-    // Re-run setup after images inside the carousel load (ensures itemWidth is correct)
+    // Recalculate after images load inside the carousel
     track.querySelectorAll('img').forEach(img => {
       if (img.complete) return;
       img.addEventListener('load', () => {
-        // small timeout to allow layout to settle then recalc
         setTimeout(setup, 30);
       });
     });
 
-    // initial setup
+    // Initial layout
     setup();
   }
 })();

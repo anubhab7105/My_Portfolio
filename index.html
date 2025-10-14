@@ -10,10 +10,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header / main navigation -->
+    <!-- Main header / navigation -->
     <header>
         <nav id="navbar">
             <div class="logo">AD</div>
+            <!-- Mobile menu toggle (hidden checkbox) -->
+            <input type="checkbox" id="menu-toggle">
+            <!-- Hamburger icon label (mobile) -->
+            <label for="menu-toggle" class="menu-icon" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </label>
+            <!-- Primary navigation links -->
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -21,6 +28,7 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <!-- Theme toggle button -->
             <button id="theme-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
@@ -44,7 +52,7 @@
         </div>
     </section>
 
-    <!-- About / education / languages -->
+    <!-- About section -->
     <section id="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
@@ -78,7 +86,7 @@
         </div>
     </section>
 
-    <!-- Skills -->
+    <!-- Skills section -->
     <section id="skills">
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
@@ -123,7 +131,7 @@
         </div>
     </section>
 
-    <!-- Experience -->
+    <!-- Experience section -->
     <section id="experience">
         <div class="container">
             <h2 class="section-title">Experience</h2>
@@ -159,7 +167,7 @@
         </div>
     </section>
 
-    <!-- Projects: populated by script.js -->
+    <!-- Projects section (populated by script.js) -->
     <section id="projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
@@ -169,7 +177,7 @@
         </div>
     </section>
 
-    <!-- Contact form (sends to Formspree) and contact info -->
+    <!-- Contact section: info + contact form -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
@@ -208,7 +216,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer and utilities -->
     <footer>
         <p>&copy; 2025 Anubhab Das. All rights reserved.</p>
     </footer>
