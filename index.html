@@ -1,229 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Anubhab Das | Web Developer & Cyber Security</title>
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
-    <meta name="description" content="Anubhab Das - Web Developer & Cyber Security Student Portfolio">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anubhab Das | Cyber Security Student & Web Developer — Kolkata</title>
+  <meta name="description" content="Anubhab Das is a Cyber Security student at GNIT Kolkata and full-stack web developer specializing in secure web applications, OWASP best practices, and modern frontend development.">
+  <meta name="keywords" content="Anubhab Das, Cyber Security, Web Developer, Kolkata, GNIT, portfolio, secure web applications, OWASP">
+  <meta name="author" content="Anubhab Das">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anubhab-das.vercel.app/index.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anubhab-das.vercel.app/">
+  <meta property="og:title" content="Anubhab Das | Cyber Security Student & Web Developer">
+  <meta property="og:description" content="Building secure, modern web experiences. Cyber Security student at GNIT Kolkata with hands-on internship experience.">
+  <meta property="og:image" content="https://anubhab-das.vercel.app/images/protfolio.jpg">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Anubhab Das | Cyber Security & Web Dev Portfolio">
+  <meta name="twitter:description" content="Secure web apps, modern UI, OWASP best practices. Explore my projects and experience.">
+  <meta name="twitter:image" content="https://anubhab-das.vercel.app/images/protfolio.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+
+  <!-- Fonts + Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/home.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Anubhab Das",
+    "url": "https://anubhab-das.vercel.app/",
+    "image": "https://anubhab-das.vercel.app/images/protfolio.jpg",
+    "jobTitle": "Cyber Security Student & Web Developer",
+    "description": "Cyber Security student at Guru Nanak Institute of Technology, Kolkata. Full-stack web developer specializing in secure application development.",
+    "email": "anubhab7105@gmail.com",
+    "telephone": "+917439913838",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kolkata",
+      "addressRegion": "West Bengal",
+      "addressCountry": "IN"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Guru Nanak Institute of Technology",
+      "address": "Kolkata, West Bengal, India"
+    },
+    "sameAs": [
+      "https://github.com/anubhab7105",
+      "http://www.linkedin.com/in/anubhab7105"
+    ],
+    "knowsAbout": ["Cyber Security", "Web Development", "OWASP", "Python", "JavaScript", "HTML", "CSS"]
+  }
+  </script>
 </head>
 <body>
-    <!-- Main header / navigation -->
-    <header>
-        <nav id="navbar">
-            <div class="logo">AD</div>
-            <!-- Mobile menu toggle (hidden checkbox) -->
-            <input type="checkbox" id="menu-toggle">
-            <!-- Hamburger icon label (mobile) -->
-            <label for="menu-toggle" class="menu-icon" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </label>
-            <!-- Primary navigation links -->
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <!-- Theme toggle button -->
-            <button id="theme-toggle" aria-label="Toggle dark mode">
-                <i class="fas fa-moon"></i>
-            </button>
-        </nav>
-    </header>
 
-    <!-- Hero / Intro section -->
-    <section id="home">
-        <div class="hero-content">
-            <h1>Anubhab Das</h1>
-            <h2>Web Developer & Cyber Security Student</h2>
-            <p>Building Fortresses, Not Just Frontends.</p>
-            <div class="hero-btns">
-                <a href="#projects" class="btn">View Projects</a>
-                <a href="#contact" class="btn">Contact Me</a>
-                <!-- Resume download button: add id so script can attach an event safely -->
-                <a id="resume-download" href="/images/AnubhabDasResume.pdf" class="btn" download>
-                    <i class="fas fa-file-download"></i> Download Resume
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Cyber Security Student at Guru Nanak Institute of Technology</h3>
-                    <p>Currently pursuing B.Sc in Cyber Security (2024-2028). Passionate about developing secure web applications while maintaining excellent user experiences with a security-first approach.</p>
-                    
-                    <div class="education">
-                        <h4>Education</h4>
-                        <ul>
-                            <li>B.Sc Cyber Security (2024-2028) - Guru Nanak Institute of Technology, MAKAUT</li>
-                            <li>Higher Secondary (2024) - Baranagar Narendranath Vidyamandir, WBCHSE</li>
-                            <li>Secondary (2022) - Baranagar Narendranath Vidyamandir, WBBSE</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="languages">
-                        <h4>Languages</h4>
-                        <ul>
-                            <li>English (Professional)</li>
-                            <li>Bengali (Native)</li>
-                            <li>Hindi (Fluent)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="about-img">
-                    <img src="images/protfolio.jpg" alt="Anubhab Das" class="profile-img" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills section -->
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Frontend Development</h3>
-                    <ul>
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                        <li>JavaScript</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <ul>
-                        <li>Python</li>
-                        <li>C</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Security Expertise</h3>
-                    <ul>
-                        <li>OWASP Top 10</li>
-                        <li>Secure Coding Practices</li>
-                        <li>Encryption Methods</li>
-                        <li>Web Application Security</li>
-                        <li>Authentication Systems</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="soft-skills">
-                <h3>Soft Skills</h3>
-                <div class="soft-skills-container">
-                    <span>Communication</span>
-                    <span>Teamwork</span>
-                    <span>Time Management</span>
-                    <span>Problem Solving</span>
-                    <span>Self-Motivated</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience section -->
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="experience-container">
-                <div class="experience-card">
-                    <h3>Full-Stack Web Development Intern</h3>
-                    <h4>Prodigy InfoTech</h4>
-                    <p class="duration">July 2025</p>
-                    <p>Worked on real-world projects, built practical skills. Implemented security best practices in web application development. Received Certificate of Completion and Letter of Recommendation.</p>
-                    <div class="certificate-badge">
-                        <i class="fas fa-award"></i> Certificate Issued
-                    </div>
-                </div>
-                <div class="experience-card">
-                    <h3>Website Design & Development Intern</h3>
-                    <h4>iStudio</h4>
-                    <p class="duration">August - September 2024</p>
-                    <p>Completed training and internship in website design and development, focusing on creating user-friendly web applications with attention to security considerations.</p>
-                    <div class="certificate-badge">
-                        <i class="fas fa-award"></i> Certificate Issued
-                    </div>
-                </div>
-                <div class="experience-card">
-                    <h3>Associate L1 — Web Development Intern</h3>
-                    <h4>Infotact Solutions</h4>
-                    <p class="duration"> Aug 2025– Presen</p>
-                    <p>Collaborate on feature development, testing and deployment for client web applications.  Implement secure-coding checks, review pull requests for regressions and assist QA</p>
-                    <div class="certificate-badge">
-                        <i class="fas fa-award"></i> Certificate Issued
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects section (populated by script.js) -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-container" id="projects-container">
-                <!-- Projects carousel will be generated here by script.js -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact section: info + contact form -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 143 Satin Sen Nagar, Kolkata-700108</p>
-                    <p><i class="fas fa-phone"></i> +91 7439913838</p>
-                    <p><i class="fas fa-envelope"></i> anubhab7105@gmail.com</p>
-                    
-                    <div class="social-links">
-                        <a href="https://github.com/anubhab7105" target="_blank" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="http://www.linkedin.com/in/anubhab7105" target="_blank" title="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://www.instagram.com/anubhab.env?igsh=MW80NXJteGxkMWIxNQ==" target="_blank" title="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="mailto:anubhab7105@gmail.com" title="E-mail">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-                <form id="contact-form" class="contact-form" action="https://formspree.io/f/mvgqkdbr" method="POST">
-                    <input type="text" name="name" placeholder="Name" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <textarea name="message" placeholder="Message" required></textarea>
-                    <button type="submit">Send Message</button>
-                    <div id="form-spinner" class="form-spinner" style="display:none;">
-                        <i class="fas fa-spinner fa-spin"></i> Sending...
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer and utilities -->
-    <footer>
-        <p>&copy; 2025 Anubhab Das. All rights reserved.</p>
-    </footer>
-    <button id="back-to-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
+<!-- ── NAVBAR ─────────────────────────────── -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Anubhab Das Home">AD<span>.</span></a>
+    <div class="nav-links" role="menubar">
+      <a href="index.html" role="menuitem">home</a>
+      <a href="about.html" role="menuitem">about</a>
+      <a href="projects.html" role="menuitem">projects</a>
+      <a href="contact.html" role="menuitem">contact</a>
+    </div>
+    <a href="images/AnubhabDasResume.pdf" class="nav-cta" download aria-label="Download Resume">
+      <i class="fas fa-download" aria-hidden="true"></i> resume
+    </a>
+    <button class="nav-hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+      <span></span><span></span><span></span>
     </button>
-    <script src="Slide.js"></script>
-    <script src="script.js"></script>
+  </div>
+</nav>
+
+<!-- mobile nav -->
+<div class="nav-mobile" aria-label="Mobile navigation">
+  <a href="index.html">home</a>
+  <a href="about.html">about</a>
+  <a href="projects.html">projects</a>
+  <a href="contact.html">contact</a>
+  <a href="images/AnubhabDasResume.pdf" class="nav-cta" download>↓ resume</a>
+</div>
+
+<!-- ── HERO ───────────────────────────────── -->
+<main class="page-content">
+<section class="hero" aria-label="Introduction">
+  <div class="container">
+    <div class="hero-inner">
+      <!-- left: text -->
+      <div class="hero-text">
+        <p class="hero-eyebrow">
+          <span class="status-dot" aria-hidden="true"></span>
+          Available for opportunities
+        </p>
+        <h1 class="hero-name">Anubhab<br>Das</h1>
+        <div class="hero-role">
+          <span id="typed-text"></span><span class="cursor" aria-hidden="true"></span>
+        </div>
+        <p class="hero-tagline">
+          Building fortresses, not just frontends. I craft secure, modern web experiences with a security-first mindset — from authentication systems to full-stack applications.
+        </p>
+        <div class="hero-actions">
+          <a href="projects.html" class="btn btn-primary">
+            <i class="fas fa-folder-open" aria-hidden="true"></i> View Projects
+          </a>
+          <a href="contact.html" class="btn btn-outline">
+            <i class="fas fa-paper-plane" aria-hidden="true"></i> Get In Touch
+          </a>
+          <a href="images/AnubhabDasResume.pdf" class="btn btn-ghost" download>
+            <i class="fas fa-file-pdf" aria-hidden="true"></i> Resume
+          </a>
+        </div>
+        <div class="hero-stats" aria-label="Key statistics">
+          <div class="stat-item">
+            <span class="stat-value">5+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">3</span>
+            <span class="stat-label">Internships</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">2+</span>
+            <span class="stat-label">Years Dev</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- right: visual -->
+      <div class="hero-visual">
+        <div class="hero-img-wrap" role="img" aria-label="Portrait of Anubhab Das">
+          <div class="hero-img-inner">
+            <img src="images/protfolio.jpg" alt="Anubhab Das — Cyber Security Student and Web Developer" loading="eager">
+          </div>
+        </div>
+        <!-- terminal card -->
+        <div class="terminal-card" aria-hidden="true">
+          <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">anubhab@portfolio:~</span>
+          </div>
+          <div class="terminal-body">
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> whoami</span></div>
+            <div class="t-line"><span class="t-out t-green">anubhab_das</span></div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> cat skills.txt</span></div>
+            <div class="t-line"><span class="t-out t-blue">CyberSec · WebDev · Python</span></div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> cat status.txt</span></div>
+            <div class="t-line"><span class="t-out t-green">✓ Open to opportunities</span></div>
+            <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> locate internships</span></div>
+            <div class="t-line"><span class="t-out">Prodigy · iStudio · Infotact</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS STRIP ────────────────────────── -->
+<section class="skills-preview" aria-label="Technical skills overview">
+  <div class="container">
+    <p class="section-label">core skills</p>
+    <div class="skills-grid">
+      <div class="skill-chip animate-up">
+        <div class="skill-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+        <span class="skill-name">Cyber Security</span>
+      </div>
+      <div class="skill-chip animate-up">
+        <div class="skill-icon"><i class="fab fa-js" aria-hidden="true"></i></div>
+        <span class="skill-name">JavaScript</span>
+      </div>
+      <div class="skill-chip animate-up">
+        <div class="skill-icon"><i class="fab fa-python" aria-hidden="true"></i></div>
+        <span class="skill-name">Python</span>
+      </div>
+      <div class="skill-chip animate-up">
+        <div class="skill-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+        <span class="skill-name">HTML / CSS</span>
+      </div>
+      <div class="skill-chip animate-up">
+        <div class="skill-icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
+        <span class="skill-name">OWASP Top 10</span>
+      </div>
+      <div class="skill-chip animate-up">
+        <div class="skill-icon"><i class="fas fa-database" aria-hidden="true"></i></div>
+        <span class="skill-name">Flask / SQLite</span>
+      </div>
+      <div class="skill-chip animate-up">
+        <div class="skill-icon"><i class="fas fa-key" aria-hidden="true"></i></div>
+        <span class="skill-name">Auth & JWT</span>
+      </div>
+      <div class="skill-chip animate-up">
+        <div class="skill-icon"><i class="fab fa-git-alt" aria-hidden="true"></i></div>
+        <span class="skill-name">Git & GitHub</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURED PROJECTS ───────────────────── -->
+<section class="featured-projects" aria-label="Featured projects">
+  <div class="container">
+    <p class="section-label">featured work</p>
+    <h2 class="section-title">Recent Projects</h2>
+    <p class="section-subtitle">Security-focused builds that demonstrate real-world application of OWASP principles and modern development practices.</p>
+    <div class="projects-grid-home" id="featured-projects-grid">
+      <!-- injected by JS -->
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="projects.html" class="btn btn-outline">View all projects <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────── -->
+<section class="cta-section" aria-label="Call to action">
+  <div class="container">
+    <div class="cta-box animate-up">
+      <p class="section-label" style="justify-content:center">let's connect</p>
+      <h2>Ready to build something<br><span style="color:var(--accent)">secure & powerful?</span></h2>
+      <p>Whether it's a collaboration, internship, or just a conversation about security — I'm always open to connect with like-minded builders.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-primary">Send a message <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="http://www.linkedin.com/in/anubhab7105" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ── FOOTER ─────────────────────────────── -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-logo">AD<span>.</span></div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <p class="footer-copy">© 2025 Anubhab Das. All rights reserved.</p>
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</button>
+
+<script>
+// ── TYPED TEXT ─────────────────────────────
+const roles = [
+  'Cyber Security Student',
+  'Full-Stack Web Developer',
+  'OWASP Practitioner',
+  'Secure App Builder'
+];
+let ri = 0, ci = 0, deleting = false;
+const el = document.getElementById('typed-text');
+function type() {
+  const current = roles[ri];
+  if (!deleting) {
+    el.textContent = current.substring(0, ci + 1);
+    ci++;
+    if (ci === current.length) { deleting = true; setTimeout(type, 1800); return; }
+  } else {
+    el.textContent = current.substring(0, ci - 1);
+    ci--;
+    if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+  }
+  setTimeout(type, deleting ? 60 : 90);
+}
+type();
+
+// ── FEATURED PROJECTS ───────────────────────
+const projects = [
+  {
+    title: 'Local Grocery E-Commerce Platform',
+    desc: 'Full-featured e-commerce for local grocery stores with inventory management, secure payment processing, and SQL injection prevention.',
+    tags: ['Python', 'Flask', 'SQLite', 'JavaScript'],
+    img: 'images/project1.png',
+    github: 'https://github.com/anubhab7105/PRODIGY_FS_03',
+    live: 'https://freshmart-gamma.vercel.app/'
+  },
+  {
+    title: 'Secure User Authentication System',
+    desc: 'JWT + bcrypt authentication with CSRF protection, session management, rate limiting on login attempts, and XSS prevention.',
+    tags: ['JWT', 'bcrypt', 'JavaScript', 'Security'],
+    img: 'images/project2.png',
+    github: 'https://github.com/anubhab7105/PRODIGY_FS_01',
+    live: 'https://anubhab7105.github.io/PRODIGY_FS_01/'
+  },
+  {
+    title: 'AI-Powered Cyber Threat Analyzer',
+    desc: 'Real-time URL threat intelligence tool integrating security APIs with privacy-focused design and zero data retention policy.',
+    tags: ['AI Integration', 'REST APIs', 'JavaScript'],
+    img: 'images/project3.png',
+    github: 'https://github.com/anubhab7105/AI-Powered-Cyber-Threat-Analyze',
+    live: 'https://cyber-threat-analyze.vercel.app/'
+  }
+];
+
+const grid = document.getElementById('featured-projects-grid');
+if (grid) {
+  grid.innerHTML = projects.map(p => `
+    <article class="project-card animate-up">
+      <img class="project-img" src="${p.img}" alt="Screenshot of ${p.title}" loading="lazy">
+      <div class="project-body">
+        <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <h3 class="project-title">${p.title}</h3>
+        <p class="project-desc">${p.desc}</p>
+        <div class="project-links">
+          <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size:.75rem;padding:7px 14px">
+            <i class="fab fa-github" aria-hidden="true"></i> Code
+          </a>
+          <a href="${p.live}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:.75rem;padding:7px 14px">
+            <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> Live
+          </a>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+</script>
+<script src="js/main.js"></script>
 </body>
 </html>
