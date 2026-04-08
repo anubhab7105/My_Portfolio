@@ -124,14 +124,14 @@
 const PROJECTS = [
   {
     id: 1,
-    title: 'Local Grocery E-Commerce Platform',
-    desc: 'A full-featured e-commerce solution built for local grocery stores, complete with inventory management, shopping cart, and secure payment processing. Designed to help small businesses transition to online retail while keeping customer data protected.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'Python', 'Flask', 'SQLite'],
-    filters: ['fullstack', 'python', 'security'],
-    github: 'https://github.com/anubhab7105/PRODIGY_FS_03',
-    live: 'https://freshmart-gamma.vercel.app/',
+    title: 'NeuroMotion',
+    desc: 'An advanced interactive 3D particle system controlled entirely by hand gestures using MediaPipe. Features real-time shape morphing, pinch-based scaling, gesture-triggered transformations, and a futuristic HUD interface with live camera preview.',
+    technologies: ['HTML','CSS','JavaScript','Three.js','MediaPipe Hands'],
+    filters: ['javascript', 'threejs', 'ai'],
+    github: 'https://github.com/anubhab7105/NeuroMotion', 
+    live: '', //  if deployed
     img: 'images/project1.png',
-    security: ['Input validation & sanitization', 'Secure payment processing integration', 'SQL injection prevention (parameterized queries)', 'Data encryption at rest', 'XSS output encoding']
+    security: ['Camera permission handling with user consent','No server-side data storage (privacy-safe)','Real-time processing on client-side only','Secure MediaPipe integration via CDN']
   },
   {
     id: 2,
@@ -145,13 +145,24 @@ const PROJECTS = [
     security: ['Password hashing with bcrypt', 'JWT token authentication', 'XSS prevention (output encoding)', 'CSRF protection tokens', 'Rate limiting on login attempts', 'Secure session management']
   },
   {
+  id: 6,
+  title: 'NeuroMotion',
+  desc: 'An advanced interactive 3D particle system controlled entirely by hand gestures using MediaPipe. Features real-time shape morphing, pinch-based scaling, gesture-triggered transformations, and a futuristic HUD interface with live camera preview.',
+  technologies: ['HTML','CSS','JavaScript','Three.js','MediaPipe Hands'],
+  filters: ['javascript', 'threejs', 'ai'],
+  github: 'https://github.com/anubhab7105/NeuroMotion', 
+  live: '', //  if deployed
+  img: 'images/project6.png',
+  security: ['Camera permission handling with user consent','No server-side data storage (privacy-safe)','Real-time processing on client-side only','Secure MediaPipe integration via CDN']
+  },
+  {
     id: 3,
-    title: 'Cyber Threat Analyzer',
+    title: 'NEXUSSCAN',
     desc: 'A real-time threat intelligence tool that scans URLs for potential cyber threats. Built with a privacy-first approach — no user data is retained after each session. ',
     technologies: ['HTML', 'CSS', 'JavaScript', 'REST APIs',  'Python'],
     filters: ['security', 'javascript', 'python'],
-    github: 'https://github.com/anubhab7105/AI-Powered-Cyber-Threat-Analyze',
-    live: 'https://cyber-threat-analyze.vercel.app/',
+    github: 'https://github.com/anubhab7105/NEXUSSCAN',
+    live: 'https://nexusscan.vercel.app/',
     img: 'images/project3.png',
     security: ['Secure API communication (HTTPS/TLS)', 'Input sanitization for URL validation', 'Data validation before processing', 'Privacy-focused — zero data retention', 'CORS implementation for API security']
   },
@@ -176,6 +187,17 @@ const PROJECTS = [
     live: 'https://anubhab7105.github.io/HealthMetricsDashboard/',
     img: 'images/project5.png',
     security: ['Data anonymization for demo data', 'Secure handling of input metrics', 'Client-side input validation', 'CORS configuration']
+  },
+  {
+    id: 6,
+    title: 'Local Grocery E-Commerce Platform',
+    desc: 'A full-featured e-commerce solution built for local grocery stores, complete with inventory management, shopping cart, and secure payment processing. Designed to help small businesses transition to online retail while keeping customer data protected.',
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Python', 'Flask', 'SQLite'],
+    filters: ['fullstack', 'python', 'security'],
+    github: 'https://github.com/anubhab7105/PRODIGY_FS_03',
+    live: 'https://freshmart-gamma.vercel.app/',
+    img: 'images/project6.png',
+    security: ['Input validation & sanitization', 'Secure payment processing integration', 'SQL injection prevention (parameterized queries)', 'Data encryption at rest', 'XSS output encoding']
   }
 ];
 
