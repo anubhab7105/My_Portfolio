@@ -328,7 +328,7 @@ if (grid) {
     <article class="project-card animate-up">
       <img class="project-img" src="${p.img}" alt="Screenshot of ${p.title}" loading="lazy">
       <div class="project-body">
-        <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <div class="project-tags">${p.technologies.map(t => `<span class="tag">${t}</span>`).join('')}</div>
         <h3 class="project-title">${p.title}</h3>
         <p class="project-desc">${p.desc}</p>
         <div class="project-links">
