@@ -310,16 +310,17 @@ const projects = [
     security: ['Password hashing with bcrypt', 'JWT token authentication', 'XSS prevention (output encoding)', 'CSRF protection tokens', 'Rate limiting on login attempts', 'Secure session management']
   },
   {
-    id: 3,
-    title: 'NEXUSSCAN',
-    desc: 'A real-time threat intelligence tool that scans URLs for potential cyber threats. Built with a privacy-first approach — no user data is retained after each session. ',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'REST APIs',  'Python'],
-    filters: ['security', 'javascript', 'python'],
-    github: 'https://github.com/anubhab7105/NEXUSSCAN',
-    live: 'https://nexusscan.vercel.app/',
-    img: 'images/project3.png',
-    security: ['Secure API communication (HTTPS/TLS)', 'Input sanitization for URL validation', 'Data validation before processing', 'Privacy-focused — zero data retention', 'CORS implementation for API security']
-  },
+  id: 7,
+  title: 'CYBERASCII',
+  desc: 'A real-time ASCII visualization tool that converts images and live camera feeds into dynamic terminal-style art, enhanced with Gemini AI-powered analysis. Designed with a privacy-first architecture — camera data is processed locally and never stored.',
+  technologies: ['HTML','CSS','JavaScript','Node.js','Canvas API','WebRTC','Chart.js','Gemini AI API'],
+  filters: ['ai', 'security', 'javascript', 'web'],
+  github: 'https://github.com/anubhab7105/CyberASCII',
+  live: 'https://cyber-ascii.vercel.app/',
+  img: 'images/project7.png',
+  security: [
+    'Camera data processed locally (no storage or transmission)','API keys secured server-side (Node.js backend)', 'Strict Content Security Policy (CSP) implementation','Input validation for uploaded images','Secure API communication (HTTPS/TLS)']
+  }
 ];
 
 const grid = document.getElementById('featured-projects-grid');

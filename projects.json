@@ -43,5 +43,14 @@
         "live": "https://anubhab7105.github.io/HealthMetricsDashboard/",
         "image": "images/project5.png",
         "security": ["Data anonymization for demo", "Secure handling of input metrics", "Client-side validation", "CORS protection configuration"]
+    },
+    {
+        "title": "CYBERASCII",
+        "description": "A real-time ASCII visualization tool that converts images and live camera feeds into dynamic terminal-style art, enhanced with Gemini AI-powered analysis. Designed with a privacy-first architecture — camera data is processed locally and never stored.",
+        "technologies": ["HTML", "CSS", "JavaScript", "Node.js", "Canvas API", "WebRTC", "Chart.js", "Gemini AI API"],
+        "github": "https://github.com/anubhab7105/CyberASCII",
+        "live": "https://cyber-ascii.vercel.app/",
+        "image": "images/project7.png",
+        "security": ["Camera data processed locally (no storage or transmission)", "API keys secured server-side (Node.js backend)", "Strict Content Security Policy (CSP) implementation", "Input validation for uploaded images", "Secure API communication (HTTPS/TLS)"]
     }
 ]
