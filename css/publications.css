@@ -188,13 +188,13 @@
 .pub-card {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
 
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all var(--transition);
+  position: relative;
 }
 .pub-card:hover {
   border-color: var(--border-active);
@@ -209,8 +209,7 @@
 .pub-thumb {
   width: 320px;
   min-width: 320px;
-  height: auto;
-  aspect-ratio: unset;
+  aspect-ratio: auto;
   overflow: hidden;
 }
 .pub-thumb-img {
@@ -301,10 +300,9 @@
 /* Card body */
 .pub-body {
   flex: 1;
-  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  padding: 24px;
 }
 
 .pub-ref {
@@ -370,7 +368,7 @@
   color: var(--text-secondary);
   line-height: 1.75;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 8;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
