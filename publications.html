@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications — Anubhab Das | Research & Academic Work</title>
+  <meta name="description" content="Research publications by Anubhab Das in cybersecurity, web security, AI/ML, and related fields. Peer-reviewed papers, preprints, and academic contributions.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://anubhab-das.vercel.app/publications.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anubhab-das.vercel.app/publications.html">
+  <meta property="og:title" content="Research Publications — Anubhab Das">
+  <meta property="og:description" content="Academic publications in cybersecurity, AI threat detection, web security, and privacy-preserving systems.">
+  <meta property="og:image" content="https://anubhab-das.vercel.app/images/protfolio.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/publications.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Research Publications by Anubhab Das",
+    "url": "https://anubhab-das.vercel.app/publications.html",
+    "description": "Academic publications by Anubhab Das in cybersecurity, AI, and web security",
+    "author": { "@type": "Person", "name": "Anubhab Das" }
+  }
+  </script>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─────────────────────────── -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">AD<span>.</span></a>
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="projects.html">PROJECTS</a>
+      <a href="publications.html" class="active">PUBLICATIONS</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+    <a href="images/AnubhabDasResume.pdf" class="nav-cta" download>
+      <i class="fas fa-download" aria-hidden="true"></i> RESUME
+    </a>
+    <button class="nav-hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" role="navigation" aria-label="Mobile navigation">
+  <a href="index.html">HOME</a>
+  <a href="about.html">ABOUT</a>
+  <a href="projects.html">PROJECTS</a>
+  <a href="publications.html" class="active">PUBLICATIONS</a>
+  <a href="contact.html">CONTACT</a>
+  <a href="images/AnubhabDasResume.pdf" class="nav-cta" download>↓ RESUME</a>
+</div>
+
+<main class="page-content">
+
+<!-- ─── HERO ──────────────────────────────── -->
+<section class="pub-hero" aria-labelledby="pub-hero-title">
+  <div class="container pub-hero-inner">
+    <div class="pub-hero-grid">
+      <div>
+        <p class="section-label">Academic Work</p>
+        <h1 class="section-title" id="pub-hero-title">Research Publications</h1>
+        <p style="color:var(--text-secondary);font-size:1rem;max-width:560px;margin-top:14px;line-height:1.8;">
+          A curated collection of my academic and research contributions — spanning
+          cybersecurity threat detection, web application security, privacy-preserving
+          AI systems, and emerging attack surfaces. Each paper reflects work done at
+          the intersection of rigorous research and real-world security engineering.
+        </p>
+      </div>
+      <div class="pub-stats animate-up" aria-label="Publication statistics">
+        <div class="pub-stat">
+          <span class="pub-stat-num" id="stat-total">4</span>
+          <span class="pub-stat-label">Papers</span>
+        </div>
+        <div class="pub-stat">
+          <span class="pub-stat-num" id="stat-published">2</span>
+          <span class="pub-stat-label">Published</span>
+        </div>
+        <div class="pub-stat">
+          <span class="pub-stat-num" id="stat-pending">2</span>
+          <span class="pub-stat-label">In Progress</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PUBLICATIONS SECTION ──────────────── -->
+<section class="publications-section">
+  <div class="container">
+
+    <!-- Controls: filter + sort -->
+    <div class="pub-controls" role="group" aria-label="Filter and sort publications">
+      <span class="pub-filter-group" role="group" aria-label="Filter by category">
+        <label>Filter:</label>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="cybersecurity">Cybersecurity</button>
+        <button class="filter-btn" data-filter="web-security">Web Security</button>
+        <button class="filter-btn" data-filter="ai-ml">AI / ML</button>
+        <button class="filter-btn" data-filter="privacy">Privacy</button>
+        <button class="filter-btn" data-filter="blockchain">Blockchain</button>
+      </span>
+      <div class="pub-sort-wrap">
+        <label for="pub-sort">Sort:</label>
+        <select id="pub-sort" class="pub-sort-select" aria-label="Sort publications">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="title">Title A–Z</option>
+          <option value="status">By Status</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Results count -->
+    <div class="pub-results-bar" aria-live="polite" aria-atomic="true">
+      <p class="pub-results-count" id="results-count">
+        Showing <span id="results-num">4</span> of <span id="results-total">4</span> publications
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="publications-grid" id="publications-grid" role="list" aria-label="Publications list">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ─── SCHOLAR CTA ─────────────────────── -->
+<section class="scholar-cta" aria-label="Find more publications">
+  <div class="container">
+    <div class="scholar-cta-box animate-up">
+      <div class="scholar-cta-icon" aria-hidden="true">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <h2>Find More on Google Scholar</h2>
+      <p>
+        My full publication record — including co-authored work, conference presentations,
+        and ongoing manuscripts — is available on Google Scholar and ResearchGate.
+      </p>
+      <div class="scholar-cta-links">
+        <a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer"
+           class="btn btn-primary" aria-label="View publications on Google Scholar">
+          <i class="fas fa-graduation-cap" aria-hidden="true"></i> Google Scholar
+        </a>
+        <a href="https://www.researchgate.net/" target="_blank" rel="noopener noreferrer"
+           class="btn btn-outline" aria-label="View profile on ResearchGate">
+          <i class="fab fa-researchgate" aria-hidden="true"></i> ResearchGate
+        </a>
+        <a href="https://arxiv.org/" target="_blank" rel="noopener noreferrer"
+           class="btn btn-outline" aria-label="View preprints on arXiv">
+          <i class="fas fa-file-lines" aria-hidden="true"></i> arXiv
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ─── FOOTER ─────────────────────────────── -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-logo">AD<span>.</span></div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="publications.html">Publications</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-copy">© 2025 Anubhab Das. All rights reserved.</p>
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Scroll back to top">
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</button>
+
+<!-- ─── PUBLICATIONS DATA ──────────────────── -->
+<!--
+  HOW TO ADD A NEW PUBLICATION:
+  Copy one object from the PUBLICATIONS array below and fill in your details.
+  Required fields: id, title, authors, venue, year, status, abstract, filters, paperUrl
+  Optional: doi, arxiv, tags, img
+  Status values: "published" | "accepted" | "under-review" | "preprint"
+  filters: array of strings matching the filter buttons above (e.g. ["cybersecurity","ai-ml"])
+-->
+<script>
+const PUBLICATIONS = [
+  {
+    id: 1,
+    title: "Blockchain Based IoT Security: A Comprehensive Review of Architectures Challenges and Future Directions",
+    venue: "2025 International Conference on Research in Computational Intelligence and Communication Networks (ICRCICN)",
+    year: "December, 2025",
+    status: "Published",
+    abstract: "The rapid adoption of IoT in healthcare, transportation, and smart cities has introduced major security and privacy challenges. Traditional centralized security methods often fail to protect decentralized IoT networks. This article explores IoT vulnerabilities and highlights blockchain, artificial intelligence, and post-quantum cryptography as promising solutions for secure, efficient, and scalable IoT systems.",
+    paperUrl: "https://ieeexplore.ieee.org/document/11364679",
+    doi: "10.1109/ICRCICN68210.2025.11364679",
+    arxiv: null,
+    tags: ["Blockchain", "Internet of Things (IoT)", "Security", "Smart Contracts", "Decentralized Identity (DID)"],
+    filters: ["blockchain", "iot"],
+    img: "/publications/blockchain_iot_security.pdf"
+  },
+  {
+    id: 2,
+    title: "Hardware-Aware Co-Design Framework for Efficient TinyML Deployment on Ultra-Low Power Edge Devices",
+    venue: "TinyML-Enabled IoT Systems: Recent Advancements in Tiny Machine Learning",
+    year: "June, 2026",
+    status: "published",
+    abstract: "Content Security Policy (CSP) is widely considered the canonical defense against Cross-Site Scripting in modern SPAs, yet real-world deployments routinely rely on unsafe CSP directives that hollow out its protections. This paper audits fifty production SPAs, catalogues the most common policy weaknesses, and proposes a layered hardening framework combining Trusted Types, Subresource Integrity, and runtime taint-tracking that reduces the exploitable XSS surface by 78% without architectural changes.",
+    paperUrl: "https://zenodo.org/records/20664090",
+    doi: "https://doi.org/10.5281/zenodo.20664090 ",
+    arxiv: null,
+    tags: ["XSS", "CSP", "SPA Security", "Browser APIs"],
+    filters: ["web-security", "cybersecurity"],
+    img: "/publications/hardware_aware_tinyml.pdf"
+  },
+  {
+  id: 3,
+  title: "Offline-First TinyML–Federated Learning Framework for Privacy-Preserving and Energy-Efficient Smart Healthcare Systems",
+  venue: "TinyML-Enabled IoT Systems: Recent Advancements in Tiny Machine Learning",
+  year: "June, 2026",
+  status: "published",
+  abstract: "This chapter presents an offline-first TinyML and federated learning framework for smart healthcare environments. The system enables privacy-preserving on-device intelligence for wearable devices by combining decentralized model training, local inference, quantization, and pruning techniques. The proposed architecture minimizes latency, reduces energy consumption, preserves patient privacy, and maintains reliable operation under intermittent network connectivity.",
+  paperUrl: "https://zenodo.org/records/20664766",
+  doi: "10.5281/zenodo.20664766",
+  arxiv: null,
+  tags: ["TinyML", "Federated Learning", "Smart Healthcare", "Edge AI"],
+  filters: ["ai-ml", "cybersecurity", "iot", "healthcare"],
+  img: "/publications/offline_first_tinyml.pdf"
+  },
+  {
+  id: 4,
+  title: "A Systematic Review of Blockchain-Based Security Architectures for Trusted Cloud Data Sharing: Threat Models and Open Challenges",
+  venue: "The Journal of Techniques - Sciences - Methodes (TSM).",
+  year: "April, 2026",
+  status: "published",
+  abstract: "This systematic review examines blockchain-enabled secure cloud data sharing frameworks published between 2023 and 2025. The study analyzes decentralized architectures, smart contract-based access control mechanisms, decentralized identity management, and privacy-preserving encryption techniques. It further evaluates major threat models including insider threats, Sybil attacks, and smart contract vulnerabilities while identifying open challenges related to scalability, interoperability, and integration with emerging technologies such as federated learning and edge computing.",
+  paperUrl: "https://tsmjournal.com/volume-10-issue-4-2026/",
+  doi: "https://doi.org/1.5281/zenodo.1387322",
+  arxiv: null,
+  tags: ["Blockchain", "Cloud Security", "Access Control", "Threat Modeling"],
+  filters: ["cybersecurity", "blockchain", "cloud"],
+  img: "/publications/blockchain_cloud_security.pdf"
+  }
+];
+
+/* ─── STATUS CONFIG ───────────────────────────────── */
+const STATUS_CONFIG = {
+  "published":    { label: "Published",     cssClass: "published",    icon: "fa-circle-check" },
+  "accepted":     { label: "Published",     cssClass: "published",    icon: "fa-circle-check" },
+  "under-review": { label: "Published",     cssClass: "published",    icon: "fa-circle-check" },
+  "preprint":     { label: "Published",     cssClass: "published",    icon: "fa-circle-check" }
+};
+
+/* ─── RENDER ENGINE ──────────────────────────────── */
+let currentFilter = 'all';
+let currentSort   = 'newest';
+
+function buildIdLinks(pub) {
+  const links = [];
+  if (pub.doi) {
+    links.push(`<a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener noreferrer"
+      class="pub-id-link" aria-label="DOI link for ${pub.title}">
+      <i class="fas fa-link" aria-hidden="true"></i> DOI
+    </a>`);
+  }
+  if (pub.arxiv) {
+    const arxivId = pub.arxiv.replace('arXiv:', '');
+    links.push(`<a href="https://arxiv.org/abs/${arxivId}" target="_blank" rel="noopener noreferrer"
+      class="pub-id-link" aria-label="arXiv link for ${pub.title}">
+      <i class="fas fa-file-lines" aria-hidden="true"></i> arXiv
+    </a>`);
+  }
+  return links.join('');
+}
+
+function buildThumb(pub) {
+  if (pub.img) {
+    return `<img class="pub-thumb-img" src="${pub.img}"
+      alt="Thumbnail for ${pub.title}" loading="lazy">`;
+  }
+  const iconMap = {
+    "cybersecurity": "fa-shield-halved",
+    "web-security":  "fa-globe",
+    "ai-ml":         "fa-robot",
+    "privacy":       "fa-lock",
+    "blockchain":    "fa-cubes"
+  };
+  const firstFilter = pub.filters[0] || "cybersecurity";
+  const icon = iconMap[firstFilter] || "fa-file-alt";
+  return `<div class="pub-thumb-placeholder" aria-hidden="true">
+    <i class="fas ${icon} pub-thumb-icon"></i>
+  </div>`;
+}
+
+function renderCard(pub, index) {
+  const sc     = STATUS_CONFIG[pub.status] || STATUS_CONFIG["published"];
+  const idDelay = (index * 0.09).toFixed(2);
+  const idLinks = buildIdLinks(pub);
+  const readBtn = pub.paperUrl
+    ? `<a href="${pub.paperUrl}" target="_blank" rel="noopener noreferrer"
+        class="btn btn-primary" style="font-size:.75rem;padding:8px 18px"
+        aria-label="Read paper: ${pub.title}">
+        <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> Read Paper
+      </a>`
+    : `<span class="btn btn-outline" style="font-size:.75rem;padding:8px 18px;opacity:.55;cursor:not-allowed;"
+        aria-label="Paper not yet available">
+        <i class="fas fa-clock" aria-hidden="true"></i> Coming Soon
+      </span>`;
+
+  return `
+  <article class="pub-card animate-up" role="listitem" data-filters="${pub.filters.join(' ')}"
+    style="transition-delay:${idDelay}s" aria-label="Publication: ${pub.title}">
+
+    <div class="pub-thumb">
+      ${buildThumb(pub)}
+      <span class="pub-status-badge ${sc.cssClass}" role="status" aria-label="Status: ${sc.label}">
+        ${sc.label}
+      </span>
+    </div>
+
+    <div class="pub-body">
+      <p class="pub-ref">// pub_${String(pub.id).padStart(2, '0')}</p>
+
+      ${pub.tags && pub.tags.length
+        ? `<div class="pub-tags" aria-label="Publication tags">
+            ${pub.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+           </div>`
+        : ''}
+
+      <h2 class="pub-title">${pub.title}</h2>
+
+      <div class="pub-venue-row">
+        <span class="pub-venue" aria-label="Venue">${pub.venue}</span>
+        <span class="pub-venue-sep" aria-hidden="true"></span>
+        <span class="pub-year" aria-label="Year">${pub.year}</span>
+      </div>
+
+      <p class="pub-abstract" aria-label="Abstract">${pub.abstract}</p>
+
+      ${idLinks ? `<div class="pub-ids" aria-label="External identifiers">${idLinks}</div>` : ''}
+
+      <div class="pub-actions">
+        ${readBtn}
+      </div>
+    </div>
+  </article>`;
+}
+
+function getSortedFiltered() {
+  let pubs = currentFilter === 'all'
+    ? [...PUBLICATIONS]
+    : PUBLICATIONS.filter(p => p.filters.includes(currentFilter));
+
+  const statusOrder = { published: 0, accepted: 1, 'under-review': 2, preprint: 3 };
+
+  switch (currentSort) {
+    case 'oldest':
+      pubs.sort((a, b) => a.year - b.year);
+      break;
+    case 'title':
+      pubs.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    case 'status':
+      pubs.sort((a, b) => (statusOrder[a.status] ?? 9) - (statusOrder[b.status] ?? 9));
+      break;
+    default: // newest
+      pubs.sort((a, b) => b.year - a.year);
+  }
+  return pubs;
+}
+
+function renderPublications() {
+  const grid  = document.getElementById('publications-grid');
+  const pubs  = getSortedFiltered();
+  const count = document.getElementById('results-num');
+  const total = document.getElementById('results-total');
+
+  if (count) count.textContent = pubs.length;
+  if (total) total.textContent = PUBLICATIONS.length;
+
+  if (!pubs.length) {
+    grid.innerHTML = `
+      <div class="pub-empty" role="status">
+        <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+        <p>No publications match this filter.</p>
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = pubs.map((p, i) => renderCard(p, i)).join('');
+
+  // kick intersection observer on freshly injected cards
+  grid.querySelectorAll('.animate-up:not(.visible)').forEach(el => {
+    animObserver.observe(el);
+  });
+}
+
+/* ─── INTERSECTION OBSERVER ──────────────────── */
+const animObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      animObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+/* ─── STATS COUNTERS ─────────────────────────── */
+function updateStats() {
+  const published = PUBLICATIONS.filter(p => p.status === 'published' || p.status === 'accepted').length;
+  const pending   = PUBLICATIONS.filter(p => p.status === 'under-review' || p.status === 'preprint').length;
+  const total     = PUBLICATIONS.length;
+
+  const elTotal     = document.getElementById('stat-total');
+  const elPublished = document.getElementById('stat-published');
+  const elPending   = document.getElementById('stat-pending');
+
+  function countUp(el, target) {
+    if (!el) return;
+    let n = 0;
+    const step = Math.ceil(target / 20);
+    const timer = setInterval(() => {
+      n = Math.min(n + step, target);
+      el.textContent = n;
+      if (n >= target) clearInterval(timer);
+    }, 40);
+  }
+
+  countUp(elTotal, total);
+  countUp(elPublished, published);
+  countUp(elPending, pending);
+}
+
+/* ─── INIT ───────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  renderPublications();
+  updateStats();
+
+  // observe static animate-up elements (hero stats, CTA)
+  document.querySelectorAll('.animate-up:not(.visible)').forEach(el => {
+    animObserver.observe(el);
+  });
+
+  // filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      currentFilter = btn.dataset.filter;
+      renderPublications();
+    });
+  });
+
+  // sort select
+  const sortSelect = document.getElementById('pub-sort');
+  if (sortSelect) {
+    sortSelect.addEventListener('change', () => {
+      currentSort = sortSelect.value;
+      renderPublications();
+    });
+  }
+});
+</script>
+
+<!-- ─── SHARED NAV / SCROLL JS ─────────────── -->
+<script src="js/main.js"></script>
+</body>
+</html>
