@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   keywords: ['Anubhab Das', 'Cyber Security', 'Web Developer', 'Kolkata', 'GNIT', 'portfolio', 'secure web applications', 'OWASP'],
   authors: [{ name: 'Anubhab Das' }],
   robots: { index: true, follow: true },
+  verification: {
+    google: 'pJDNRpm00_nyapQ5SQ7HQqDMA_VZY5UEFuVGSOhlrWk',
+  },
   openGraph: {
     type: 'website',
     url: 'https://anubhab-das.vercel.app/',
