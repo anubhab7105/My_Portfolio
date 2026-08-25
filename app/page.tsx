@@ -20,7 +20,7 @@ import {
 import { GithubIcon } from '@/components/SocialIcons';
 
 import { FEATURED_PROJECTS } from '@/lib/data/projects';
-import SplineHero from '@/components/SplineHero';
+import RobotHero from '@/components/RobotHero';
 
 const ROLES = ['Cyber Security Student', 'Full-Stack Web Developer', 'OWASP Practitioner', 'Secure App Builder'];
 
@@ -107,9 +107,6 @@ export default function HomePage() {
     <main className="page-content">
       {/* ── HERO ────────────────────────────────── */}
       <section className="hero" aria-label="Introduction">
-        {/* Spline background (Option C) */}
-        <SplineHero />
-
         <div className="container">
           <div className="hero-inner">
             {/* left: text */}
@@ -157,57 +154,7 @@ export default function HomePage() {
 
             {/* right: visual */}
             <div className="hero-visual">
-              <div className="hero-img-wrap" role="img" aria-label="Portrait of Anubhab Das">
-                <div className="hero-img-inner">
-                  <Image
-                    src="/images/protfolio.jpg"
-                    alt="Anubhab Das — Cyber Security Student and Web Developer"
-                    width={300}
-                    height={300}
-                    priority
-                    style={{ objectFit: 'cover', objectPosition: 'top center', width: '100%', height: '100%' }}
-                  />
-                </div>
-              </div>
-              {/* Terminal card */}
-              <div className="terminal-card" aria-hidden="true">
-                <div className="terminal-header">
-                  <span className="terminal-dot red" />
-                  <span className="terminal-dot yellow" />
-                  <span className="terminal-dot green" />
-                  <span className="terminal-title">anubhab@portfolio:~</span>
-                </div>
-                <div className="terminal-body">
-                  <div className="t-line">
-                    <span className="t-prompt">$</span>
-                    <span className="t-cmd"> whoami</span>
-                  </div>
-                  <div className="t-line">
-                    <span className="t-out t-green">anubhab_das</span>
-                  </div>
-                  <div className="t-line">
-                    <span className="t-prompt">$</span>
-                    <span className="t-cmd"> cat skills.txt</span>
-                  </div>
-                  <div className="t-line">
-                    <span className="t-out t-blue">CyberSec · WebDev · Python</span>
-                  </div>
-                  <div className="t-line">
-                    <span className="t-prompt">$</span>
-                    <span className="t-cmd"> cat status.txt</span>
-                  </div>
-                  <div className="t-line">
-                    <span className="t-out t-green">✓ Open to opportunities</span>
-                  </div>
-                  <div className="t-line">
-                    <span className="t-prompt">$</span>
-                    <span className="t-cmd"> locate internships</span>
-                  </div>
-                  <div className="t-line">
-                    <span className="t-out">Prodigy · iStudio · Infotact</span>
-                  </div>
-                </div>
-              </div>
+              <RobotHero />
             </div>
           </div>
         </div>

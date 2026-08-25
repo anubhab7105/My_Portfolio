@@ -559,8 +559,8 @@ footer {
 }
 .hero-inner {
   display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 64px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 48px;
   align-items: center;
 }
 .hero-eyebrow {
@@ -661,8 +661,53 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  position: relative;
   animation: fadeIn 0.8s ease 0.3s both;
+}
+
+.robot-hero-container {
+  width: 100%;
+  height: 520px;
+  min-height: 480px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.robot-hero-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.robot-hero-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 210, 163, 0.15);
+  border-top-color: var(--color-accent);
+  animation: spin 0.9s linear infinite;
+}
+
+.loading-text {
+  font-family: var(--font-family-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 .hero-img-wrap {
   position: relative;

@@ -1,12 +1,6 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-
-// Import the main package; the path resolution will be aliased in next.config.ts
-const Spline = dynamic(() => import('@splinetool/react-spline'), {
-  ssr: false,
-  loading: () => null,
-});
+import Spline from '@splinetool/react-spline';
 
 /**
  * SplineHero — Option C
