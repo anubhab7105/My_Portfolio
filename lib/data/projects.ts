@@ -6,7 +6,6 @@ export interface Project {
   filters: string[];
   github: string;
   live: string;
-  img: string;
   security: string[];
   featured?: boolean;
 }
@@ -20,7 +19,6 @@ export const PROJECTS: Project[] = [
     filters: ['fullstack', 'python', 'ai', 'security'],
     github: 'https://github.com/anubhab7105/Assembly',
     live: 'https://assembly-murex.vercel.app/',
-    img: '/images/project4.png',
     security: [
       'Configurable model-provider integrations and routing',
       'Streamed run events between the frontend and backend',
@@ -37,7 +35,6 @@ export const PROJECTS: Project[] = [
     filters: ['fullstack', 'python', 'ai', 'security'],
     github: 'https://github.com/anubhab7105/NETRAKSHA',
     live: 'https://www.netraksha.xyz/',
-    img: '/images/project2.png',
     security: [
       'Document OCR/MRZ and checksum validation',
       'Image-tampering and physical-forgery signals',
@@ -55,7 +52,6 @@ export const PROJECTS: Project[] = [
     filters: ['fullstack', 'python', 'ai', 'security'],
     github: 'https://github.com/anubhab7105/ThreatOptic',
     live: 'https://email-scanner-chi.vercel.app/',
-    img: '/images/project3.png',
     security: [
       'SPF/DKIM/DMARC and Received-chain analysis',
       'TF-IDF/Logistic Regression with rule-based risk signals',
@@ -73,7 +69,6 @@ export const PROJECTS: Project[] = [
     filters: ['security', 'javascript', 'python', 'ai'],
     github: 'https://github.com/anubhab7105/NEXUSSCAN',
     live: 'https://nexusscan.vercel.app/',
-    img: '/images/project3.png',
     security: [
       'Checks selected security headers, exposed files, directory listing, TRACE, and HTTPS enforcement',
       'Random Forest classifier using 48 URL-derived features, with rule-based fallback',
@@ -91,7 +86,6 @@ export const PROJECTS: Project[] = [
     filters: ['fullstack', 'python', 'ai'],
     github: 'https://github.com/anubhab7105/MedAssist_AI',
     live: 'https://medassist-ctrlv.vercel.app/',
-    img: '/images/project5.png',
     security: [
       'Authenticated user profiles and persisted history',
       'Separate frontend and FastAPI backend',
@@ -108,7 +102,6 @@ export const PROJECTS: Project[] = [
     filters: ['fullstack', 'python', 'security'],
     github: 'https://github.com/anubhab7105/healthmetrics',
     live: 'https://healthmetrics-blue.vercel.app/',
-    img: '/images/project5.png',
     security: [
       'Layered routers, services, repositories, schemas, and ORM models',
       'Versioned database migrations and environment-driven configuration',
@@ -125,7 +118,6 @@ export const PROJECTS: Project[] = [
     filters: ['ai', 'javascript', 'web'],
     github: 'https://github.com/anubhab7105/CyberASCII',
     live: 'https://cyber-ascii.vercel.app/',
-    img: '/images/project7.png',
     security: [
       'Browser-based image and live-camera input workflow',
       'Canvas and WebRTC integration',
@@ -141,7 +133,6 @@ export const PROJECTS: Project[] = [
     filters: ['security', 'javascript'],
     github: 'https://github.com/anubhab7105/PRODIGY_FS_01',
     live: 'https://anubhab7105.github.io/PRODIGY_FS_01/',
-    img: '/images/project2.png',
     security: [
       'Password hashing with bcrypt',
       'Token-based authentication flow',
@@ -157,7 +148,6 @@ export const PROJECTS: Project[] = [
     filters: ['javascript'],
     github: 'https://github.com/anubhab7105/HealthMetricsDashboard',
     live: 'https://anubhab7105.github.io/HealthMetricsDashboard/',
-    img: '/images/project5.png',
     security: [
       'Interactive health and fitness metric visualizations',
       'Responsive dashboard layout',

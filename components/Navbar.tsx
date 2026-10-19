@@ -2,15 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import { Download, Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { href: '/', label: 'HOME' },
-  { href: '/about', label: 'ABOUT' },
-  { href: '/projects', label: 'PROJECTS' },
-  { href: '/publications', label: 'PUBLICATIONS' },
-  { href: '/contact', label: 'CONTACT' },
+  { href: '/projects', label: 'Work' },
+  { href: '/about', label: 'About' },
+  { href: '/publications', label: 'Research' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
@@ -19,78 +18,71 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
+    const handleScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
 
-  const isActive = (href: string) => {
-    if (href === '/') return pathname === '/';
-    return pathname.startsWith(href);
-  };
+  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <>
-      <nav className={`navbar${scrolled ? ' scrolled' : ''}`} role="navigation" aria-label="Main navigation">
-        <div className="nav-inner">
-          <Link href="/" className="nav-logo" aria-label="Anubhab Das Home">
-            AD<span>.</span>
-          </Link>
+    <header id="top" className={`lab-navbar${scrolled ? ' has-scrolled' : ''}`}>
+      <nav className="lab-nav-inner" aria-label="Main navigation">
+        <Link href="/" className="lab-brand" aria-label="Anubhab Das, home">
+          <span className="lab-brand-mark">AD<span>.</span></span>
+          <span className="lab-brand-meta">
+            <b>ANUBHAB DAS</b>
+            <i>FULL-STACK × SECURITY</i>
+          </span>
+        </Link>
 
-          <div className="nav-links" role="menubar">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                role="menuitem"
-                className={isActive(link.href) ? 'active' : ''}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-
-          <a
-            href="/images/AnubhabDasResume.pdf"
-            className="nav-cta"
-            download
-            aria-label="Download Resume"
-          >
-            <Download size={13} aria-hidden="true" />
-            RESUME
-          </a>
-
-          <button
-            className={`nav-hamburger${mobileOpen ? ' open' : ''}`}
-            aria-label="Toggle mobile menu"
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((prev) => !prev)}
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+        <div className="lab-nav-links">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={isActive(link.href) ? 'is-active' : ''}
+              aria-current={isActive(link.href) ? 'page' : undefined}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
+
+        <a href="/images/AnubhabDasResume.pdf" className="lab-resume-link" download>
+          Resume <ArrowUpRight size={15} aria-hidden="true" />
+        </a>
+
+        <button
+          type="button"
+          className="lab-menu-toggle"
+          aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((open) => !open)}
+        >
+          {mobileOpen ? <X size={21} /> : <Menu size={21} />}
+        </button>
       </nav>
 
-      {/* Mobile nav */}
-      <div className={`nav-mobile${mobileOpen ? ' open' : ''}`} aria-label="Mobile navigation">
+      <div className={`lab-mobile-menu${mobileOpen ? ' is-open' : ''}`} aria-hidden={!mobileOpen}>
         {navLinks.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className={isActive(link.href) ? 'active' : ''}
+            className={isActive(link.href) ? 'is-active' : ''}
+            tabIndex={mobileOpen ? 0 : -1}
           >
-            {link.label}
+            <span>{link.label}</span><ArrowUpRight size={16} aria-hidden="true" />
           </Link>
         ))}
-        <a href="/images/AnubhabDasResume.pdf" className="nav-cta" download>
-          <Download size={13} aria-hidden="true" />↓ RESUME
+        <a href="/images/AnubhabDasResume.pdf" download tabIndex={mobileOpen ? 0 : -1}>
+          Download résumé <ArrowUpRight size={16} aria-hidden="true" />
         </a>
       </div>
-    </>
+    </header>
   );
 }

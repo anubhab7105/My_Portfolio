@@ -1,281 +1,253 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
-  ShieldCheck,
-  Code2,
-  Code,
-  Lock,
-  Database,
-  Key,
-  GitBranch,
-  FolderOpen,
-  Send,
-  FileText,
   ArrowRight,
-  ExternalLink,
+  ArrowUpRight,
+  Boxes,
+  Code2,
+  Database,
+  GitBranch,
+  LockKeyhole,
+  Network,
+  ShieldCheck,
+  Sparkles,
 } from 'lucide-react';
 import { GithubIcon } from '@/components/SocialIcons';
+import { PROJECTS } from '@/lib/data/projects';
 
-import { FEATURED_PROJECTS } from '@/lib/data/projects';
-import RobotHero from '@/components/RobotHero';
-
-const ROLES = ['Cyber Security Student', 'Full-Stack Web Developer', 'OWASP Practitioner', 'Secure App Builder'];
-
-const SKILLS = [
-  { icon: <ShieldCheck size={18} />, name: 'Cyber Security' },
-  { icon: <Code2 size={18} />, name: 'JavaScript' },
-  { icon: <Code size={18} />, name: 'Python' },
-  { icon: <Code size={18} />, name: 'HTML / CSS' },
-  { icon: <Lock size={18} />, name: 'OWASP Top 10' },
-  { icon: <Database size={18} />, name: 'Flask / SQLite' },
-  { icon: <Key size={18} />, name: 'Auth & JWT' },
-  { icon: <GitBranch size={18} />, name: 'Git & GitHub' },
+const SYSTEM_NODES = [
+  {
+    id: 'interface',
+    index: '01',
+    name: 'Interface',
+    type: 'Experience layer',
+    detail: 'The part people actually touch: accessible flows, clear feedback, responsive layouts, and thoughtful states.',
+  },
+  {
+    id: 'api',
+    index: '02',
+    name: 'API layer',
+    type: 'Application logic',
+    detail: 'Routes, validation, authorization, and the contracts that make the frontend and backend work together.',
+  },
+  {
+    id: 'intelligence',
+    index: '03',
+    name: 'Intelligence',
+    type: 'Models & orchestration',
+    detail: 'Model integrations, analysis pipelines, and useful outputs with uncertainty and limitations kept visible.',
+  },
+  {
+    id: 'data',
+    index: '04',
+    name: 'Data & trust',
+    type: 'Persistence & controls',
+    detail: 'Storage boundaries, secrets, auditability, and security decisions designed into the system rather than added at the end.',
+  },
 ];
 
-function TypedText() {
-  const elRef = useRef<HTMLSpanElement>(null);
+const PROJECT_AREAS: Record<number, string> = {
+  1: 'Multi-agent AI',
+  2: 'Identity screening',
+  3: 'Email forensics',
+  4: 'Web security',
+};
 
-  useEffect(() => {
-    let ri = 0, ci = 0, deleting = false;
-    let timer: ReturnType<typeof setTimeout>;
-
-    function type() {
-      const el = elRef.current;
-      if (!el) return;
-      const current = ROLES[ri];
-      if (!deleting) {
-        el.textContent = current.substring(0, ci + 1);
-        ci++;
-        if (ci === current.length) {
-          deleting = true;
-          timer = setTimeout(type, 1800);
-          return;
-        }
-      } else {
-        el.textContent = current.substring(0, ci - 1);
-        ci--;
-        if (ci === 0) {
-          deleting = false;
-          ri = (ri + 1) % ROLES.length;
-        }
-      }
-      timer = setTimeout(type, deleting ? 60 : 90);
-    }
-    type();
-    return () => clearTimeout(timer);
-  }, []);
-
-  return (
-    <div className="hero-role">
-      <span ref={elRef} id="typed-text" />
-      <span className="cursor" aria-hidden="true" />
-    </div>
-  );
-}
-
-function AnimateUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add('visible');
-          obs.unobserve(el);
-        }
-      },
-      { threshold: 0.12 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref} className="animate-up" style={{ transitionDelay: `${delay}s` }}>
-      {children}
-    </div>
-  );
-}
+const featuredProjects = PROJECTS.filter((project) => [1, 2, 3, 4].includes(project.id));
 
 export default function HomePage() {
+  const [activeSystem, setActiveSystem] = useState('api');
+  const selectedNode = SYSTEM_NODES.find((node) => node.id === activeSystem) ?? SYSTEM_NODES[1];
+
   return (
-    <main className="page-content">
-      {/* ── HERO ────────────────────────────────── */}
-      <section className="hero" aria-label="Introduction">
-        <div className="container">
-          <div className="hero-inner">
-            {/* left: text */}
-            <div className="hero-text">
-              <p className="hero-eyebrow">
-                <span className="status-dot" aria-hidden="true" />
-                Available for opportunities
-              </p>
-              <h1 className="hero-name">
-                Anubhab
-                <br />
-                Das
-              </h1>
-              <TypedText />
-              <p className="hero-tagline">
-                Building fortresses, not just frontends. I craft secure, modern web experiences with a security-first
-                mindset — from authentication systems to full-stack applications.
-              </p>
-              <div className="hero-actions">
-                <Link href="/projects" className="btn btn-primary">
-                  <FolderOpen size={15} aria-hidden="true" /> View Projects
-                </Link>
-                <Link href="/contact" className="btn btn-outline">
-                  <Send size={15} aria-hidden="true" /> Get In Touch
-                </Link>
-                <a href="/images/AnubhabDasResume.pdf" className="btn btn-ghost" download>
-                  <FileText size={15} aria-hidden="true" /> Resume
-                </a>
+    <main className="lab-home">
+      <section className="lab-hero" aria-labelledby="hero-heading">
+        <div className="container lab-container">
+          <div className="lab-hero-copy">
+            <p className="lab-eyebrow">
+              <span className="lab-live-dot" aria-hidden="true" />
+              Independent developer <span className="lab-slash">/</span> Kolkata, India
+            </p>
+            <h1 id="hero-heading" className="lab-display">
+              Build the thing.
+              <br />
+              <span className="lab-highlight">Understand the system.</span>
+            </h1>
+            <p className="lab-intro">
+              I build full-stack applications, security tools, and AI-assisted systems — and care about the engineering
+              decisions that make them useful, understandable, and resilient.
+            </p>
+            <div className="lab-hero-actions">
+              <Link href="/projects" className="lab-button lab-button-primary">
+                Explore selected work <ArrowUpRight size={17} aria-hidden="true" />
+              </Link>
+              <a
+                href="https://github.com/anubhab7105"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="lab-button lab-button-secondary"
+              >
+                <GithubIcon size={16} aria-hidden="true" /> GitHub <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+            </div>
+            <div className="lab-focus-line" aria-label="Areas of focus">
+              <span>FULL-STACK</span>
+              <i aria-hidden="true" />
+              <span>APPLICATION SECURITY</span>
+              <i aria-hidden="true" />
+              <span>APPLIED AI</span>
+            </div>
+          </div>
+
+          <div className="lab-explorer" aria-label="Interactive reference architecture">
+            <div className="lab-explorer-top">
+              <div>
+                <span className="lab-mono-label">FIELD NOTE / 001</span>
+                <h2>A system, in four layers.</h2>
               </div>
-              <div className="hero-stats" aria-label="Key statistics">
-                <div className="stat-item">
-                  <span className="stat-value">5+</span>
-                  <span className="stat-label">Projects</span>
+              <span className="lab-explorer-status"><span /> INTERACTIVE</span>
+            </div>
+            <p className="lab-explorer-note">A reference map, not a diagram of any single project. Select a layer.</p>
+            <div className="lab-flow" role="group" aria-label="Select a system layer">
+              {SYSTEM_NODES.map((node, index) => (
+                <div className="lab-flow-item" key={node.id}>
+                  <button
+                    type="button"
+                    className={`lab-flow-node${activeSystem === node.id ? ' is-selected' : ''}`}
+                    onClick={() => setActiveSystem(node.id)}
+                    aria-pressed={activeSystem === node.id}
+                  >
+                    <span className="lab-flow-node-index">{node.index}</span>
+                    <span className="lab-flow-node-icon" aria-hidden="true">
+                      {index === 0 ? <Code2 size={19} /> : index === 1 ? <Network size={19} /> : index === 2 ? <Sparkles size={19} /> : <Database size={19} />}
+                    </span>
+                    <span className="lab-flow-node-name">{node.name}</span>
+                    <span className="lab-flow-node-type">{node.type}</span>
+                  </button>
+                  {index < SYSTEM_NODES.length - 1 && (
+                    <span className="lab-flow-connector" aria-hidden="true"><ArrowRight size={16} /></span>
+                  )}
                 </div>
-                <div className="stat-item">
-                  <span className="stat-value">3</span>
-                  <span className="stat-label">Internships</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-value">2+</span>
-                  <span className="stat-label">Years Dev</span>
-                </div>
+              ))}
+            </div>
+            <div className="lab-node-readout" aria-live="polite">
+              <span className="lab-readout-mark" aria-hidden="true"><span /></span>
+              <div>
+                <span className="lab-mono-label">SELECTED LAYER / {selectedNode.index}</span>
+                <h3>{selectedNode.name}: {selectedNode.type}</h3>
+                <p>{selectedNode.detail}</p>
               </div>
             </div>
-
-            {/* right: visual */}
-            <div className="hero-visual">
-              <RobotHero />
+            <div className="lab-explorer-footer">
+              <span><span className="lab-footer-dot" /> SYSTEMS THINKING</span>
+              <span>SELECT A NODE TO EXPLORE</span>
             </div>
           </div>
         </div>
+        <div className="lab-hero-bottomline" aria-hidden="true">
+          <span>DESIGN WITH INTENT</span><span>ENGINEER WITH CONTEXT</span><span>SHIP WITH CARE</span>
+        </div>
       </section>
 
-      {/* ── SKILLS STRIP ──────────────────────────── */}
-      <section className="skills-preview" aria-label="Technical skills overview">
-        <div className="container">
-          <p className="section-label">core skills</p>
-          <div className="skills-grid">
-            {SKILLS.map((skill, i) => (
-              <AnimateUp key={skill.name} delay={i * 0.06}>
-                <div className="skill-chip">
-                  <div className="skill-icon">{skill.icon}</div>
-                  <span className="skill-name">{skill.name}</span>
+      <section className="lab-work-section" aria-labelledby="work-heading">
+        <div className="container lab-container">
+          <div className="lab-section-heading">
+            <div>
+              <p className="lab-section-kicker"><span>01</span> SELECTED WORK</p>
+              <h2 id="work-heading" className="lab-section-title">Problems worth getting into.</h2>
+            </div>
+            <p className="lab-section-summary">
+              A few projects from the overlap between web engineering, security, and applied AI. Each one starts with a
+              problem, not a tech-stack checklist.
+            </p>
+          </div>
+
+          <div className="lab-project-grid">
+            {featuredProjects.map((project, index) => (
+              <article className={`lab-project-card lab-project-card-${index + 1}`} key={project.id}>
+                <div className="lab-project-card-top">
+                  <span className="lab-project-number">PROJECT / {String(index + 1).padStart(2, '0')}</span>
+                  <span className="lab-project-area">{PROJECT_AREAS[project.id] ?? 'Application engineering'}</span>
                 </div>
-              </AnimateUp>
+                <div className="lab-project-heading">
+                  <h3>{project.title}</h3>
+                  <p>{project.desc}</p>
+                </div>
+                <div className="lab-project-points">
+                  {project.security.slice(0, 2).map((item) => (
+                    <p key={item}><span aria-hidden="true">↳</span>{item}</p>
+                  ))}
+                </div>
+                <div className="lab-project-tech" aria-label="Technologies">
+                  {project.technologies.slice(0, 5).map((technology) => (
+                    <span key={technology}>{technology}</span>
+                  ))}
+                </div>
+                <div className="lab-project-links">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer">
+                    Source <ArrowUpRight size={15} aria-hidden="true" />
+                  </a>
+                  {project.live && (
+                    <a href={project.live} target="_blank" rel="noopener noreferrer">
+                      Live project <ArrowUpRight size={15} aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ── FEATURED PROJECTS ─────────────────────── */}
-      <section className="featured-projects" aria-label="Featured projects">
-        <div className="container">
-          <p className="section-label">featured work</p>
-          <h2 className="section-title">Recent Projects</h2>
-          <p className="section-subtitle">
-            A selection of security tools, full-stack applications, and AI-assisted systems built around practical
-            problems and modern development practices.
-          </p>
-          <div className="projects-grid-home" id="featured-projects-grid">
-            {FEATURED_PROJECTS.map((p, i) => (
-              <AnimateUp key={p.id} delay={i * 0.1}>
-                <article className="project-card">
-                  <Image
-                    className="project-img"
-                    src={p.img}
-                    alt={`Screenshot of ${p.title}`}
-                    width={640}
-                    height={360}
-                    loading="lazy"
-                    style={{ width: '100%', height: 'auto', aspectRatio: '16/9', objectFit: 'cover' }}
-                  />
-                  <div className="project-body">
-                    <div className="project-tags">
-                      {p.technologies.map((t) => (
-                        <span key={t} className="tag">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                    <h3 className="project-title">{p.title}</h3>
-                    <p className="project-desc">{p.desc}</p>
-                    <div className="project-links">
-                      <a
-                        href={p.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-outline"
-                        style={{ fontSize: '.75rem', padding: '7px 14px' }}
-                      >
-                        <GithubIcon size={13} aria-hidden="true" /> Code
-                      </a>
-                      {p.live && (
-                        <a
-                          href={p.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn btn-primary"
-                          style={{ fontSize: '.75rem', padding: '7px 14px' }}
-                        >
-                          <ExternalLink size={13} aria-hidden="true" /> Live
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </article>
-              </AnimateUp>
-            ))}
-          </div>
-          <div style={{ textAlign: 'center', marginTop: '40px' }}>
-            <Link href="/projects" className="btn btn-outline">
-              View all projects <ArrowRight size={15} aria-hidden="true" />
-            </Link>
+          <div className="lab-work-footer">
+            <p>Want the implementation details, trade-offs, and the rest of the catalogue?</p>
+            <Link href="/projects" className="lab-text-link">Explore all projects <ArrowRight size={16} aria-hidden="true" /></Link>
           </div>
         </div>
       </section>
 
-      {/* ── CTA ────────────────────────────────── */}
-      <section className="cta-section" aria-label="Call to action">
-        <div className="container">
-          <AnimateUp>
-            <div className="cta-box">
-              <p className="section-label" style={{ justifyContent: 'center' }}>
-                let&apos;s connect
-              </p>
-              <h2>
-                Ready to build something
-                <br />
-                <span style={{ color: 'var(--color-accent)' }}>secure &amp; powerful?</span>
-              </h2>
-              <p>
-                Whether it&apos;s a collaboration, internship, or just a conversation about security — I&apos;m always
-                open to connect with like-minded builders.
-              </p>
-              <div className="cta-actions">
-                <Link href="/contact" className="btn btn-primary">
-                  Send a message <ArrowRight size={15} aria-hidden="true" />
-                </Link>
-                <a
-                  href="http://www.linkedin.com/in/anubhab7105"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline"
-                >
-                  LinkedIn
-                </a>
-              </div>
+      <section className="lab-principles-section" aria-labelledby="principles-heading">
+        <div className="container lab-container">
+          <div className="lab-principles-intro">
+            <p className="lab-section-kicker"><span>02</span> HOW I BUILD</p>
+            <h2 id="principles-heading" className="lab-section-title">The details are the product.</h2>
+            <p>I enjoy the part where the pieces have to become one coherent thing: interface, API, data, edge cases, and trust.</p>
+          </div>
+          <div className="lab-principle-list">
+            <article>
+              <span className="lab-principle-icon"><Boxes size={20} aria-hidden="true" /></span>
+              <div><h3>Connect the layers</h3><p>Build beyond the happy-path UI — through API contracts, data models, integration, and useful failure states.</p></div>
+              <span className="lab-principle-index">A / 01</span>
+            </article>
+            <article>
+              <span className="lab-principle-icon"><ShieldCheck size={20} aria-hidden="true" /></span>
+              <div><h3>Make trust part of the design</h3><p>Think about inputs, permissions, secrets, privacy, and abuse cases while the architecture is still being shaped.</p></div>
+              <span className="lab-principle-index">B / 02</span>
+            </article>
+            <article>
+              <span className="lab-principle-icon"><GitBranch size={20} aria-hidden="true" /></span>
+              <div><h3>Leave the work understandable</h3><p>Readable code, useful tests, clear documentation, and honest explanations of what a system can and cannot do.</p></div>
+              <span className="lab-principle-index">C / 03</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="lab-next-section" aria-labelledby="next-heading">
+        <div className="container lab-container">
+          <div className="lab-next-panel">
+            <div className="lab-next-orbit" aria-hidden="true"><LockKeyhole size={34} /></div>
+            <div className="lab-next-copy">
+              <p className="lab-section-kicker"><span>03</span> BEYOND THE BUILD</p>
+              <h2 id="next-heading">Curious about the thinking behind the code?</h2>
+              <p>Explore my background, research publications, or get in touch about a project, internship, or collaboration.</p>
             </div>
-          </AnimateUp>
+            <div className="lab-next-actions">
+              <Link href="/about" className="lab-button lab-button-dark">About me <ArrowUpRight size={16} aria-hidden="true" /></Link>
+              <Link href="/publications" className="lab-text-link">Research & writing <ArrowRight size={16} aria-hidden="true" /></Link>
+              <Link href="/contact" className="lab-text-link">Start a conversation <ArrowRight size={16} aria-hidden="true" /></Link>
+            </div>
+          </div>
         </div>
       </section>
     </main>
