@@ -2886,8 +2886,8 @@ footer.lab-footer {
 }
 .lab-principles-section > .lab-container {
   position: sticky;
-  top: 78px;
-  height: calc(100svh - 78px);
+  top: 0;
+  height: 100svh;
   display: grid;
   grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
   gap: clamp(38px, 6vw, 82px);
