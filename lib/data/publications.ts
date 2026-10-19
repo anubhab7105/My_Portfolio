@@ -16,12 +16,12 @@ export interface Publication {
 export const PUBLICATIONS: Publication[] = [
   {
     id: 1,
-    title: 'Blockchain Based IoT Security: A Comprehensive Review of Architectures Challenges and Future Directions',
+    title: 'Blockchain Based IoT Security: A Comprehensive Review of Architectures, Challenges and Future Directions',
     venue: '2025 International Conference on Research in Computational Intelligence and Communication Networks (ICRCICN)',
     year: 'December, 2025',
     status: 'published',
     abstract:
-      'The rapid adoption of IoT in healthcare, transportation, and smart cities has introduced major security and privacy challenges. Traditional centralized security methods often fail to protect decentralized IoT networks. This article explores IoT vulnerabilities and highlights blockchain, artificial intelligence, and post-quantum cryptography as promising solutions for secure, efficient, and scalable IoT systems.',
+      'The paper reviews security and privacy challenges in IoT environments and discusses blockchain-based approaches for securing connected systems, with attention to architectures, implementation challenges, and future research directions.',
     paperUrl: 'https://ieeexplore.ieee.org/document/11364679',
     doi: '10.1109/ICRCICN68210.2025.11364679',
     arxiv: null,
@@ -31,8 +31,8 @@ export const PUBLICATIONS: Publication[] = [
   },
   {
     id: 2,
-    title: 'A Systematic Review of Blockchain-Based Security Architectures for Trusted Cloud Data Sharing: Threat Models and Open Challenges',
-    venue: 'The Journal of Techniques - Sciences - Methodes (TSM).',
+    title: 'Blockchain-Based Security Architectures for Trusted Cloud Data Sharing: A Systematic Review',
+    venue: 'TSM Journal, Volume 10, Issue 4',
     year: 'April, 2026',
     status: 'published',
     abstract:
@@ -46,12 +46,12 @@ export const PUBLICATIONS: Publication[] = [
   },
   {
     id: 3,
-    title: 'Hardware-Aware Co-Design Framework for Efficient TinyML Deployment on Ultra-Low Power Edge Devices',
+    title: 'Hardware-Aware Co-Design Framework for Efficient TinyML Deployment',
     venue: 'TinyML-Enabled IoT Systems: Recent Advancements in Tiny Machine Learning',
     year: 'June, 2026',
     status: 'published',
     abstract:
-      'Content Security Policy (CSP) is widely considered the canonical defense against Cross-Site Scripting in modern SPAs, yet real-world deployments routinely rely on unsafe CSP directives that hollow out its protections. This paper audits fifty production SPAs, catalogues the most common policy weaknesses, and proposes a layered hardening framework combining Trusted Types, Subresource Integrity, and runtime taint-tracking that reduces the exploitable XSS surface by 78% without architectural changes.',
+      'This work examines a hardware-aware co-design approach for efficient TinyML deployment, considering model and hardware choices together to support machine-learning workloads on resource-constrained edge devices.',
     paperUrl: 'https://zenodo.org/records/20664090',
     doi: 'https://doi.org/10.5281/zenodo.20664090',
     arxiv: null,
@@ -61,7 +61,7 @@ export const PUBLICATIONS: Publication[] = [
   },
   {
     id: 4,
-    title: 'Offline-First TinyML–Federated Learning Framework for Privacy-Preserving and Energy-Efficient Smart Healthcare Systems',
+    title: 'Offline-First TinyML–Federated Learning Framework for Privacy-Preserving Smart Healthcare',
     venue: 'TinyML-Enabled IoT Systems: Recent Advancements in Tiny Machine Learning',
     year: 'June, 2026',
     status: 'published',

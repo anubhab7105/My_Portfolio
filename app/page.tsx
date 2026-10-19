@@ -1,52 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowRight,
   ArrowUpRight,
   Boxes,
-  Code2,
-  Database,
   GitBranch,
   LockKeyhole,
-  Network,
   ShieldCheck,
-  Sparkles,
 } from 'lucide-react';
 import { GithubIcon } from '@/components/SocialIcons';
 import { PROJECTS } from '@/lib/data/projects';
-
-const SYSTEM_NODES = [
-  {
-    id: 'interface',
-    index: '01',
-    name: 'Interface',
-    type: 'Experience layer',
-    detail: 'The part people actually touch: accessible flows, clear feedback, responsive layouts, and thoughtful states.',
-  },
-  {
-    id: 'api',
-    index: '02',
-    name: 'API layer',
-    type: 'Application logic',
-    detail: 'Routes, validation, authorization, and the contracts that make the frontend and backend work together.',
-  },
-  {
-    id: 'intelligence',
-    index: '03',
-    name: 'Intelligence',
-    type: 'Models & orchestration',
-    detail: 'Model integrations, analysis pipelines, and useful outputs with uncertainty and limitations kept visible.',
-  },
-  {
-    id: 'data',
-    index: '04',
-    name: 'Data & trust',
-    type: 'Persistence & controls',
-    detail: 'Storage boundaries, secrets, auditability, and security decisions designed into the system rather than added at the end.',
-  },
-];
 
 const PROJECT_AREAS: Record<number, string> = {
   1: 'Multi-agent AI',
@@ -58,9 +23,6 @@ const PROJECT_AREAS: Record<number, string> = {
 const featuredProjects = PROJECTS.filter((project) => [1, 2, 3, 4].includes(project.id));
 
 export default function HomePage() {
-  const [activeSystem, setActiveSystem] = useState('api');
-  const selectedNode = SYSTEM_NODES.find((node) => node.id === activeSystem) ?? SYSTEM_NODES[1];
-
   return (
     <main className="lab-home">
       <section className="lab-hero" aria-labelledby="hero-heading">
@@ -101,50 +63,31 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="lab-explorer" aria-label="Interactive reference architecture">
-            <div className="lab-explorer-top">
-              <div>
-                <span className="lab-mono-label">FIELD NOTE / 001</span>
-                <h2>A system, in four layers.</h2>
+          <aside className="lab-portrait-panel" aria-label="Portrait and professional focus">
+            <div className="lab-portrait-frame">
+              <Image
+                className="lab-portrait-image"
+                src="/images/protfolio.jpg"
+                alt="Anubhab Das speaking at a podium during a campus event"
+                width={1087}
+                height={1447}
+                priority
+                sizes="(max-width: 820px) 100vw, 48vw"
+              />
+              <div className="lab-portrait-topline">
+                <span>ANUBHAB DAS / PROFILE</span>
+                <span className="lab-portrait-online"><i aria-hidden="true" /> OPEN TO OPPORTUNITIES</span>
               </div>
-              <span className="lab-explorer-status"><span /> INTERACTIVE</span>
-            </div>
-            <p className="lab-explorer-note">A reference map, not a diagram of any single project. Select a layer.</p>
-            <div className="lab-flow" role="group" aria-label="Select a system layer">
-              {SYSTEM_NODES.map((node, index) => (
-                <div className="lab-flow-item" key={node.id}>
-                  <button
-                    type="button"
-                    className={`lab-flow-node${activeSystem === node.id ? ' is-selected' : ''}`}
-                    onClick={() => setActiveSystem(node.id)}
-                    aria-pressed={activeSystem === node.id}
-                  >
-                    <span className="lab-flow-node-index">{node.index}</span>
-                    <span className="lab-flow-node-icon" aria-hidden="true">
-                      {index === 0 ? <Code2 size={19} /> : index === 1 ? <Network size={19} /> : index === 2 ? <Sparkles size={19} /> : <Database size={19} />}
-                    </span>
-                    <span className="lab-flow-node-name">{node.name}</span>
-                    <span className="lab-flow-node-type">{node.type}</span>
-                  </button>
-                  {index < SYSTEM_NODES.length - 1 && (
-                    <span className="lab-flow-connector" aria-hidden="true"><ArrowRight size={16} /></span>
-                  )}
-                </div>
-              ))}
-            </div>
-            <div className="lab-node-readout" aria-live="polite">
-              <span className="lab-readout-mark" aria-hidden="true"><span /></span>
-              <div>
-                <span className="lab-mono-label">SELECTED LAYER / {selectedNode.index}</span>
-                <h3>{selectedNode.name}: {selectedNode.type}</h3>
-                <p>{selectedNode.detail}</p>
+              <div className="lab-portrait-overlay">
+                <p className="lab-portrait-overline">BUILD · SECURE · RESEARCH</p>
+                <h2>Engineering that earns trust.</h2>
               </div>
             </div>
-            <div className="lab-explorer-footer">
-              <span><span className="lab-footer-dot" /> SYSTEMS THINKING</span>
-              <span>SELECT A NODE TO EXPLORE</span>
+            <div className="lab-portrait-caption">
+              <span>FULL-STACK DEVELOPMENT / APPLICATION SECURITY / APPLIED AI</span>
+              <strong>KOLKATA, INDIA ↗</strong>
             </div>
-          </div>
+          </aside>
         </div>
         <div className="lab-hero-bottomline" aria-hidden="true">
           <span>DESIGN WITH INTENT</span><span>ENGINEER WITH CONTEXT</span><span>SHIP WITH CARE</span>

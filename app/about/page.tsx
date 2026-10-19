@@ -4,7 +4,6 @@ import Link from 'next/link';
 import {
   ShieldCheck,
   Code,
-  Server,
   Wrench,
   MapPin,
   GraduationCap,
@@ -12,7 +11,6 @@ import {
   Languages,
   Phone,
   Mail,
-  Award,
   FileText,
   Send,
   MessageSquare,
@@ -29,7 +27,7 @@ import { GithubIcon, LinkedinIcon, InstagramIcon } from '@/components/SocialIcon
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Learn about Anubhab Das — Cyber Security student at GNIT Kolkata, web developer, and security-focused builder with internship experience at Prodigy InfoTech, iStudio, and Infotact Solutions.',
+    'Anubhab Das is a B.Sc. Cyber Security student at GNIT Kolkata working across full-stack development, application security, applied AI, and research.',
   alternates: { canonical: 'https://anubhab-das.vercel.app/about' },
   openGraph: {
     title: 'About Anubhab Das | Cyber Security & Web Dev',
@@ -41,24 +39,29 @@ export const metadata: Metadata = {
 
 const SKILL_CATEGORIES = [
   {
-    icon: <ShieldCheck size={18} />,
-    name: 'Security',
-    skills: ['OWASP Top 10', 'XSS Prevention', 'SQL Injection', 'CSRF Protection', 'JWT Auth', 'bcrypt', 'Data Encryption', 'Rate Limiting', 'Threat Analysis'],
+    icon: <Languages size={18} />,
+    name: 'Languages',
+    skills: ['Python', 'JavaScript', 'TypeScript', 'C', 'SQL', 'HTML5', 'CSS3'],
   },
   {
     icon: <Code size={18} />,
-    name: 'Frontend',
-    skills: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'REST APIs', 'Chart.js', 'Bootstrap'],
+    name: 'Web & Backend',
+    skills: ['React', 'Next.js', 'Tailwind CSS', 'Flask', 'FastAPI', 'Node.js', 'REST APIs', 'SQLAlchemy'],
   },
   {
-    icon: <Server size={18} />,
-    name: 'Backend',
-    skills: ['Python', 'Flask', 'SQLite', 'NLP', 'AI Integration', 'C'],
+    icon: <ShieldCheck size={18} />,
+    name: 'Security',
+    skills: ['OWASP Top 10', 'XSS / SQLi / CSRF / SSRF mitigation', 'JWT & bcrypt', 'Phishing analysis', 'Email-header analysis'],
+  },
+  {
+    icon: <BookOpen size={18} />,
+    name: 'AI / ML',
+    skills: ['scikit-learn', 'pandas', 'NumPy', 'NLP', 'LLM APIs (Groq, OpenAI, Gemini)', 'OpenCV'],
   },
   {
     icon: <Wrench size={18} />,
-    name: 'Tools & DevOps',
-    skills: ['Git', 'GitHub', 'Vercel', 'GitHub Pages', 'VS Code', 'Formspree'],
+    name: 'Data & DevOps',
+    skills: ['PostgreSQL', 'Supabase', 'Redis', 'Git', 'GitHub Actions', 'Docker', 'pytest', 'Playwright', 'Vercel'],
   },
 ];
 
@@ -73,7 +76,7 @@ const SOFT_SKILLS = [
 ];
 
 const EDUCATION = [
-  { year: '2024 – 2028', degree: 'B.Sc in Cyber Security', school: 'Guru Nanak Institute of Technology', board: 'MAKAUT (Maulana Abul Kalam Azad University of Technology)' },
+  { year: '2024 – 2028', degree: 'B.Sc. in Cyber Security', school: 'Guru Nanak Institute of Technology', board: 'MAKAUT (Maulana Abul Kalam Azad University of Technology)' },
   { year: '2024', degree: 'Higher Secondary (Class XII)', school: 'Baranagar Narendranath Vidyamandir', board: 'WBCHSE (West Bengal Council of Higher Secondary Education)' },
   { year: '2022', degree: 'Secondary (Class X)', school: 'Baranagar Narendranath Vidyamandir', board: 'WBBSE (West Bengal Board of Secondary Education)' },
 ];
@@ -112,36 +115,33 @@ export default function AboutPage() {
               {/* left: bio */}
               <div className="about-bio">
                 <p className="animate-up">
-                  I&apos;m <strong>Anubhab Das</strong>, a first-year <strong>B.Sc Cyber Security student</strong> at
-                  Guru Nanak Institute of Technology (MAKAUT), Kolkata. My journey into tech started with a fascination
-                  for how things break — and more importantly, how to make sure they don&apos;t.
+                  I&apos;m <strong>Anubhab Das</strong>, a B.Sc. Cyber Security student at Guru Nanak Institute of Technology
+                  (MAKAUT), Kolkata, studying from 2024 to 2028. I&apos;m interested in building software that is useful,
+                  understandable, and designed with security in mind.
                 </p>
                 <p className="animate-up">
-                  I specialize in building <strong>secure, production-grade web applications</strong> that balance great
-                  user experience with rock-solid security architecture. From implementing{' '}
-                  <strong>JWT authentication and bcrypt password hashing</strong> to preventing SQL injection, XSS, and
-                  CSRF attacks, I approach every project with the OWASP Top 10 in mind.
+                  My work spans full-stack development, web application security, and applied AI. I build with Python,
+                  JavaScript, TypeScript, React, Next.js, Flask, FastAPI, and Node.js, with attention to input validation,
+                  security controls, testing, and clear failure states.
                 </p>
                 <p className="animate-up">
-                  Beyond security, I&apos;m a <strong>full-stack web developer</strong> comfortable across the entire
-                  stack — crafting responsive frontends with HTML/CSS/JS and building backend APIs with Python and Flask.
-                  I&apos;ve completed three internships — at <strong>Prodigy InfoTech</strong>,{' '}
-                  <strong>iStudio</strong>, and <strong>Infotact Solutions</strong> — where I worked on real-world
-                  client projects.
+                  Recent projects include <strong>Assembly</strong>, an experimental multi-agent AI workspace;
+                  <strong> NexusScan</strong>, a URL and phishing-analysis tool; <strong>ThreatOptic</strong>, an email
+                  forensics platform; and <strong>NETRAKSHA</strong>, an identity-document screening prototype.
                 </p>
                 <p className="animate-up">
-                  When I&apos;m not writing code, I&apos;m researching the latest vulnerabilities, exploring threat
-                  intelligence tools, or sharpening my Python skills. I&apos;m actively looking for{' '}
-                  <strong>opportunities in web development, cybersecurity analysis, or security engineering</strong>.
+                  Alongside development and research in blockchain security, TinyML, and privacy-preserving healthcare AI,
+                  I serve as a <strong>Class Representative</strong>, Vice-Captain of the GNIT Football Team, and Event
+                  Co-Head for Creative Strokes (Euphonious X Zyzzva 2K26).
                 </p>
 
                 {/* highlights */}
                 <div className="about-highlights animate-up">
                   {[
-                    { num: '5+', label: 'Projects shipped' },
-                    { num: '3', label: 'Internships completed' },
-                    { num: '2024', label: 'Started B.Sc CyberSec' },
-                    { num: 'OWASP', label: 'Security framework' },
+                    { num: '04', label: 'Featured projects' },
+                    { num: '03', label: 'Internships completed' },
+                    { num: '04', label: 'Research papers' },
+                    { num: 'CR', label: 'Class Representative' },
                   ].map((h) => (
                     <div key={h.label} className="highlight-item">
                       <span className="highlight-num">{h.num}</span>
@@ -175,7 +175,7 @@ export default function AboutPage() {
                   </div>
                   <div className="profile-info">
                     <p className="profile-name">Anubhab Das</p>
-                    <p className="profile-role">// cyber_security_student</p>
+                    <p className="profile-role">// full_stack_dev × security</p>
                     <div className="social-links">
                       <a href="https://github.com/anubhab7105" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><GithubIcon size={16} /></a>
                       <a href="http://www.linkedin.com/in/anubhab7105" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><LinkedinIcon size={16} /></a>
@@ -209,21 +209,21 @@ export default function AboutPage() {
               {[
                 {
                   date: 'Aug 2025 – Oct 2025',
-                  title: 'Associate L1 — Web Development Intern',
+                  title: 'Associate L1 – Web Development Intern',
                   org: 'Infotact Solutions',
-                  desc: 'Collaborated on feature development, testing, and deployment for client web applications. Implemented secure-coding checks, reviewing pull requests for regressions, and assisted QA to maintain production code quality.',
+                  desc: 'Contributed to feature development, testing, and deployment of web applications. Applied security-aware checks, reviewed changes for regressions, and supported QA.',
                 },
                 {
-                  date: 'July 2025',
+                  date: 'Jul 2025',
                   title: 'Full-Stack Web Development Intern',
                   org: 'Prodigy InfoTech',
-                  desc: 'Worked on real-world full-stack projects, implementing security best practices throughout the development lifecycle. Delivered multiple secure web applications. Received Certificate of Completion and Letter of Recommendation.',
+                  desc: 'Built full-stack web projects applying security best practices and received a letter of recommendation.',
                 },
                 {
-                  date: 'Aug – Sep 2024',
+                  date: 'Aug 2024 – Sep 2024',
                   title: 'Website Design & Development Intern',
                   org: 'iStudio',
-                  desc: 'Completed training and internship in website design and development, focusing on creating user-friendly web applications with attention to security considerations and responsive design principles.',
+                  desc: 'Completed training and internship in responsive, security-aware web development.',
                 },
               ].map((item, i) => (
                 <div key={i} className="timeline-item animate-up">
@@ -232,9 +232,6 @@ export default function AboutPage() {
                   <h3 className="timeline-title">{item.title}</h3>
                   <p className="timeline-org">{item.org}</p>
                   <p className="timeline-desc">{item.desc}</p>
-                  <span className="timeline-badge">
-                    <Award size={11} aria-hidden="true" /> Certificate Issued
-                  </span>
                 </div>
               ))}
             </div>
@@ -287,6 +284,50 @@ export default function AboutPage() {
                   <p className="edu-school">{edu.school}</p>
                   <p className="edu-board">{edu.board}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
+        {/* achievements and community */}
+        <section className="education-section" aria-label="Achievements and activities">
+          <div className="container">
+            <p className="section-label">recognition &amp; community</p>
+            <h2 className="section-title" style={{ marginBottom: '40px' }}>Achievements &amp; Activities</h2>
+            <div className="edu-grid">
+              {[
+                {
+                  year: 'NCAT 2026',
+                  degree: 'All India Rank 2,096',
+                  school: '548 / 800 in the Naukri Campus All India NCAT 2026.',
+                  board: 'Naukri Campus',
+                },
+                {
+                  year: 'HACKATHONS',
+                  degree: 'VIBEFORGE 1.0 Finalist',
+                  school: 'Also participated in SkillHigh Web Dev Hackathon 2025 and Bharatiya Antariksh Hackathon 2025.',
+                  board: 'Hackathons',
+                },
+                {
+                  year: 'AUG 2024',
+                  degree: '2nd Place — Extempore',
+                  school: 'Secured second position in the Extempore Competition at GNIT.',
+                  board: 'Campus achievement',
+                },
+                {
+                  year: '2025',
+                  degree: 'Cybersecurity simulations',
+                  school: 'Forage Cybersecurity IAM and phishing job simulations; OPSWAT Critical Infrastructure Protection.',
+                  board: 'Professional learning',
+                },
+              ].map((item) => (
+                <article key={item.degree} className="edu-card animate-up">
+                  <span className="edu-year">{item.year}</span>
+                  <h3 className="edu-degree">{item.degree}</h3>
+                  <p className="edu-school">{item.school}</p>
+                  <p className="edu-board">{item.board}</p>
+                </article>
               ))}
             </div>
           </div>
