@@ -47,8 +47,8 @@ export default function ProjectsPage() {
           <p className="section-label">My Work</p>
           <h1 className="section-title">Projects &amp; Builds</h1>
           <p style={{ color: 'var(--color-text-secondary)', fontSize: '1rem', maxWidth: '540px', marginTop: '12px' }}>
-            Every project is built security-first — with OWASP best practices, input validation, and secure data
-            handling at the core.
+            A selection of security tools, full-stack applications, and AI-assisted prototypes, with an emphasis on
+            practical workflows, thoughtful engineering, and responsible use.
           </p>
         </div>
       </section>
@@ -100,7 +100,7 @@ export default function ProjectsPage() {
                     <p className="project-desc">{p.desc}</p>
                     <div className="project-security">
                       <p className="security-title">
-                        <ShieldCheck size={13} aria-hidden="true" /> SECURITY FEATURES
+                        <ShieldCheck size={13} aria-hidden="true" /> ENGINEERING HIGHLIGHTS
                       </p>
                       <ul className="security-list">
                         {p.security.map((s) => (
