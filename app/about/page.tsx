@@ -76,7 +76,7 @@ const SOFT_SKILLS = [
 ];
 
 const EDUCATION = [
-  { year: '2024 – 2028', degree: 'B.Sc. in Cyber Security', school: 'Guru Nanak Institute of Technology', board: 'MAKAUT · Class Representative · Vice-Captain, GNIT Football Team' },
+  { year: '2024 – 2028', degree: 'B.Sc. in Cyber Security', school: 'Guru Nanak Institute of Technology', board: 'MAKAUT (Maulana Abul Kalam Azad University of Technology)' },
   { year: '2024', degree: 'Higher Secondary (Class XII)', school: 'Baranagar Narendranath Vidyamandir', board: 'WBCHSE (West Bengal Council of Higher Secondary Education)' },
   { year: '2022', degree: 'Secondary (Class X)', school: 'Baranagar Narendranath Vidyamandir', board: 'WBBSE (West Bengal Board of Secondary Education)' },
 ];
