@@ -2522,7 +2522,7 @@ footer.lab-footer {
   -webkit-backdrop-filter: none;
 }
 .lab-navbar.is-home.has-scrolled { border-color: transparent; box-shadow: none; }
-.lab-navbar.is-home .lab-brand,
+.lab-navbar.is-home .lab-brand { display: none; }
 .lab-navbar.is-home .lab-brand:hover { color: #fffaf6; }
 .lab-navbar.is-home .lab-brand-meta i { color: rgba(255, 250, 246, .68); }
 .lab-navbar.is-home .lab-brand-mark { color: #2a0d0d; background: rgba(255, 250, 246, .96); }
