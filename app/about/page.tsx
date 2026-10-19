@@ -289,6 +289,50 @@ export default function AboutPage() {
           </div>
         </section>
 
+
+        {/* achievements and community */}
+        <section className="education-section" aria-label="Achievements and activities">
+          <div className="container">
+            <p className="section-label">recognition &amp; community</p>
+            <h2 className="section-title" style={{ marginBottom: '40px' }}>Achievements &amp; Activities</h2>
+            <div className="edu-grid">
+              {[
+                {
+                  year: 'NCAT 2026',
+                  degree: 'All India Rank 2,096',
+                  school: '548 / 800 in the Naukri Campus All India NCAT 2026.',
+                  board: 'Naukri Campus',
+                },
+                {
+                  year: 'HACKATHONS',
+                  degree: 'VIBEFORGE 1.0 Finalist',
+                  school: 'Also participated in SkillHigh Web Dev Hackathon 2025 and Bharatiya Antariksh Hackathon 2025.',
+                  board: 'Hackathons',
+                },
+                {
+                  year: 'AUG 2024',
+                  degree: '2nd Place — Extempore',
+                  school: 'Secured second position in the Extempore Competition at GNIT.',
+                  board: 'Campus achievement',
+                },
+                {
+                  year: '2025',
+                  degree: 'Cybersecurity simulations',
+                  school: 'Forage Cybersecurity IAM and phishing job simulations; OPSWAT Critical Infrastructure Protection.',
+                  board: 'Professional learning',
+                },
+              ].map((item) => (
+                <article key={item.degree} className="edu-card animate-up">
+                  <span className="edu-year">{item.year}</span>
+                  <h3 className="edu-degree">{item.degree}</h3>
+                  <p className="edu-school">{item.school}</p>
+                  <p className="edu-board">{item.board}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
       </main>
     </>
   );
