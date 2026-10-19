@@ -183,8 +183,8 @@ export default function HomePage() {
           <p className="section-label">featured work</p>
           <h2 className="section-title">Recent Projects</h2>
           <p className="section-subtitle">
-            Security-focused builds that demonstrate real-world application of OWASP principles and modern development
-            practices.
+            A selection of security tools, full-stack applications, and AI-assisted systems built around practical
+            problems and modern development practices.
           </p>
           <div className="projects-grid-home" id="featured-projects-grid">
             {FEATURED_PROJECTS.map((p, i) => (
@@ -232,9 +232,8 @@ export default function HomePage() {
                       )}
                     </div>
                   </div>
-                </article>
-              </AnimateUp>
-            ))}
+                </AnimateUp>
+              ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '40px' }}>
             <Link href="/projects" className="btn btn-outline">
