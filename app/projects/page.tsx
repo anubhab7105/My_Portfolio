@@ -1,174 +1,168 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
-import type { Metadata } from 'next';
-import { ShieldCheck, ExternalLink } from 'lucide-react';
-import { GithubIcon } from '@/components/SocialIcons';
-
+import { useMemo, useState } from 'react';
+import { ArrowUpRight, Filter, Github, Search } from 'lucide-react';
 import { PROJECTS, type Project } from '@/lib/data/projects';
 
 const FILTERS = [
-  { key: 'all', label: 'All Projects' },
+  { key: 'all', label: 'Everything' },
   { key: 'security', label: 'Security' },
-  { key: 'fullstack', label: 'Full Stack' },
+  { key: 'fullstack', label: 'Full stack' },
   { key: 'python', label: 'Python' },
   { key: 'javascript', label: 'JavaScript' },
   { key: 'ai', label: 'AI / APIs' },
 ];
 
-function AnimateUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { el.classList.add('visible'); obs.unobserve(el); } },
-      { threshold: 0.1 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+const PROJECT_AREAS: Record<number, string> = {
+  1: 'Multi-agent AI',
+  2: 'Identity screening',
+  3: 'Email forensics',
+  4: 'Web security',
+  5: 'Healthcare support',
+  6: 'Backend modernization',
+  7: 'Creative coding',
+  8: 'Authentication',
+  9: 'Data visualization',
+};
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <div ref={ref} className="animate-up" style={{ transitionDelay: `${delay}s` }}>
-      {children}
-    </div>
+    <article className="lab-catalogue-card">
+      <div className="lab-catalogue-card-top">
+        <span className="lab-catalogue-index">/{String(index + 1).padStart(2, '0')}</span>
+        <span className="lab-catalogue-area">{PROJECT_AREAS[project.id] ?? 'Software engineering'}</span>
+        {project.featured && <span className="lab-catalogue-featured">SELECTED</span>}
+      </div>
+
+      <div className="lab-catalogue-main">
+        <h2>{project.title}</h2>
+        <p className="lab-catalogue-desc">{project.desc}</p>
+
+        <div className="lab-catalogue-tech" aria-label="Technologies used">
+          {project.technologies.map((technology) => (
+            <span className="lab-tech-chip" key={technology}>{technology}</span>
+          ))}
+        </div>
+
+        <div className="lab-catalogue-notes">
+          <p className="lab-mono-label">ENGINEERING NOTES</p>
+          <ul>
+            {project.security.map((item) => (
+              <li key={item}><span aria-hidden="true">↳</span>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="lab-catalogue-actions">
+        <a href={project.github} target="_blank" rel="noopener noreferrer" className="lab-inline-action">
+          <Github size={15} aria-hidden="true" /> Repository <ArrowUpRight size={15} aria-hidden="true" />
+        </a>
+        {project.live && (
+          <a href={project.live} target="_blank" rel="noopener noreferrer" className="lab-inline-action">
+            Live demo <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+        )}
+      </div>
+    </article>
   );
 }
 
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState('all');
-  const filtered = activeFilter === 'all' ? PROJECTS : PROJECTS.filter((p) => p.filters.includes(activeFilter));
+  const [search, setSearch] = useState('');
+
+  const filteredProjects = useMemo(() => {
+    const query = search.trim().toLowerCase();
+    return PROJECTS.filter((project) => {
+      const matchesFilter = activeFilter === 'all' || project.filters.includes(activeFilter);
+      const searchableText = [
+        project.title,
+        project.desc,
+        ...project.technologies,
+        ...project.security,
+        PROJECT_AREAS[project.id] ?? '',
+      ].join(' ').toLowerCase();
+      return matchesFilter && (!query || searchableText.includes(query));
+    });
+  }, [activeFilter, search]);
 
   return (
-    <main className="page-content">
-      <section className="page-hero">
-        <div className="container">
-          <p className="section-label">My Work</p>
-          <h1 className="section-title">Projects &amp; Builds</h1>
-          <p style={{ color: 'var(--color-text-secondary)', fontSize: '1rem', maxWidth: '540px', marginTop: '12px' }}>
-            A selection of security tools, full-stack applications, and AI-assisted prototypes, with an emphasis on
-            practical workflows, thoughtful engineering, and responsible use.
-          </p>
+    <main className="lab-projects-page page-content">
+      <section className="lab-page-hero">
+        <div className="container lab-container">
+          <p className="lab-section-kicker"><span>01</span> PROJECT ARCHIVE</p>
+          <div className="lab-page-heading-row">
+            <h1 className="lab-page-title">Built to be<br /><span>taken apart.</span></h1>
+            <p className="lab-page-intro">
+              Full-stack applications, security tooling, and AI-assisted prototypes. Browse the systems, technologies,
+              and engineering concerns behind each build.
+            </p>
+          </div>
+          <div className="lab-page-meta">
+            <span><b>{String(PROJECTS.length).padStart(2, '0')}</b> PROJECTS</span>
+            <span><b>03</b> OVERLAPPING FOCUS AREAS</span>
+            <span>CODE, CONTEXT &amp; TRADE-OFFS</span>
+          </div>
         </div>
       </section>
 
-      <section style={{ padding: '80px 0' }}>
-        <div className="container">
-          {/* filter buttons */}
-          <div className="projects-filter" role="group" aria-label="Filter projects by technology">
-            {FILTERS.map((f) => (
-              <button
-                key={f.key}
-                className={`filter-btn${activeFilter === f.key ? ' active' : ''}`}
-                data-filter={f.key}
-                onClick={() => setActiveFilter(f.key)}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-
-          {/* projects grid */}
-          <div className="projects-grid" id="projects-grid" role="list">
-            {filtered.map((p: Project, i: number) => (
-              <AnimateUp key={p.id} delay={i * 0.08}>
-                <article
-                  className="project-card-full"
-                  role="listitem"
-                  data-filters={p.filters.join(' ')}
+      <section className="lab-catalogue-section" aria-label="Project catalogue">
+        <div className="container lab-container">
+          <div className="lab-catalogue-controls">
+            <div className="lab-filter-label"><Filter size={15} aria-hidden="true" /> FILTER BY AREA</div>
+            <div className="lab-filter-list" role="group" aria-label="Filter projects">
+              {FILTERS.map((filter) => (
+                <button
+                  type="button"
+                  className={`lab-filter-button${activeFilter === filter.key ? ' is-active' : ''}`}
+                  key={filter.key}
+                  onClick={() => setActiveFilter(filter.key)}
+                  aria-pressed={activeFilter === filter.key}
                 >
-                  <Image
-                    className="project-img"
-                    src={p.img}
-                    alt={`Screenshot of ${p.title}`}
-                    width={640}
-                    height={360}
-                    loading="lazy"
-                    style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover' }}
-                  />
-                  <div className="project-body">
-                    <p className="project-number">
-                      // project_{String(p.id).padStart(2, '0')}
-                    </p>
-                    <div className="project-tags">
-                      {p.technologies.map((t) => (
-                        <span key={t} className="tag">{t}</span>
-                      ))}
-                    </div>
-                    <h2 className="project-title">{p.title}</h2>
-                    <p className="project-desc">{p.desc}</p>
-                    <div className="project-security">
-                      <p className="security-title">
-                        <ShieldCheck size={13} aria-hidden="true" /> ENGINEERING HIGHLIGHTS
-                      </p>
-                      <ul className="security-list">
-                        {p.security.map((s) => (
-                          <li key={s}>{s}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="project-links">
-                      <a
-                        href={p.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-outline"
-                        style={{ fontSize: '.75rem', padding: '8px 16px' }}
-                        aria-label={`View source code for ${p.title} on GitHub`}
-                      >
-                        <GithubIcon size={13} aria-hidden="true" /> Source Code
-                      </a>
-                      {p.live && (
-                        <a
-                          href={p.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn btn-primary"
-                          style={{ fontSize: '.75rem', padding: '8px 16px' }}
-                          aria-label={`View live demo of ${p.title}`}
-                        >
-                          <ExternalLink size={13} aria-hidden="true" /> Live Demo
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </article>
-              </AnimateUp>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* GitHub CTA */}
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="container">
-          <AnimateUp>
-            <div
-              className="cta-box"
-              style={{ background: 'var(--color-bg-card)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-lg)', padding: '48px', textAlign: 'center' }}
-            >
-              <GithubIcon
-                size={38}
-                style={{ color: 'var(--color-text-secondary)', marginBottom: '16px', margin: '0 auto 16px' }}
-                aria-hidden="true"
-              />
-              <h2 style={{ fontFamily: 'var(--font-family-heading)', fontSize: '1.6rem', fontWeight: 800, marginBottom: '10px' }}>
-                See More on GitHub
-              </h2>
-              <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.95rem', maxWidth: '440px', margin: '0 auto 28px' }}>
-                These are my featured projects. Visit my GitHub for more experiments, contributions, and ongoing work.
-              </p>
-              <a
-                href="https://github.com/anubhab7105"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-outline"
-              >
-                <GithubIcon size={15} aria-hidden="true" /> github.com/anubhab7105
-              </a>
+                  {filter.label}
+                </button>
+              ))}
             </div>
-          </AnimateUp>
+            <label className="lab-search">
+              <Search size={16} aria-hidden="true" />
+              <span className="sr-only">Search projects</span>
+              <input
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                placeholder="Search projects, stacks, notes…"
+                type="search"
+              />
+            </label>
+          </div>
+
+          <div className="lab-results-line" aria-live="polite">
+            <span>{String(filteredProjects.length).padStart(2, '0')} RESULTS</span>
+            <span>Selected work · updated from project profiles</span>
+          </div>
+
+          {filteredProjects.length > 0 ? (
+            <div className="lab-catalogue-grid">
+              {filteredProjects.map((project, index) => (
+                <ProjectCard key={project.id} project={project} index={index} />
+              ))}
+            </div>
+          ) : (
+            <div className="lab-no-results">
+              <p className="lab-mono-label">NO MATCHING BUILDS</p>
+              <h2>Try another search.</h2>
+              <p>Clear the search or choose a different project area.</p>
+              <button type="button" className="lab-button lab-button-primary" onClick={() => { setSearch(''); setActiveFilter('all'); }}>
+                Reset filters
+              </button>
+            </div>
+          )}
+
+          <div className="lab-catalogue-endnote">
+            <span className="lab-endnote-mark">AD<span>.</span></span>
+            <p>Project descriptions reflect documented scope. Where accuracy, detection quality, or reliability matters, claims should be backed by measured evaluation.</p>
+            <a href="https://github.com/anubhab7105" target="_blank" rel="noopener noreferrer">More on GitHub <ArrowUpRight size={14} aria-hidden="true" /></a>
+          </div>
         </div>
       </section>
     </main>
