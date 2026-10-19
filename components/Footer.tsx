@@ -40,7 +40,7 @@ export default function Footer() {
         <div className="lab-footer-bottom">
           <span>© {new Date().getFullYear()} Anubhab Das</span>
           <span>KOLKATA, INDIA <i aria-hidden="true" /> BUILT WITH CARE</span>
-          <a href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Back to top ↑</a>
+          <a href="#top">Back to top ↑</a>
         </div>
       </div>
     </footer>
