@@ -276,7 +276,7 @@ export default function HomePage() {
 
       <section ref={principlesStageRef} className="lab-principles-section" aria-labelledby="principles-heading">
         <div className="container lab-container">
-          <div className="lab-principles-intro">
+          <div className="lab-principles-intro" data-scroll-reveal>
             <p className="lab-section-kicker"><span>02</span> HOW I BUILD</p>
             <h2 id="principles-heading" className="lab-section-title">The details are the product.</h2>
             <p>I enjoy the part where the pieces have to become one coherent thing: interface, API, data, edge cases, and trust.</p>
