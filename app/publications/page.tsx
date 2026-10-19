@@ -37,30 +37,6 @@ function AnimateUp({ children, delay = 0 }: { children: React.ReactNode; delay?:
   return <div ref={ref} className="animate-up" style={{ transitionDelay: `${delay}s` }}>{children}</div>;
 }
 
-function CountUp({ target }: { target: number }) {
-  const [n, setN] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        obs.unobserve(el);
-        let cur = 0;
-        const step = Math.ceil(target / 20);
-        const timer = setInterval(() => {
-          cur = Math.min(cur + step, target);
-          setN(cur);
-          if (cur >= target) clearInterval(timer);
-        }, 40);
-      }
-    }, { threshold: 0.5 });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [target]);
-  return <span ref={ref}>{n}</span>;
-}
-
 export default function PublicationsPage() {
   const [currentFilter, setCurrentFilter] = useState('all');
   const [currentSort, setCurrentSort] = useState('newest');
@@ -75,9 +51,6 @@ export default function PublicationsPage() {
     return b.year.localeCompare(a.year);
   });
 
-  const published = PUBLICATIONS.filter((p) => p.status === 'published' || p.status === 'accepted').length;
-  const pending = PUBLICATIONS.filter((p) => p.status === 'under-review' || p.status === 'preprint').length;
-
   return (
     <main className="page-content">
       {/* ── HERO ──────────────────────────────── */}
@@ -87,28 +60,13 @@ export default function PublicationsPage() {
             <div>
               <p className="section-label">Academic Work</p>
               <h1 className="section-title" id="pub-hero-title">Research Publications</h1>
-              <p style={{ color: 'var(--color-text-secondary)', fontSize: '1rem', maxWidth: '560px', marginTop: '14px', lineHeight: '1.8' }}>
+              <p style={{ color: 'var(--color-text-secondary)', fontSize: '1rem', maxWidth: '760px', marginTop: '14px', lineHeight: '1.8' }}>
                 A curated collection of my academic and research contributions — spanning cybersecurity threat detection,
                 web application security, privacy-preserving AI systems, and emerging attack surfaces. Each paper reflects
                 work done at the intersection of rigorous research and real-world security engineering.
               </p>
             </div>
-            <AnimateUp>
-              <div className="pub-stats" aria-label="Publication statistics">
-                <div className="pub-stat">
-                  <span className="pub-stat-num"><CountUp target={PUBLICATIONS.length} /></span>
-                  <span className="pub-stat-label">Papers</span>
-                </div>
-                <div className="pub-stat">
-                  <span className="pub-stat-num"><CountUp target={published} /></span>
-                  <span className="pub-stat-label">Published</span>
-                </div>
-                <div className="pub-stat">
-                  <span className="pub-stat-num"><CountUp target={pending} /></span>
-                  <span className="pub-stat-label">In Progress</span>
-                </div>
-              </div>
-            </AnimateUp>
+
           </div>
         </div>
       </section>
