@@ -25,75 +25,82 @@ const featuredProjects = PROJECTS.filter((project) => [1, 2, 3, 4].includes(proj
 export default function HomePage() {
   return (
     <main className="lab-home">
-      <section className="lab-hero" aria-labelledby="hero-heading">
-        <div className="container lab-container">
-          <div className="lab-hero-copy">
+      <section className="lab-hero lab-hero-centered" aria-labelledby="hero-heading">
+        <div className="container lab-container lab-centered-container">
+          <div className="lab-centered-meta">
             <p className="lab-eyebrow">
               <span className="lab-live-dot" aria-hidden="true" />
               Independent developer <span className="lab-slash">/</span> Kolkata, India
             </p>
-            <h1 id="hero-heading" className="lab-display">
-              Build the thing.
-              <br />
-              <span className="lab-highlight">Understand the system.</span>
-            </h1>
-            <p className="lab-intro">
-              I build full-stack applications, security tools, and AI-assisted systems — and care about the engineering
-              decisions that make them useful, understandable, and resilient.
-            </p>
-            <div className="lab-hero-actions">
-              <Link href="/projects" className="lab-button lab-button-primary">
-                Explore selected work <ArrowUpRight size={17} aria-hidden="true" />
-              </Link>
-              <a
-                href="https://github.com/anubhab7105"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="lab-button lab-button-secondary"
-              >
-                <GithubIcon size={16} aria-hidden="true" /> GitHub <ArrowUpRight size={15} aria-hidden="true" />
-              </a>
+            <span className="lab-centered-edition">PORTFOLIO / 2026</span>
+          </div>
+
+          <div className="lab-centered-stage">
+            <p className="lab-centered-nameplate" aria-hidden="true">ANUBHAB DAS</p>
+
+            <div className="lab-centered-side lab-centered-left">
+              <p className="lab-centered-index">01 / WHAT I BUILD</p>
+              <h1 id="hero-heading" className="lab-centered-headline">
+                Build with intent.
+                <span>Secure by design.</span>
+              </h1>
+              <p className="lab-centered-copy">
+                Full-stack applications, security tools, and AI-assisted systems built to be useful, understandable, and resilient.
+              </p>
+              <div className="lab-centered-tags" aria-label="Areas of focus">
+                <span>FULL-STACK</span>
+                <span>APP SECURITY</span>
+                <span>APPLIED AI</span>
+              </div>
             </div>
-            <div className="lab-focus-line" aria-label="Areas of focus">
-              <span>FULL-STACK</span>
-              <i aria-hidden="true" />
-              <span>APPLICATION SECURITY</span>
-              <i aria-hidden="true" />
-              <span>APPLIED AI</span>
+
+            <figure className="lab-centered-portrait">
+              <div className="lab-centered-photo-frame">
+                <Image
+                  className="lab-centered-photo"
+                  src="/images/protfolio.jpg"
+                  alt="Anubhab Das speaking at a podium during a campus event"
+                  width={1087}
+                  height={1447}
+                  priority
+                  sizes="(max-width: 820px) 78vw, (max-width: 1100px) 42vw, 31vw"
+                />
+                <span className="lab-centered-photo-index">AD / 001</span>
+                <span className="lab-centered-photo-caption">BUILD · SECURE · RESEARCH</span>
+              </div>
+              <figcaption>ENGINEERING WITH CONTEXT <span aria-hidden="true">↗</span></figcaption>
+            </figure>
+
+            <div className="lab-centered-side lab-centered-right">
+              <p className="lab-centered-index">02 / MY APPROACH</p>
+              <div className="lab-centered-shield" aria-hidden="true"><ShieldCheck size={22} /></div>
+              <h2 className="lab-centered-subhead">More than a polished interface.</h2>
+              <p className="lab-centered-copy">
+                I care about the systems behind the screen: validation, clear failure states, privacy, and thoughtful engineering choices.
+              </p>
+              <div className="lab-centered-actions">
+                <Link href="/projects" className="lab-button lab-button-primary">
+                  Explore my work <ArrowUpRight size={16} aria-hidden="true" />
+                </Link>
+                <a
+                  href="https://github.com/anubhab7105"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="lab-centered-github"
+                >
+                  <GithubIcon size={15} aria-hidden="true" /> GitHub <ArrowUpRight size={14} aria-hidden="true" />
+                </a>
+              </div>
             </div>
           </div>
 
-          <aside className="lab-portrait-panel" aria-label="Portrait and professional focus">
-            <div className="lab-portrait-frame">
-              <Image
-                className="lab-portrait-image"
-                src="/images/protfolio.jpg"
-                alt="Anubhab Das speaking at a podium during a campus event"
-                width={1087}
-                height={1447}
-                priority
-                sizes="(max-width: 820px) 100vw, 48vw"
-              />
-              <div className="lab-portrait-topline">
-                <span>ANUBHAB DAS / PROFILE</span>
-                <span className="lab-portrait-online"><i aria-hidden="true" /> OPEN TO OPPORTUNITIES</span>
-              </div>
-              <div className="lab-portrait-overlay">
-                <p className="lab-portrait-overline">BUILD · SECURE · RESEARCH</p>
-                <h2>Engineering that earns trust.</h2>
-              </div>
-            </div>
-            <div className="lab-portrait-caption">
-              <span>FULL-STACK DEVELOPMENT / APPLICATION SECURITY / APPLIED AI</span>
-              <strong>KOLKATA, INDIA ↗</strong>
-            </div>
-          </aside>
-        </div>
-        <div className="lab-hero-bottomline" aria-hidden="true">
-          <span>DESIGN WITH INTENT</span><span>ENGINEER WITH CONTEXT</span><span>SHIP WITH CARE</span>
+          <div className="lab-centered-bottomline" aria-label="Guiding principles">
+            <span><i aria-hidden="true" /> DESIGN WITH INTENT</span>
+            <span>ENGINEER WITH CONTEXT</span>
+            <span>SHIP WITH CARE <b aria-hidden="true">↗</b></span>
+          </div>
         </div>
       </section>
-
       <section className="lab-work-section" aria-labelledby="work-heading">
         <div className="container lab-container">
           <div className="lab-section-heading">
