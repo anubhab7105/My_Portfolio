@@ -1,7 +1,8 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ArrowUpRight, Filter, Github, Search } from 'lucide-react';
+import { ArrowUpRight, Filter, Search } from 'lucide-react';
+import { GithubIcon } from '@/components/SocialIcons';
 import { PROJECTS, type Project } from '@/lib/data/projects';
 
 const FILTERS = [
@@ -56,7 +57,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
       <div className="lab-catalogue-actions">
         <a href={project.github} target="_blank" rel="noopener noreferrer" className="lab-inline-action">
-          <Github size={15} aria-hidden="true" /> Repository <ArrowUpRight size={15} aria-hidden="true" />
+          <GithubIcon size={15} aria-hidden="true" /> Repository <ArrowUpRight size={15} aria-hidden="true" />
         </a>
         {project.live && (
           <a href={project.live} target="_blank" rel="noopener noreferrer" className="lab-inline-action">
