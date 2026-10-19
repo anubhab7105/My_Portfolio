@@ -1,8 +1,10 @@
 'use client';
 
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
+  ArrowDown,
   ArrowRight,
   ArrowUpRight,
   Boxes,
@@ -23,74 +25,136 @@ const PROJECT_AREAS: Record<number, string> = {
 const featuredProjects = PROJECTS.filter((project) => [1, 2, 3, 4].includes(project.id));
 
 export default function HomePage() {
+  const heroStoryRef = useRef<HTMLElement | null>(null);
+  const heroFrameRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const story = heroStoryRef.current;
+    const frame = heroFrameRef.current;
+    if (!story || !frame) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let animationFrame = 0;
+
+    const applyScrollProgress = () => {
+      animationFrame = 0;
+
+      if (reduceMotion.matches) {
+        frame.style.setProperty('--hero-progress', '0');
+        frame.style.setProperty('--hero-scale', '1');
+        frame.style.setProperty('--hero-radius', '0px');
+        frame.style.setProperty('--hero-shadow-alpha', '0');
+        frame.style.setProperty('--hero-photo-shift', '0px');
+        return;
+      }
+
+      const storyTop = story.getBoundingClientRect().top + window.scrollY;
+      const scrollRange = Math.max(1, story.offsetHeight - window.innerHeight);
+      const rawProgress = (window.scrollY - storyTop) / scrollRange;
+      const progress = Math.min(1, Math.max(0, rawProgress));
+      const eased = progress * progress * (3 - 2 * progress);
+
+      frame.style.setProperty('--hero-progress', eased.toFixed(4));
+      frame.style.setProperty('--hero-scale', (1 - eased * 0.24).toFixed(4));
+      frame.style.setProperty('--hero-radius', `${(eased * 28).toFixed(2)}px`);
+      frame.style.setProperty('--hero-shadow-alpha', (eased * 0.44).toFixed(3));
+      frame.style.setProperty('--hero-photo-shift', `${(eased * 16).toFixed(2)}px`);
+    };
+
+    const scheduleProgressUpdate = () => {
+      if (animationFrame === 0) {
+        animationFrame = window.requestAnimationFrame(applyScrollProgress);
+      }
+    };
+
+    scheduleProgressUpdate();
+    window.addEventListener('scroll', scheduleProgressUpdate, { passive: true });
+    window.addEventListener('resize', scheduleProgressUpdate);
+    reduceMotion.addEventListener('change', scheduleProgressUpdate);
+
+    return () => {
+      window.removeEventListener('scroll', scheduleProgressUpdate);
+      window.removeEventListener('resize', scheduleProgressUpdate);
+      reduceMotion.removeEventListener('change', scheduleProgressUpdate);
+      if (animationFrame !== 0) window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
   return (
     <main className="lab-home">
-      <section className="lab-hero" aria-labelledby="hero-heading">
-        <div className="container lab-container">
-          <div className="lab-hero-copy">
-            <p className="lab-eyebrow">
-              <span className="lab-live-dot" aria-hidden="true" />
-              Independent developer <span className="lab-slash">/</span> Kolkata, India
-            </p>
-            <h1 id="hero-heading" className="lab-display">
-              Build the thing.
-              <br />
-              <span className="lab-highlight">Understand the system.</span>
-            </h1>
-            <p className="lab-intro">
-              I build full-stack applications, security tools, and AI-assisted systems — and care about the engineering
-              decisions that make them useful, understandable, and resilient.
-            </p>
-            <div className="lab-hero-actions">
-              <Link href="/projects" className="lab-button lab-button-primary">
-                Explore selected work <ArrowUpRight size={17} aria-hidden="true" />
-              </Link>
-              <a
-                href="https://github.com/anubhab7105"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="lab-button lab-button-secondary"
-              >
-                <GithubIcon size={16} aria-hidden="true" /> GitHub <ArrowUpRight size={15} aria-hidden="true" />
-              </a>
-            </div>
-            <div className="lab-focus-line" aria-label="Areas of focus">
-              <span>FULL-STACK</span>
-              <i aria-hidden="true" />
-              <span>APPLICATION SECURITY</span>
-              <i aria-hidden="true" />
-              <span>APPLIED AI</span>
-            </div>
-          </div>
-
-          <aside className="lab-portrait-panel" aria-label="Portrait and professional focus">
-            <div className="lab-portrait-frame">
+      <section
+        ref={heroStoryRef}
+        className="lab-hero-story"
+        aria-label="Anubhab Das introduction"
+      >
+        <div className="lab-hero-sticky">
+          <div ref={heroFrameRef} className="lab-hero-frame">
+            <section className="lab-hero" aria-labelledby="hero-heading">
+              <div className="lab-hero-glow" aria-hidden="true" />
               <Image
-                className="lab-portrait-image"
+                className="lab-hero-portrait"
                 src="/images/protfolio.jpg"
-                alt="Anubhab Das speaking at a podium during a campus event"
+                alt="Anubhab Das at a campus event"
                 width={1087}
                 height={1447}
                 priority
-                sizes="(max-width: 820px) 100vw, 48vw"
+                sizes="(max-width: 820px) 100vw, 70vw"
               />
-              <div className="lab-portrait-topline">
-                <span>ANUBHAB DAS / PROFILE</span>
-                <span className="lab-portrait-online"><i aria-hidden="true" /> OPEN TO OPPORTUNITIES</span>
+              <div className="lab-hero-photo-tint" aria-hidden="true" />
+
+              <div className="lab-hero-content">
+                <p className="lab-eyebrow">
+                  <span className="lab-live-dot" aria-hidden="true" />
+                  B.SC. CYBER SECURITY <span className="lab-slash">/</span> GNIT KOLKATA
+                </p>
+                <h1 id="hero-heading" className="lab-display">
+                  Build useful
+                  <br />
+                  things.
+                  <br />
+                  <span className="lab-hero-highlight">Secure by design.</span>
+                </h1>
+                <p className="lab-intro">
+                  I’m Anubhab Das — a cybersecurity student and developer building full-stack applications,
+                  security tools, and AI-assisted systems.
+                </p>
+                <div className="lab-hero-actions">
+                  <Link href="/projects" className="lab-button lab-button-primary">
+                    Explore selected work <ArrowUpRight size={17} aria-hidden="true" />
+                  </Link>
+                  <a
+                    href="/images/AnubhabDasResume.pdf"
+                    download
+                    className="lab-button lab-button-secondary"
+                  >
+                    View résumé <ArrowUpRight size={15} aria-hidden="true" />
+                  </a>
+                </div>
+                <div className="lab-focus-line" aria-label="Areas of focus">
+                  <span>FULL-STACK</span>
+                  <i aria-hidden="true" />
+                  <span>APPLICATION SECURITY</span>
+                  <i aria-hidden="true" />
+                  <span>APPLIED AI</span>
+                </div>
               </div>
-              <div className="lab-portrait-overlay">
-                <p className="lab-portrait-overline">BUILD · SECURE · RESEARCH</p>
-                <h2>Engineering that earns trust.</h2>
+
+              <div className="lab-hero-side-notes" aria-hidden="true">
+                <p>FULL-STACK<br />ENGINEERING</p>
+                <p>APPLICATION<br />SECURITY</p>
+                <p>APPLIED AI<br />&amp; RESEARCH</p>
               </div>
-            </div>
-            <div className="lab-portrait-caption">
-              <span>FULL-STACK DEVELOPMENT / APPLICATION SECURITY / APPLIED AI</span>
-              <strong>KOLKATA, INDIA ↗</strong>
-            </div>
-          </aside>
-        </div>
-        <div className="lab-hero-bottomline" aria-hidden="true">
-          <span>DESIGN WITH INTENT</span><span>ENGINEER WITH CONTEXT</span><span>SHIP WITH CARE</span>
+
+              <div className="lab-hero-bottomline" aria-hidden="true">
+                <span>BUILD WITH INTENT</span>
+                <span>SECURE BY DESIGN</span>
+                <span>SHIP WITH CARE</span>
+              </div>
+              <a href="#work-heading" className="lab-scroll-cue" aria-label="Scroll to selected work">
+                SCROLL TO EXPLORE <ArrowDown size={14} aria-hidden="true" />
+              </a>
+            </section>
+          </div>
         </div>
       </section>
 
