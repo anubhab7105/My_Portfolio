@@ -14,17 +14,17 @@ export default function Footer() {
     <footer className="lab-footer" role="contentinfo">
       <div className="container lab-container">
         <div className="lab-footer-main">
-          <div className="lab-footer-brand">
+          <div className="lab-footer-brand" data-scroll-reveal>
             <Link href="/" className="lab-footer-mark">AD<span>.</span></Link>
             <p>Thoughtful software.<br />Systems built with intent.</p>
           </div>
-          <div className="lab-footer-nav">
+          <div className="lab-footer-nav" data-scroll-reveal>
             <span className="lab-mono-label">EXPLORE</span>
             {footerLinks.map((link) => (
               <Link key={link.href} href={link.href}>{link.label}</Link>
             ))}
           </div>
-          <div className="lab-footer-connect">
+          <div className="lab-footer-connect" data-scroll-reveal>
             <span className="lab-mono-label">FIND ME ELSEWHERE</span>
             <a href="https://github.com/anubhab7105" target="_blank" rel="noopener noreferrer">
               <GithubIcon size={15} aria-hidden="true" /> GitHub <ArrowUpRight size={14} aria-hidden="true" />
@@ -37,7 +37,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <div className="lab-footer-bottom">
+        <div className="lab-footer-bottom" data-scroll-reveal>
           <span>© {new Date().getFullYear()} Anubhab Das</span>
           <span>KOLKATA, INDIA <i aria-hidden="true" /> BUILT WITH CARE</span>
           <a href="#top">Back to top ↑</a>

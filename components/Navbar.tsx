@@ -30,7 +30,7 @@ export default function Navbar() {
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header id="top" className={`lab-navbar${scrolled ? ' has-scrolled' : ''}`}>
+    <header id="top" className={`lab-navbar${pathname === '/' ? ' is-home' : ''}${scrolled ? ' has-scrolled' : ''}`}>
       <nav className="lab-nav-inner" aria-label="Main navigation">
         <Link href="/" className="lab-brand" aria-label="Anubhab Das, home">
           <span className="lab-brand-mark">AD<span>.</span></span>
