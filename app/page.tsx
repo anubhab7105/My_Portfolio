@@ -232,8 +232,9 @@ export default function HomePage() {
                       )}
                     </div>
                   </div>
-                </AnimateUp>
-              ))}
+                </article>
+              </AnimateUp>
+            ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: '40px' }}>
             <Link href="/projects" className="btn btn-outline">
