@@ -13,6 +13,13 @@ import {
 import { GithubIcon } from '@/components/SocialIcons';
 import { PROJECTS } from '@/lib/data/projects';
 
+const PROJECT_AREAS: Record<number, string> = {
+  1: 'Multi-agent AI',
+  2: 'Identity screening',
+  3: 'Email forensics',
+  4: 'Web security',
+};
+
 const featuredProjects = PROJECTS.filter((project) => [1, 2, 3, 4].includes(project.id));
 
 export default function HomePage() {
