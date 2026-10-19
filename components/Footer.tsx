@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { ArrowUpRight, Github } from 'lucide-react';
-import { LinkedinIcon } from '@/components/SocialIcons';
+import { ArrowUpRight } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from '@/components/SocialIcons';
 
 const footerLinks = [
   { href: '/projects', label: 'Work' },
@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="lab-footer-connect">
             <span className="lab-mono-label">FIND ME ELSEWHERE</span>
             <a href="https://github.com/anubhab7105" target="_blank" rel="noopener noreferrer">
-              <Github size={15} aria-hidden="true" /> GitHub <ArrowUpRight size={14} aria-hidden="true" />
+              <GithubIcon size={15} aria-hidden="true" /> GitHub <ArrowUpRight size={14} aria-hidden="true" />
             </a>
             <a href="https://www.linkedin.com/in/anubhab7105/" target="_blank" rel="noopener noreferrer">
               <LinkedinIcon size={15} aria-hidden="true" /> LinkedIn <ArrowUpRight size={14} aria-hidden="true" />
