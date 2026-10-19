@@ -11,15 +11,13 @@ import {
   GitBranch,
   LockKeyhole,
   ShieldCheck,
+  MapPin,
+  GraduationCap,
+  Briefcase,
+  Languages,
 } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from '@/components/SocialIcons';
 import { PROJECTS } from '@/lib/data/projects';
-
-const PROJECT_AREAS: Record<number, string> = {
-  1: 'Multi-agent AI',
-  2: 'Identity screening',
-  3: 'Email forensics',
-  4: 'Web security',
-};
 
 const featuredProjects = PROJECTS.filter((project) => [1, 2, 3, 4].includes(project.id));
 
@@ -211,7 +209,7 @@ export default function HomePage() {
                 <span>SECURE BY DESIGN</span>
                 <span>SHIP WITH CARE</span>
               </div>
-              <a href="#work-heading" className="lab-scroll-cue" aria-label="Scroll to selected work">
+              <a href="#about-home-heading" className="lab-scroll-cue" aria-label="Scroll to about Anubhab">
                 SCROLL TO EXPLORE <ArrowDown size={14} aria-hidden="true" />
               </a>
             </section>
@@ -219,57 +217,126 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="lab-work-section" aria-labelledby="work-heading">
+      <section id="about" className="lab-about-section" aria-labelledby="about-home-heading">
         <div className="container lab-container">
-          <div className="lab-section-heading" data-scroll-reveal>
-            <div>
-              <p className="lab-section-kicker"><span>01</span> SELECTED WORK</p>
-              <h2 id="work-heading" className="lab-section-title">Problems worth getting into.</h2>
+          <div className="lab-about-heading" data-scroll-reveal>
+            <p className="lab-section-kicker"><span>01</span> ABOUT ME / THE PERSON BEHIND THE BUILDS</p>
+            <h2 id="about-home-heading" className="lab-section-title">Security-first builder<br />from Kolkata, India.</h2>
+            <p className="lab-about-lead">I build useful software, with an eye on how it works, how it fails, and how it earns trust.</p>
+          </div>
+
+          <div className="lab-about-grid">
+            <div className="lab-about-copy" data-scroll-reveal>
+              <p>
+                I’m <strong>Anubhab Das</strong>, a B.Sc. Cyber Security student at Guru Nanak Institute of Technology
+                (MAKAUT), Kolkata, studying from 2024 to 2028. I’m interested in building software that is useful,
+                understandable, and designed with security in mind.
+              </p>
+              <p>
+                My work spans full-stack development, web application security, and applied AI. I build with Python,
+                JavaScript, TypeScript, React, Next.js, Flask, FastAPI, and Node.js, with attention to input validation,
+                security controls, testing, and clear failure states.
+              </p>
+              <p>
+                I’m also interested in security research, including blockchain security, TinyML, and privacy-aware AI.
+                Alongside my technical work, I serve as a Class Representative, Vice-Captain of the GNIT Football Team,
+                and Event Co-Head for Creative Strokes (Euphonious X Zyzzva 2K26).
+              </p>
+
+              <div className="lab-about-focus-grid">
+                <article>
+                  <span>01 / ENGINEERING</span>
+                  <h3>Connect the whole system.</h3>
+                  <p>Frontend, APIs, data, testing, and thoughtful failure states — not just the happy path.</p>
+                </article>
+                <article>
+                  <span>02 / SECURITY</span>
+                  <h3>Build with trust in mind.</h3>
+                  <p>Threats, permissions, validation, and privacy belong in the design from the start.</p>
+                </article>
+              </div>
+
+              <div className="lab-about-actions">
+                <Link href="/about" className="lab-button lab-button-primary">
+                  Full background <ArrowUpRight size={16} aria-hidden="true" />
+                </Link>
+                <a href="/images/AnubhabDasResume.pdf" download className="lab-button lab-button-secondary">
+                  Download résumé <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              </div>
             </div>
-            <p className="lab-section-summary">
-              A few projects from the overlap between web engineering, security, and applied AI. Each one starts with a
-              problem, not a tech-stack checklist.
-            </p>
-          </div>
 
-          <div className="lab-project-grid">
-            {featuredProjects.map((project, index) => (
-              <article className={`lab-project-card lab-project-card-${index + 1}`} key={project.id} data-scroll-reveal>
-                <div className="lab-project-card-top">
-                  <span className="lab-project-number">PROJECT / {String(index + 1).padStart(2, '0')}</span>
-                  <span className="lab-project-area">{PROJECT_AREAS[project.id] ?? 'Application engineering'}</span>
+            <aside className="lab-about-sidebar" data-scroll-reveal aria-label="Profile and quick information">
+              <div className="lab-about-profile">
+                <div className="lab-about-portrait-wrap">
+                  <Image
+                    src="/images/protfolio.jpg"
+                    alt="Anubhab Das speaking at a campus event"
+                    width={1087}
+                    height={1447}
+                    loading="lazy"
+                    sizes="(max-width: 820px) 100vw, 38vw"
+                  />
                 </div>
-                <div className="lab-project-heading">
-                  <h3>{project.title}</h3>
-                  <p>{project.desc}</p>
-                </div>
-                <div className="lab-project-points">
-                  {project.security.slice(0, 2).map((item) => (
-                    <p key={item}><span aria-hidden="true">↳</span>{item}</p>
-                  ))}
-                </div>
-                <div className="lab-project-tech" aria-label="Technologies">
-                  {project.technologies.slice(0, 5).map((technology) => (
-                    <span key={technology}>{technology}</span>
-                  ))}
-                </div>
-                <div className="lab-project-links">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">
-                    Source <ArrowUpRight size={15} aria-hidden="true" />
-                  </a>
-                  {project.live && (
-                    <a href={project.live} target="_blank" rel="noopener noreferrer">
-                      Live project <ArrowUpRight size={15} aria-hidden="true" />
+                <div className="lab-about-profile-meta">
+                  <span>ANUBHAB DAS / KOLKATA, INDIA</span>
+                  <h3>Developer, security learner, and researcher.</h3>
+                  <div className="lab-about-socials" aria-label="Social profiles">
+                    <a href="https://github.com/anubhab7105" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                      <GithubIcon size={16} aria-hidden="true" />
                     </a>
-                  )}
+                    <a href="https://www.linkedin.com/in/anubhab7105/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                      <LinkedinIcon size={16} aria-hidden="true" />
+                    </a>
+                    <a href="mailto:anubhab7105@gmail.com" aria-label="Email Anubhab">
+                      <ArrowUpRight size={16} aria-hidden="true" />
+                    </a>
+                  </div>
                 </div>
-              </article>
-            ))}
+              </div>
+
+              <div className="lab-about-facts">
+                <div className="lab-about-fact">
+                  <GraduationCap size={18} aria-hidden="true" />
+                  <div>
+                    <span>EDUCATION</span>
+                    <strong>B.Sc. Cyber Security</strong>
+                    <small>GNIT · 2024–2028</small>
+                  </div>
+                </div>
+                <div className="lab-about-fact">
+                  <Briefcase size={18} aria-hidden="true" />
+                  <div>
+                    <span>EXPERIENCE</span>
+                    <strong>Web development internships</strong>
+                    <small>Infotact · Prodigy · iStudio</small>
+                  </div>
+                </div>
+                <div className="lab-about-fact">
+                  <Languages size={18} aria-hidden="true" />
+                  <div>
+                    <span>FOCUS</span>
+                    <strong>Full-stack · Application security · Applied AI</strong>
+                  </div>
+                </div>
+                <div className="lab-about-fact">
+                  <MapPin size={18} aria-hidden="true" />
+                  <div>
+                    <span>BASED IN</span>
+                    <strong>Kolkata, West Bengal, India</strong>
+                  </div>
+                </div>
+              </div>
+            </aside>
           </div>
 
-          <div className="lab-work-footer" data-scroll-reveal>
-            <p>Want the implementation details, trade-offs, and the rest of the catalogue?</p>
-            <Link href="/projects" className="lab-text-link">Explore all projects <ArrowRight size={16} aria-hidden="true" /></Link>
+          <div className="lab-about-toolkit" data-scroll-reveal>
+            <span>CORE TOOLKIT</span>
+            <div>
+              {['Python', 'TypeScript', 'React', 'Next.js', 'FastAPI', 'Flask', 'OWASP Top 10', 'scikit-learn', 'Git & GitHub', 'PostgreSQL'].map((skill) => (
+                <span key={skill}>{skill}</span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
