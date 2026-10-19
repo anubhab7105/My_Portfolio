@@ -12,7 +12,6 @@ import {
   LockKeyhole,
   ShieldCheck,
 } from 'lucide-react';
-import { GithubIcon } from '@/components/SocialIcons';
 import { PROJECTS } from '@/lib/data/projects';
 
 const PROJECT_AREAS: Record<number, string> = {
@@ -284,21 +283,30 @@ export default function HomePage() {
           </div>
           <div className="lab-principles-window">
             <div ref={principlesRailRef} className="lab-principle-list">
-            <article data-scroll-reveal>
-              <span className="lab-principle-icon"><Boxes size={20} aria-hidden="true" /></span>
-              <div><h3>Connect the layers</h3><p>Build beyond the happy-path UI — through API contracts, data models, integration, and useful failure states.</p></div>
-              <span className="lab-principle-index">A / 01</span>
-            </article>
-            <article data-scroll-reveal>
-              <span className="lab-principle-icon"><ShieldCheck size={20} aria-hidden="true" /></span>
-              <div><h3>Make trust part of the design</h3><p>Think about inputs, permissions, secrets, privacy, and abuse cases while the architecture is still being shaped.</p></div>
-              <span className="lab-principle-index">B / 02</span>
-            </article>
-            <article data-scroll-reveal>
-              <span className="lab-principle-icon"><GitBranch size={20} aria-hidden="true" /></span>
-              <div><h3>Leave the work understandable</h3><p>Readable code, useful tests, clear documentation, and honest explanations of what a system can and cannot do.</p></div>
-              <span className="lab-principle-index">C / 03</span>
-            </article>
+              <article data-scroll-reveal>
+                <span className="lab-principle-icon"><Boxes size={20} aria-hidden="true" /></span>
+                <div>
+                  <h3>Connect the layers</h3>
+                  <p>Build beyond the happy-path UI — through API contracts, data models, integration, and useful failure states.</p>
+                </div>
+                <span className="lab-principle-index">A / 01</span>
+              </article>
+              <article data-scroll-reveal>
+                <span className="lab-principle-icon"><ShieldCheck size={20} aria-hidden="true" /></span>
+                <div>
+                  <h3>Make trust part of the design</h3>
+                  <p>Think about inputs, permissions, secrets, privacy, and abuse cases while the architecture is still being shaped.</p>
+                </div>
+                <span className="lab-principle-index">B / 02</span>
+              </article>
+              <article data-scroll-reveal>
+                <span className="lab-principle-icon"><GitBranch size={20} aria-hidden="true" /></span>
+                <div>
+                  <h3>Leave the work understandable</h3>
+                  <p>Readable code, useful tests, clear documentation, and honest explanations of what a system can and cannot do.</p>
+                </div>
+                <span className="lab-principle-index">C / 03</span>
+              </article>
             </div>
           </div>
         </div>
