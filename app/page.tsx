@@ -263,6 +263,9 @@ export default function HomePage() {
                 <a href="/images/AnubhabDasResume.pdf" download className="lab-button lab-button-secondary">
                   Download résumé <ArrowUpRight size={15} aria-hidden="true" />
                 </a>
+                <Link href="/projects" className="lab-button lab-button-secondary">
+                  View projects <ArrowUpRight size={15} aria-hidden="true" />
+                </Link>
               </div>
             </div>
 
