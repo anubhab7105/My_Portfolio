@@ -158,7 +158,8 @@ export default function HomePage() {
                   alt="Anubhab Das speaking at a campus event"
                   width={1087}
                   height={1447}
-                  priority
+                  loading="eager"
+                  fetchPriority="high"
                   sizes="100vw"
                 />
               </picture>
