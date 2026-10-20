@@ -3053,7 +3053,7 @@ footer.lab-footer {
 .lab-next-panel[data-scroll-reveal] { transition-delay: 90ms; }
 
 /* Desktop uses the supplied wide shot. Keep the left side dark enough for the hero copy. */
-@media (min-width: 821px) {
+@media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
   .lab-hero-story .lab-hero-portrait {
     top: 0;
     right: 0;
