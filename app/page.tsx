@@ -152,7 +152,7 @@ export default function HomePage() {
               <div className="lab-hero-glow" aria-hidden="true" />
               <picture className="lab-hero-picture">
                 <source
-                  media="(min-width: 821px)"
+                  media="(min-width: 1025px)"
                   srcSet="/images/hero-portrait-desktop.webp"
                   type="image/webp"
                 />
