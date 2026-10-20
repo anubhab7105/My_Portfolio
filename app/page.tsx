@@ -152,7 +152,7 @@ export default function HomePage() {
               <div className="lab-hero-glow" aria-hidden="true" />
               <picture className="lab-hero-picture">
                 <source
-                  media="(min-width: 1025px)"
+                  media="(min-width: 1025px) and (hover: hover) and (pointer: fine)"
                   srcSet="/images/hero-portrait-desktop.webp"
                   type="image/webp"
                 />
@@ -162,7 +162,8 @@ export default function HomePage() {
                   alt="Anubhab Das at a campus event"
                   width={1087}
                   height={1447}
-                  priority
+                  loading="eager"
+                  fetchPriority="high"
                   sizes="100vw"
                 />
               </picture>
