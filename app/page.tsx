@@ -150,15 +150,22 @@ export default function HomePage() {
           <div ref={heroFrameRef} className="lab-hero-frame">
             <section className="lab-hero" aria-labelledby="hero-heading">
               <div className="lab-hero-glow" aria-hidden="true" />
-              <Image
-                className="lab-hero-portrait"
-                src="/images/protfolio.jpg"
-                alt="Anubhab Das at a campus event"
-                width={1087}
-                height={1447}
-                priority
-                sizes="(max-width: 820px) 100vw, 70vw"
-              />
+              <picture className="lab-hero-picture">
+                <source
+                  media="(min-width: 821px)"
+                  srcSet="/images/hero-portrait-desktop.webp"
+                  type="image/webp"
+                />
+                <Image
+                  className="lab-hero-portrait"
+                  src="/images/protfolio.jpg"
+                  alt="Anubhab Das at a campus event"
+                  width={1087}
+                  height={1447}
+                  priority
+                  sizes="100vw"
+                />
+              </picture>
               <div className="lab-hero-photo-tint" aria-hidden="true" />
 
               <div className="lab-hero-content">
