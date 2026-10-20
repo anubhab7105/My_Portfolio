@@ -153,7 +153,7 @@ export default function HomePage() {
               <picture className="lab-hero-picture">
                 <source
                   media="(min-width: 1025px) and (hover: hover) and (pointer: fine)"
-                  srcSet="/images/hero-portrait-desktop.webp"
+                  srcSet="/images/hero-portrait-desktop-v2.webp"
                   type="image/webp"
                 />
                 <Image
