@@ -151,11 +151,15 @@ export default function HomePage() {
             <section className="lab-hero" aria-labelledby="hero-heading">
               <div className="lab-hero-glow" aria-hidden="true" />
               <picture className="lab-hero-picture">
-                <source media="(min-width: 1025px) and (hover: hover) and (pointer: fine)" srcSet="/images/Anubhab_Desktop.webp" />
+                <source
+                  media="(min-width: 1025px) and (hover: hover) and (pointer: fine)"
+                  srcSet="/images/hero-portrait-desktop.webp"
+                  type="image/webp"
+                />
                 <Image
                   className="lab-hero-portrait"
                   src="/images/protfolio.jpg"
-                  alt="Anubhab Das speaking at a campus event"
+                  alt="Anubhab Das at a campus event"
                   width={1087}
                   height={1447}
                   loading="eager"
