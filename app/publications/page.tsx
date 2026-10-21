@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 import { Link2, GraduationCap } from 'lucide-react';
 import { PUBLICATIONS, STATUS_CONFIG, type Publication } from '@/lib/data/publications';
 
@@ -13,14 +12,6 @@ const FILTERS = [
   { key: 'privacy', label: 'Privacy' },
   { key: 'blockchain', label: 'Blockchain' },
 ];
-
-const ICON_MAP: Record<string, string> = {
-  cybersecurity: '🛡️',
-  'web-security': '🌐',
-  'ai-ml': '🤖',
-  privacy: '🔒',
-  blockchain: '⛓️',
-};
 
 function AnimateUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -128,35 +119,17 @@ export default function PublicationsPage() {
                       data-filters={pub.filters.join(' ')}
                       aria-label={`Publication: ${pub.title}`}
                     >
-                      <div className="pub-thumb">
-                        {pub.img ? (
-                          <Image
-                            className="pub-thumb-img"
-                            src={pub.img}
-                            alt={`Thumbnail for ${pub.title}`}
-                            width={640}
-                            height={360}
-                            loading="lazy"
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                          />
-                        ) : (
-                          <div className="pub-thumb-placeholder" aria-hidden="true">
-                            <span className="pub-thumb-icon">
-                              {ICON_MAP[pub.filters[0]] || '📄'}
-                            </span>
-                          </div>
-                        )}
-                        <span
-                          className={`pub-status-badge ${sc.cssClass}`}
-                          role="status"
-                          aria-label={`Status: ${sc.label}`}
-                        >
-                          {sc.label}
-                        </span>
-                      </div>
-
                       <div className="pub-body">
-                        <p className="pub-ref">// pub_{String(pub.id).padStart(2, '0')}</p>
+                        <div className="pub-card-meta">
+                          <p className="pub-ref">// pub_{String(pub.id).padStart(2, '0')}</p>
+                          <span
+                            className={`pub-status-badge ${sc.cssClass}`}
+                            role="status"
+                            aria-label={`Status: ${sc.label}`}
+                          >
+                            {sc.label}
+                          </span>
+                        </div>
 
                         {pub.tags && pub.tags.length > 0 && (
                           <div className="pub-tags" aria-label="Publication tags">
