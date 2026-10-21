@@ -23,7 +23,6 @@ const PROJECT_AREAS: Record<number, string> = {
   6: 'Backend modernization',
   7: 'Creative coding',
   8: 'Authentication',
-  9: 'Data visualization',
 };
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -32,7 +31,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <div className="lab-catalogue-card-top">
         <span className="lab-catalogue-index">/{String(index + 1).padStart(2, '0')}</span>
         <span className="lab-catalogue-area">{PROJECT_AREAS[project.id] ?? 'Software engineering'}</span>
-        {project.featured && <span className="lab-catalogue-featured">SELECTED</span>}
       </div>
 
       <div className="lab-catalogue-main">
@@ -139,7 +137,7 @@ export default function ProjectsPage() {
 
           <div className="lab-results-line" aria-live="polite">
             <span>{String(filteredProjects.length).padStart(2, '0')} RESULTS</span>
-            <span>Selected work · updated from project profiles</span>
+            <span>Project archive · updated from project profiles</span>
           </div>
 
           {filteredProjects.length > 0 ? (
