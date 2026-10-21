@@ -140,20 +140,6 @@ export const PROJECTS: Project[] = [
     ],
     featured: false,
   },
-  {
-    id: 9,
-    title: 'HealthMetrics Dashboard',
-    desc: 'A dashboard for visualizing health and fitness metrics through interactive charts.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'Chart.js', 'Bootstrap'],
-    filters: ['javascript'],
-    github: 'https://github.com/anubhab7105/HealthMetricsDashboard',
-    live: 'https://anubhab7105.github.io/HealthMetricsDashboard/',
-    security: [
-      'Interactive health and fitness metric visualizations',
-      'Responsive dashboard layout',
-    ],
-    featured: false,
-  },
 ];
 
 export const FEATURED_PROJECTS = PROJECTS.filter((p) => p.featured);
