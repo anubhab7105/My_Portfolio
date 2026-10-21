@@ -1640,31 +1640,6 @@ footer {
   box-shadow: var(--shadow-glow);
   transform: translateY(-4px);
 }
-.pub-thumb {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: var(--color-bg-secondary);
-}
-.pub-thumb-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.pub-thumb-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-bg-secondary);
-}
-.pub-thumb-icon {
-  font-size: 2.5rem;
-  color: var(--color-text-muted);
-  opacity: 0.4;
-}
-
 .pub-status-badge.published {
   background: rgba(39, 201, 63, 0.15);
   color: #27c93f;
@@ -2293,7 +2268,6 @@ a:hover { color: var(--lab-blue); }
 .lab-catalogue-card-top { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; padding-bottom: 15px; border-bottom: 1px solid #e8e9e1; }
 .lab-catalogue-index { font: .68rem 'JetBrains Mono', monospace; color: #81897b; margin-right: auto; }
 .lab-catalogue-area { background: #f0f3e9; border: 1px solid #e0e7d5; color: #4e6a3d; padding: 5px 9px; border-radius: 999px; font-size: .64rem; font-weight: 700; }
-.lab-catalogue-featured { font: .55rem 'JetBrains Mono', monospace; color: #5b783c; letter-spacing: .08em; }
 .lab-catalogue-main h2 { font: 800 clamp(1.2rem, 1.8vw, 1.6rem)/1.2 'Syne', sans-serif; letter-spacing: -.045em; margin: 21px 0 10px; overflow-wrap: anywhere; }
 .lab-catalogue-desc { color: #626b60; font-size: .85rem; line-height: 1.72; }
 .lab-catalogue-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 17px; }
@@ -2356,10 +2330,6 @@ a:hover { color: var(--lab-blue); }
 .form-status.error { background: #fbefeb; color: #9d4834; border-color: #ecd1c6; }
 .publications-grid { gap: 18px; }
 .pub-card { overflow: hidden; }
-.pub-thumb { background: #e8ece2; }
-.pub-thumb-placeholder { background: linear-gradient(135deg, #eff2e7, #e1e8d9); }
-.pub-thumb-icon { color: var(--lab-green); }
-
 .pub-controls { background: transparent; }
 .pub-filter-group .filter-btn, .projects-filter .filter-btn {
   border-radius: 999px; border-color: #d9ddd2; color: #5b6557; background: transparent;
@@ -3216,4 +3186,108 @@ footer.lab-footer {
       linear-gradient(180deg, rgba(0, 0, 0, .12) 0%, transparent 35%, rgba(0, 0, 0, .62) 100%);
     mix-blend-mode: multiply;
   }
+}
+
+
+/* Bento grids — project archive and research cards */
+.lab-catalogue-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+  grid-auto-flow: row dense;
+}
+.lab-catalogue-card {
+  grid-column: span 6;
+  min-width: 0;
+  min-height: 100%;
+  padding: clamp(22px, 2.2vw, 30px);
+  border-color: var(--lab-line);
+  border-radius: 20px;
+  background: var(--lab-white);
+}
+.lab-catalogue-card:nth-child(6n + 1),
+.lab-catalogue-card:nth-child(6n + 4) { grid-column: span 7; }
+.lab-catalogue-card:nth-child(6n + 2),
+.lab-catalogue-card:nth-child(6n + 3) { grid-column: span 5; }
+.lab-catalogue-card:nth-child(6n + 5),
+.lab-catalogue-card:nth-child(6n + 6) { grid-column: span 6; }
+.lab-catalogue-card:only-child { grid-column: 1 / -1; }
+.lab-catalogue-card:hover {
+  border-color: var(--lab-lime-strong);
+  box-shadow: var(--lab-shadow);
+}
+.lab-catalogue-main { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+.lab-catalogue-main h2 {
+  max-width: 24ch;
+  margin-top: 23px;
+  font-size: clamp(1.35rem, 1.8vw, 1.72rem);
+  line-height: 1.15;
+}
+.lab-catalogue-desc { max-width: 66ch; }
+.lab-catalogue-notes { margin-top: 25px; }
+.lab-catalogue-actions { padding-top: 18px; }
+
+/* Publications have no thumbnails: metadata and status sit in the card header. */
+.publications-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+.publications-grid > .animate-up { display: flex; min-width: 0; }
+.publications-grid > .animate-up:nth-child(4n + 1),
+.publications-grid > .animate-up:nth-child(4n + 4) { grid-column: span 7; }
+.publications-grid > .animate-up:nth-child(4n + 2),
+.publications-grid > .animate-up:nth-child(4n + 3) { grid-column: span 5; }
+.publications-grid > .animate-up:only-child { grid-column: 1 / -1; }
+.publications-grid > .animate-up .pub-card {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border-color: var(--lab-line);
+  background: var(--lab-white);
+}
+.pub-body { width: 100%; padding: clamp(22px, 2.25vw, 32px); gap: 13px; }
+.pub-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+.pub-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-family: var(--font-family-mono);
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.pub-title {
+  font-size: clamp(1.05rem, 1.3vw, 1.32rem);
+  line-height: 1.27;
+  overflow-wrap: anywhere;
+}
+.pub-abstract { -webkit-line-clamp: 5; font-size: .85rem; }
+.pub-actions { padding-top: 12px; }
+
+@media (max-width: 960px) {
+  .lab-catalogue-grid,
+  .publications-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lab-catalogue-card:nth-child(n),
+  .publications-grid > .animate-up:nth-child(n) { grid-column: span 1; }
+}
+@media (max-width: 600px) {
+  .lab-catalogue-grid,
+  .publications-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .lab-catalogue-card:nth-child(n),
+  .publications-grid > .animate-up:nth-child(n) { grid-column: 1 / -1; }
+  .lab-catalogue-card { padding: 21px 19px 18px; }
+  .pub-body { padding: 22px 20px; }
+  .lab-catalogue-card-top { gap: 7px; }
 }
