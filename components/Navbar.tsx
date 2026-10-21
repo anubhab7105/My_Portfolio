@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const navLinks = [
   { href: '/projects', label: 'Work' },
@@ -53,9 +54,12 @@ export default function Navbar() {
           ))}
         </div>
 
-        <a href="/images/AnubhabDasResume.pdf" className="lab-resume-link" download>
-          Resume <ArrowUpRight size={15} aria-hidden="true" />
-        </a>
+        <div className="lab-nav-actions">
+          <ThemeToggle />
+          <a href="/images/AnubhabDasResume.pdf" className="lab-resume-link" download>
+            Resume <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+        </div>
 
         <button
           type="button"
@@ -79,9 +83,12 @@ export default function Navbar() {
             <span>{link.label}</span><ArrowUpRight size={16} aria-hidden="true" />
           </Link>
         ))}
-        <a href="/images/AnubhabDasResume.pdf" download tabIndex={mobileOpen ? 0 : -1}>
-          Download résumé <ArrowUpRight size={16} aria-hidden="true" />
-        </a>
+        <div className="lab-mobile-actions">
+          <ThemeToggle tabIndex={mobileOpen ? 0 : -1} />
+          <a href="/images/AnubhabDasResume.pdf" className="lab-mobile-resume" download tabIndex={mobileOpen ? 0 : -1}>
+            Download résumé <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        </div>
       </div>
     </header>
   );
