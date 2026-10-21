@@ -10,7 +10,6 @@ export interface Publication {
   arxiv: string | null;
   tags: string[];
   filters: string[];
-  img: string | null;
 }
 
 export const PUBLICATIONS: Publication[] = [
@@ -27,7 +26,6 @@ export const PUBLICATIONS: Publication[] = [
     arxiv: null,
     tags: ['Blockchain', 'Internet of Things (IoT)', 'Security', 'Smart Contracts', 'Decentralized Identity (DID)'],
     filters: ['blockchain', 'iot'],
-    img: '/publications/Blockchain_Based_IoT_Security.jpg',
   },
   {
     id: 2,
@@ -42,7 +40,6 @@ export const PUBLICATIONS: Publication[] = [
     arxiv: null,
     tags: ['Blockchain', 'Cloud Security', 'Access Control', 'Threat Modeling'],
     filters: ['cybersecurity', 'blockchain', 'cloud'],
-    img: '/publications/Trusted_Cloud_Data_Sharing.jpg',
   },
   {
     id: 3,
@@ -57,7 +54,6 @@ export const PUBLICATIONS: Publication[] = [
     arxiv: null,
     tags: ['XSS', 'CSP', 'SPA Security', 'Browser APIs'],
     filters: ['web-security', 'cybersecurity', 'ai-ml'],
-    img: '/publications/TinyML_Deployment_on_Ultra-Low.jpg',
   },
   {
     id: 4,
@@ -72,7 +68,6 @@ export const PUBLICATIONS: Publication[] = [
     arxiv: null,
     tags: ['TinyML', 'Federated Learning', 'Smart Healthcare', 'Edge AI'],
     filters: ['ai-ml', 'cybersecurity', 'iot', 'healthcare'],
-    img: '/publications/TinyML–Federated_Learning.jpg',
   },
 ];
 
