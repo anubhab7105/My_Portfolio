@@ -3246,7 +3246,7 @@ body { background-color: var(--bg); color: var(--text); transition: background-c
 .lab-navbar.is-home .lab-nav-links a:hover, .lab-navbar.is-home .lab-nav-links a.is-active { color: var(--accent); background: var(--nav-hero-bg); }
 .lab-navbar.is-home .lab-resume-link { background: var(--nav-hero-bg); }
 .lab-navbar.is-home .lab-resume-link:hover { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
-.lab-navbar.is-home .theme-toggle { color: var(--text-on-image-strong); border-color: var(--image-border); background: var(--nav-hero-bg); }
+.lab-navbar.is-home .theme-toggle { color: var(--text-on-image-strong); border-color: var(--border); background: var(--nav-hero-bg); }
 .lab-navbar.is-home .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
 .lab-navbar.is-home .lab-mobile-menu { background: var(--nav-glass-strong); }
 .lab-navbar.is-home .lab-mobile-menu a { color: var(--text); }
