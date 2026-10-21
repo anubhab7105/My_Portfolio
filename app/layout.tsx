@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
+import ThemeProvider from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://anubhab-das.vercel.app'),
@@ -62,7 +63,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -76,10 +77,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <Navbar />
-        {children}
-        <Footer />
-        <BackToTop />
+        <ThemeProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <BackToTop />
+        </ThemeProvider>
       </body>
     </html>
   );
