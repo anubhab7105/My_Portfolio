@@ -2669,7 +2669,7 @@ footer.lab-footer {
   transform-origin:center center;
   border-radius:var(--hero-radius);
   background:var(--surface);
-  box-shadow:0 24px 84px var(--shadow-color));
+  box-shadow:0 24px 84px var(--shadow-color);
   isolation:isolate;
   will-change:transform, border-radius;
 }
@@ -3276,3 +3276,17 @@ body { background-color: var(--bg); color: var(--text); transition: background-c
 .lab-footer a:hover { color: var(--accent); }
 @media (max-width: 900px) { .lab-nav-actions { display: none; } }
 @media (prefers-reduced-motion: reduce) { .theme-toggle, .theme-toggle-icon, .lab-navbar, .lab-mobile-menu, .lab-nav-links a, .lab-mobile-menu a { animation: none !important; transition: none !important; } }
+
+/* Keep the more-specific footer rule theme-aware as well. */
+footer.lab-footer {
+  background: var(--surface);
+  color: var(--text);
+  border-top-color: var(--border);
+}
+footer.lab-footer .lab-footer-copy,
+footer.lab-footer .lab-footer-meta,
+footer.lab-footer .lab-footer-note {
+  color: var(--text-muted);
+}
+footer.lab-footer .lab-footer-links a { color: var(--text-muted); }
+footer.lab-footer .lab-footer-links a:hover { color: var(--accent); }
