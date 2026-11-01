@@ -66,7 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function () {\n              try {\n                var savedTheme = window.localStorage.getItem("portfolio-theme");\n                document.documentElement.dataset.theme = savedTheme === "light" ? "light" : "dark";\n              } catch (error) {\n                document.documentElement.dataset.theme = "dark";\n              }\n            })();`,
+            __html: '(function(){try{var savedTheme=window.localStorage.getItem("portfolio-theme");document.documentElement.dataset.theme=savedTheme==="light"?"light":"dark";}catch(error){document.documentElement.dataset.theme="dark";}})();',
           }}
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
