@@ -3289,7 +3289,7 @@ footer.lab-footer {
 
 /* Theme tokens: the original palette is the light theme; blue/lime is dark theme. */
 :root[data-theme="light"] { color-scheme: light; }
-{
+:root[data-theme="dark"] {
   color-scheme: dark;
   --color-bg-primary: #030407;
   --color-bg-secondary: #080d18;
