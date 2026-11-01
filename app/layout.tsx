@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -64,7 +65,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
+        <Script
+          id="portfolio-theme-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: '(function(){try{var savedTheme=window.localStorage.getItem("portfolio-theme");document.documentElement.dataset.theme=savedTheme==="light"?"light":"dark";}catch(error){document.documentElement.dataset.theme="dark";}})();',
           }}
