@@ -62,8 +62,13 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function () {\n              try {\n                var savedTheme = window.localStorage.getItem("portfolio-theme");\n                document.documentElement.dataset.theme = savedTheme === "light" ? "light" : "dark";\n              } catch (error) {\n                document.documentElement.dataset.theme = "dark";\n              }\n            })();`,
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
