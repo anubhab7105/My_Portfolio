@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Menu, Moon, Sun, X } from 'lucide-react';
 
 const navLinks = [
   { href: '/projects', label: 'Work' },
@@ -16,6 +16,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 12);
@@ -24,10 +25,26 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    const activeTheme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+    setTheme(activeTheme);
+  }, []);
+
+  useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = nextTheme;
+    try {
+      window.localStorage.setItem('portfolio-theme', nextTheme);
+    } catch {
+      // The theme still changes for this session when storage is unavailable.
+    }
+    setTheme(nextTheme);
+  };
 
   return (
     <header id="top" className={`lab-navbar${pathname === '/' ? ' is-home' : ''}${scrolled ? ' has-scrolled' : ''}`}>
@@ -56,6 +73,17 @@ export default function Navbar() {
         <a href="/images/AnubhabDasResume.pdf" className="lab-resume-link" download>
           Resume <ArrowUpRight size={15} aria-hidden="true" />
         </a>
+
+        <button
+          type="button"
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          aria-pressed={theme === 'dark'}
+        >
+          {theme === 'dark' ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
+        </button>
 
         <button
           type="button"
