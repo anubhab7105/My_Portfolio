@@ -233,7 +233,7 @@ export default function PublicationsPage() {
                     width={24}
                     height={24}
                   />
-                  https://orcid.org/0009-0005-5825-3259
+                  ORCiD
                 </a>
                 <a
                   href="https://ieeexplore.ieee.org/author/445612925941485"
