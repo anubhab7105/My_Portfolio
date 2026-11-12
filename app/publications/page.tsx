@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { Link2, GraduationCap } from 'lucide-react';
 import { PUBLICATIONS, STATUS_CONFIG, type Publication } from '@/lib/data/publications';
 
@@ -217,6 +218,22 @@ export default function PublicationsPage() {
                   aria-label="View publications on Google Scholar"
                 >
                   <GraduationCap size={15} aria-hidden="true" /> Google Scholar
+                </a>
+                <a
+                  href="https://orcid.org/0009-0005-5825-3259"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline"
+                  aria-label="View ORCID profile: 0009-0005-5825-3259"
+                  title="View ORCID profile"
+                >
+                  <Image
+                    src="/images/ORCID-iD_icon-vector.svg"
+                    alt="ORCID iD"
+                    width={24}
+                    height={24}
+                  />
+                  https://orcid.org/0009-0005-5825-3259
                 </a>
                 <a
                   href="https://ieeexplore.ieee.org/author/445612925941485"
