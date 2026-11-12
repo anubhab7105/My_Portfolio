@@ -181,12 +181,7 @@ export default function AboutPage() {
                       <a href="https://github.com/anubhab7105" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><GithubIcon size={16} /></a>
                       <a href="http://www.linkedin.com/in/anubhab7105" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><LinkedinIcon size={16} /></a>
                       <a href="https://www.instagram.com/anubhab.env" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile"><InstagramIcon size={16} /></a>
-                      <a href="https://gdg.community.dev/u/mcp3fk/#/about" target="_blank" rel="noopener noreferrer" aria-label="GDG community profile">
-                        <svg width="19" height="16" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                          <path d="M4 3.5L13 10L4 16.5" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M24 3.5L15 10L24 16.5" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </a>
+                      <a href="https://gdg.community.dev/u/mcp3fk/#/about" target="_blank" rel="noopener noreferrer" aria-label="GDG community profile"><Users size={16} /></a>
                       <a href="mailto:anubhab7105@gmail.com" aria-label="Send email"><Mail size={16} /></a>
                     </div>
                   </div>
