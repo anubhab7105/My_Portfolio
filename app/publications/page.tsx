@@ -211,6 +211,15 @@ export default function PublicationsPage() {
               </p>
               <div className="scholar-cta-links">
                 <a
+                  href="https://ieeexplore.ieee.org/author/445612925941485"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline"
+                  aria-label="View publications on IEEE Xplore"
+                >
+                  IEEE Xplore
+                </a>
+                <a
                   href="https://scholar.google.com/citations?user=qOzRzE8AAAAJ&hl=en"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -234,15 +243,6 @@ export default function PublicationsPage() {
                     height={24}
                   />
                   ORCiD
-                </a>
-                <a
-                  href="https://ieeexplore.ieee.org/author/445612925941485"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline"
-                  aria-label="View publications on IEEE Xplore"
-                >
-                  IEEE Xplore
                 </a>
               </div>
             </div>
