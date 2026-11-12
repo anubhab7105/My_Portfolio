@@ -181,7 +181,14 @@ export default function AboutPage() {
                       <a href="https://github.com/anubhab7105" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><GithubIcon size={16} /></a>
                       <a href="http://www.linkedin.com/in/anubhab7105" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><LinkedinIcon size={16} /></a>
                       <a href="https://www.instagram.com/anubhab.env" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile"><InstagramIcon size={16} /></a>
-                      <a href="https://gdg.community.dev/u/mcp3fk/#/about" target="_blank" rel="noopener noreferrer" aria-label="GDG community profile"><Users size={16} /></a>
+                      <a href="https://gdg.community.dev/u/mcp3fk/#/about" target="_blank" rel="noopener noreferrer" aria-label="GDG community profile">
+                        <svg width="19" height="16" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                          <path d="M3.1 2.2C4.1.8 6 .5 7.4 1.5l5.1 3.6c1.4 1 1.7 2.9.7 4.3s-2.9 1.7-4.3.7L3.8 6.5c-1.4-1-1.7-2.9-.7-4.3Z" fill="#EA4335" />
+                          <path d="M2.1 8.7c1-1.4 2.9-1.7 4.3-.7l5.1 3.6c1.4 1 1.7 2.9.7 4.3s-2.9 1.7-4.3.7l-5.1-3.6c-1.4-1-1.7-2.9-.7-4.3Z" fill="#4285F4" />
+                          <path d="M16.3 1.5c1.1-1.2 3-1.3 4.2-.2l4.6 4.1c1.2 1.1 1.3 3 .2 4.2s-3 1.3-4.2.2l-4.6-4.1c-1.2-1.1-1.3-3-.2-4.2Z" fill="#34A853" />
+                          <path d="M15.3 8c1.1-1.2 3-1.3 4.2-.2l4.6 4.1c1.2 1.1 1.3 3 .2 4.2s-3 1.3-4.2.2l-4.6-4.1c-1.2-1.1-1.3-3-.2-4.2Z" fill="#FBBC04" />
+                        </svg>
+                      </a>
                       <a href="mailto:anubhab7105@gmail.com" aria-label="Send email"><Mail size={16} /></a>
                     </div>
                   </div>
