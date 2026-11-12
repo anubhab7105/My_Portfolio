@@ -6,7 +6,7 @@ Professional portfolio website of Anubhab Das, Cyber Security student and web de
 - **Security-First Architecture**: Implemented with security headers (CSP, Frame options, XSS protection), secure Formspree integration with client-side status handling, and design patterns aligned with the OWASP Top 10 guidelines.
 - **Interactive 3D Hero Scene**: Implements Spline as an animated background behind the main hero section for a premium interactive cybersecurity theme.
 - **Dynamic Projects & Publications**: Managed via fully typed TypeScript models and datasets.
-- **Aesthetic Cyberpunk / Terminal Glow Theme**: Custom dark theme styled using Tailwind CSS v4 and vanilla CSS tokens for a polished terminal design.
+- **Clean Light Theme**: Warm neutral backgrounds, restrained green accents, and consistent styling using Tailwind CSS v4 and vanilla CSS tokens.
 - **Modern Performance**: Zero-CLS layout shifts, lazy-loaded interactive components, and optimized Next.js Image components.
 - **SEO & Accessibility**: Complete semantic HTML5 structure, structured JSON-LD schema metadata, dynamic robots.txt, and sitemap generation.
 
