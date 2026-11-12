@@ -246,9 +246,10 @@ export default function HomePage() {
                 security controls, testing, and clear failure states.
               </p>
               <p>
-                I’m also interested in security research, including blockchain security, TinyML, and privacy-aware AI.
-                Alongside my technical work, I serve as a Class Representative, Vice-Captain of the GNIT Football Team,
-                and Event Co-Head for Creative Strokes (Euphonious X Zyzzva 2K26).
+                Alongside my work in software development, my research interests focus on Cybersecurity and Artificial Intelligence (AI).
+                I serve as the Class Representative for the B.Sc. Cyber Security (2024–2028) batch at Guru Nanak Institute of Technology (GNIT).
+                I am also a Web Development Associate at GDG on Campus Guru Nanak Institute of Technology - Kolkata, India,
+                contributing to web development initiatives and the campus developer community.
               </p>
 
               <div className="lab-about-focus-grid">
