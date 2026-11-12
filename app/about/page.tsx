@@ -130,9 +130,10 @@ export default function AboutPage() {
                   forensics platform; and <strong>NETRAKSHA</strong>, an identity-document screening prototype.
                 </p>
                 <p className="animate-up">
-                  Alongside development and research in blockchain security, TinyML, and privacy-preserving healthcare AI,
-                  I serve as a <strong>Class Representative</strong>, Vice-Captain of the GNIT Football Team, and Event
-                  Co-Head for Creative Strokes (Euphonious X Zyzzva 2K26).
+                  Alongside my work in software development, my research interests focus on <strong>Cybersecurity and Artificial Intelligence (AI)</strong>.
+                  I serve as the <strong>Class Representative for the B.Sc. Cyber Security (2024–2028) batch at Guru Nanak Institute of Technology (GNIT)</strong>.
+                  I am also a <strong>Web Development Associate at GDG on Campus Guru Nanak Institute of Technology - Kolkata, India</strong>,
+                  contributing to web development initiatives and the campus developer community.
                 </p>
 
                 {/* highlights */}
@@ -180,6 +181,7 @@ export default function AboutPage() {
                       <a href="https://github.com/anubhab7105" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><GithubIcon size={16} /></a>
                       <a href="http://www.linkedin.com/in/anubhab7105" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><LinkedinIcon size={16} /></a>
                       <a href="https://www.instagram.com/anubhab.env" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile"><InstagramIcon size={16} /></a>
+                      <a href="https://gdg.community.dev/u/mcp3fk/#/about" target="_blank" rel="noopener noreferrer" aria-label="GDG community profile"><Users size={16} /></a>
                       <a href="mailto:anubhab7105@gmail.com" aria-label="Send email"><Mail size={16} /></a>
                     </div>
                   </div>
