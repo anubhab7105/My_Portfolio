@@ -68,6 +68,48 @@ export const PUBLICATIONS: Publication[] = [
     arxiv: null,
     tags: ['TinyML', 'Federated Learning', 'Smart Healthcare', 'Edge AI'],
     filters: ['ai-ml', 'cybersecurity', 'iot', 'healthcare'],
+  },,
+{
+    id: 5,
+    title: 'Rowhammer Attacks on Modern Memory Systems: Evolution, Exploitation, and Defence Mechanisms',
+    venue: 'The Future of Digital Security: AI, Big Data, and Cyber Defense — Iterative International Publishers (IIP Series)',
+    year: 'August, 2026',
+    status: 'published',
+    abstract:
+      'This book chapter examines the evolution and exploitation of Rowhammer attacks on modern memory systems, together with defence mechanisms for mitigating memory-level security threats. Published on 27 August 2026. Print ISBN: 978-81-6774-464-7; E-ISBN: 978-81-6774-465-4; ISSN: 3070-7617.',
+    paperUrl: 'https://doi.org/10.58532/nbennur3409C7',
+    doi: '10.58532/nbennur3409C7',
+    arxiv: null,
+    tags: ['Rowhammer', 'Memory Security', 'Hardware Security', 'Cybersecurity'],
+    filters: ['cybersecurity', 'hardware-security'],
+  },
+  {
+    id: 6,
+    title: 'Zero Trust Security Architecture for Cloud, IoT, and Enterprise Networks',
+    venue: 'The Future of Digital Security: AI, Big Data, and Cyber Defense — Iterative International Publishers (IIP Series)',
+    year: 'August, 2026',
+    status: 'published',
+    abstract:
+      'This book chapter explores Zero Trust Security Architecture across cloud environments, IoT systems, and enterprise networks. Published on 27 August 2026. Print ISBN: 978-81-6774-464-7; E-ISBN: 978-81-6774-465-4; ISSN: 3070-7617.',
+    paperUrl: 'https://doi.org/10.58532/nbennur3409C5',
+    doi: '10.58532/nbennur3409C5',
+    arxiv: null,
+    tags: ['Zero Trust', 'Cloud Security', 'IoT Security', 'Network Security'],
+    filters: ['cybersecurity', 'cloud', 'iot', 'network-security'],
+  },
+  {
+    id: 7,
+    title: 'Prompt Injection and Jailbreak Attacks on Large Language Models: Threats and Defense Strategies',
+    venue: 'The Future of Digital Security: AI, Big Data, and Cyber Defense — Iterative International Publishers (IIP Series)',
+    year: 'August, 2026',
+    status: 'published',
+    abstract:
+      'This book chapter analyzes prompt-injection and jailbreak attacks targeting large language models, discussing their associated security threats and defence strategies. Published on 27 August 2026. Print ISBN: 978-81-6774-464-7; E-ISBN: 978-81-6774-465-4; ISSN: 3070-7617.',
+    paperUrl: 'https://doi.org/10.58532/nbennur3409C9',
+    doi: '10.58532/nbennur3409C9',
+    arxiv: null,
+    tags: ['Prompt Injection', 'Jailbreak Attacks', 'Large Language Models', 'AI Security'],
+    filters: ['cybersecurity', 'ai-ml', 'ai-security'],
   },
 ];
 
