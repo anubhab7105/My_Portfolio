@@ -1851,6 +1851,17 @@ footer {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .lab-ambient-orbit-a,
+  .lab-ambient-orbit-b,
+  .lab-ambient-network-lines,
+  .lab-ambient-network-nodes circle,
+  .lab-ambient-network-points circle,
+  .lab-ambient-label-dot,
+  .lab-ambient-scanline {
+    animation: none !important;
+  }
+}
 @media (max-width: 600px) {
   .hero {
     padding: 100px 0 60px;
@@ -2529,6 +2540,167 @@ footer.lab-footer {
   place-items: center;
   overflow: visible;
 }
+
+/* Ambient hero atmosphere — palette follows the site's ink / signal-lime tokens. */
+.lab-ambient-scene {
+  --ambient-line: color-mix(in srgb, var(--lab-lime) 24%, transparent);
+  --ambient-soft: color-mix(in srgb, var(--lab-lime) 10%, transparent);
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--lab-lime);
+  background:
+    radial-gradient(ellipse at 12% 22%, color-mix(in srgb, var(--lab-green) 38%, transparent), transparent 39%),
+    radial-gradient(ellipse at 88% 78%, var(--ambient-soft), transparent 34%),
+    linear-gradient(132deg, #080b08 0%, color-mix(in srgb, var(--lab-ink) 82%, #0d170b) 52%, #060806 100%);
+}
+.lab-ambient-grid {
+  position: absolute;
+  inset: 0;
+  opacity: .24;
+  background-image:
+    linear-gradient(var(--ambient-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ambient-line) 1px, transparent 1px);
+  background-size: 76px 76px;
+  mask-image: radial-gradient(ellipse at center, #000 0%, rgba(0,0,0,.75) 46%, transparent 88%);
+}
+.lab-ambient-grid::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: radial-gradient(ellipse at 50% 48%, transparent 24%, rgba(0,0,0,.36) 100%);
+}
+.lab-ambient-orbit {
+  position: absolute;
+  aspect-ratio: 1;
+  border: 1px solid var(--ambient-line);
+  border-radius: 50%;
+  opacity: .42;
+  pointer-events: none;
+}
+.lab-ambient-orbit::before,
+.lab-ambient-orbit::after {
+  position: absolute;
+  content: '';
+  border: 1px dashed color-mix(in srgb, var(--lab-lime) 19%, transparent);
+  border-radius: inherit;
+  inset: 11%;
+}
+.lab-ambient-orbit::after {
+  inset: 25%;
+  border-style: solid;
+  opacity: .5;
+}
+.lab-ambient-orbit-a {
+  width: clamp(330px, 39vw, 620px);
+  top: -18%;
+  left: -13%;
+  animation: lab-ambient-orbit 88s linear infinite;
+}
+.lab-ambient-orbit-b {
+  width: clamp(280px, 32vw, 510px);
+  right: -11%;
+  bottom: -19%;
+  opacity: .31;
+  animation: lab-ambient-orbit 105s linear infinite reverse;
+}
+.lab-ambient-network {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  opacity: .72;
+}
+.lab-ambient-network-lines {
+  opacity: .6;
+  stroke-dasharray: 3 11;
+  animation: lab-ambient-flow 34s linear infinite;
+}
+.lab-ambient-network-nodes circle {
+  fill: var(--lab-lime);
+  opacity: .42;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lab-ambient-pulse 5.8s ease-in-out infinite;
+}
+.lab-ambient-network-nodes circle:nth-child(3n) { animation-delay: -2.2s; }
+.lab-ambient-network-nodes circle:nth-child(3n + 1) { animation-delay: -4.1s; }
+.lab-ambient-network-points circle {
+  fill: var(--lab-lime);
+  opacity: .52;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--lab-lime) 42%, transparent));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lab-ambient-point 7s ease-in-out infinite;
+}
+.lab-ambient-network-points circle:nth-child(even) { animation-delay: -3.5s; }
+.lab-ambient-label {
+  position: absolute;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: color-mix(in srgb, var(--lab-paper) 54%, transparent);
+  font: 500 .56rem/1.5 'JetBrains Mono', monospace;
+  letter-spacing: .12em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.lab-ambient-label i {
+  color: color-mix(in srgb, var(--lab-lime) 65%, transparent);
+  font-style: normal;
+}
+.lab-ambient-label-top {
+  top: 13%;
+  left: clamp(24px, 5.2vw, 84px);
+}
+.lab-ambient-label-bottom {
+  right: clamp(24px, 5.2vw, 84px);
+  bottom: 10%;
+  opacity: .78;
+}
+.lab-ambient-label-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--lab-lime);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--lab-lime) 12%, transparent);
+  animation: lab-ambient-pulse 4.4s ease-in-out infinite;
+}
+.lab-ambient-scanline {
+  position: absolute;
+  top: -12%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--lab-lime) 42%, transparent) 22%, color-mix(in srgb, var(--lab-lime) 68%, transparent) 50%, color-mix(in srgb, var(--lab-lime) 42%, transparent) 78%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--lab-lime) 24%, transparent);
+  animation: lab-ambient-scan 19s ease-in-out infinite;
+}
+@keyframes lab-ambient-flow {
+  to { stroke-dashoffset: -280; }
+}
+@keyframes lab-ambient-orbit {
+  to { transform: rotate(360deg); }
+}
+@keyframes lab-ambient-pulse {
+  0%, 100% { opacity: .25; transform: scale(.8); }
+  50% { opacity: .72; transform: scale(1.12); }
+}
+@keyframes lab-ambient-point {
+  0%, 100% { opacity: .3; transform: scale(.86); }
+  50% { opacity: .9; transform: scale(1.28); }
+}
+@keyframes lab-ambient-scan {
+  0%, 13% { opacity: 0; transform: translateY(0); }
+  18% { opacity: .32; }
+  63% { opacity: .16; }
+  84%, 100% { opacity: 0; transform: translateY(125svh); }
+}
 .lab-hero-artifacts {
   position: absolute;
   z-index: 1;
@@ -3025,6 +3197,12 @@ footer.lab-footer {
   .lab-artifact-preview { height: 58px; }
 }
 @media (max-width: 820px) {
+  .lab-ambient-grid { background-size: 58px 58px; opacity: .17; }
+  .lab-ambient-label { font-size: .45rem; letter-spacing: .08em; }
+  .lab-ambient-label-top { top: 10%; left: 22px; }
+  .lab-ambient-label-bottom { right: 22px; bottom: 8%; }
+  .lab-ambient-orbit-a { left: -30%; top: -12%; }
+  .lab-ambient-orbit-b { right: -28%; bottom: -15%; }
   .lab-about-section { padding: 66px 0; }
   .lab-about-heading { grid-template-columns: 1fr; gap: 17px; margin-bottom: 32px; }
   .lab-about-heading .lab-section-kicker { grid-column: auto; }
