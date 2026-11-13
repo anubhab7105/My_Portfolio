@@ -131,6 +131,57 @@ export default function HomePage() {
         aria-label="Anubhab Das introduction"
       >
         <div className="lab-hero-sticky">
+          <div className="lab-ambient-scene" aria-hidden="true">
+            <div className="lab-ambient-grid" />
+            <div className="lab-ambient-orbit lab-ambient-orbit-a" />
+            <div className="lab-ambient-orbit lab-ambient-orbit-b" />
+            <svg className="lab-ambient-network" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+              <g className="lab-ambient-network-lines" fill="none" stroke="currentColor" strokeWidth="1">
+                <path d="M-30 205 H138 L210 277 H350 L405 222" />
+                <path d="M-24 662 H175 L245 592 H380 L438 650" />
+                <path d="M1630 185 H1465 L1392 258 H1255 L1205 208" />
+                <path d="M1630 685 H1450 L1380 615 H1245 L1195 662" />
+                <path d="M115 205 V365 H205 L275 435" />
+                <path d="M1488 185 V352 H1398 L1322 428" />
+                <path d="M160 662 V520 H248 L320 448" />
+                <path d="M1450 685 V530 H1360 L1290 458" />
+                <path d="M350 277 L405 332 H492" />
+                <path d="M1255 258 L1200 315 H1112" />
+              </g>
+              <g className="lab-ambient-network-nodes">
+                <circle cx="138" cy="205" r="3.5" />
+                <circle cx="210" cy="277" r="2.5" />
+                <circle cx="405" cy="222" r="3" />
+                <circle cx="175" cy="662" r="3" />
+                <circle cx="245" cy="592" r="2.5" />
+                <circle cx="438" cy="650" r="3.5" />
+                <circle cx="1465" cy="185" r="3.5" />
+                <circle cx="1392" cy="258" r="2.5" />
+                <circle cx="1205" cy="208" r="3" />
+                <circle cx="1450" cy="685" r="3" />
+                <circle cx="1380" cy="615" r="2.5" />
+                <circle cx="1195" cy="662" r="3.5" />
+                <circle cx="115" cy="365" r="2.5" />
+                <circle cx="1488" cy="352" r="2.5" />
+                <circle cx="160" cy="520" r="2.5" />
+                <circle cx="1450" cy="530" r="2.5" />
+              </g>
+              <g className="lab-ambient-network-points">
+                <circle cx="275" cy="435" r="5" />
+                <circle cx="1322" cy="428" r="5" />
+                <circle cx="320" cy="448" r="4" />
+                <circle cx="1290" cy="458" r="4" />
+              </g>
+            </svg>
+            <div className="lab-ambient-label lab-ambient-label-top">
+              <span className="lab-ambient-label-dot" />
+              FIELD NOTES <i>/</i> SYSTEMS &amp; SECURITY
+            </div>
+            <div className="lab-ambient-label lab-ambient-label-bottom">
+              BUILD <i>•</i> ANALYZE <i>•</i> SECURE
+            </div>
+            <div className="lab-ambient-scanline" />
+          </div>
           <div className="lab-hero-artifacts" aria-hidden="true">
             {featuredProjects.map((project, index) => (
               <article className={`lab-hero-artifact lab-hero-artifact-${index + 1}`} key={project.id}>
