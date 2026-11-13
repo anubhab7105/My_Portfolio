@@ -68,8 +68,8 @@ export const PUBLICATIONS: Publication[] = [
     arxiv: null,
     tags: ['TinyML', 'Federated Learning', 'Smart Healthcare', 'Edge AI'],
     filters: ['ai-ml', 'cybersecurity', 'iot', 'healthcare'],
-  },,
-{
+  },
+  {
     id: 5,
     title: 'Rowhammer Attacks on Modern Memory Systems: Evolution, Exploitation, and Defence Mechanisms',
     venue: 'The Future of Digital Security: AI, Big Data, and Cyber Defense — Iterative International Publishers (IIP Series)',
