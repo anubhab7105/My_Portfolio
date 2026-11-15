@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/SocialIcons';
 import { PROJECTS } from '@/lib/data/projects';
+import HeroTypographyField from '@/components/HeroTypographyField';
 
 const featuredProjects = PROJECTS.filter((project) => [1, 2, 3, 4].includes(project.id));
 
@@ -131,6 +132,7 @@ export default function HomePage() {
         aria-label="Anubhab Das introduction"
       >
         <div className="lab-hero-sticky">
+          <div className="lab-hero-atmosphere" aria-hidden="true"><HeroTypographyField /></div>
           <div className="lab-hero-artifacts" aria-hidden="true">
             {featuredProjects.map((project, index) => (
               <article className={`lab-hero-artifact lab-hero-artifact-${index + 1}`} key={project.id}>
