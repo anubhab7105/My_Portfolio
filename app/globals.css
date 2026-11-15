@@ -2638,7 +2638,7 @@ footer.lab-footer {
   transform: scale(var(--hero-scale));
   transform-origin: center center;
   border-radius: var(--hero-radius);
-  background: #090909;
+  background: transparent;
   box-shadow: 0 24px 84px rgba(0, 0, 0, var(--hero-shadow-alpha));
   isolation: isolate;
   will-change: transform, border-radius;
