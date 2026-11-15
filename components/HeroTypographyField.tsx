@@ -64,7 +64,7 @@ export default function HeroTypographyField() {
     let lastTime = 0;
     let elapsed = 0;
     let visible = document.visibilityState === 'visible';
-s    let host: HTMLElement | null = canvas.parentElement?.parentElement ?? null;
+    let host: HTMLElement | null = canvas.parentElement?.parentElement ?? null;
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
