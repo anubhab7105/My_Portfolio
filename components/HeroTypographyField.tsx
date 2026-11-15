@@ -63,7 +63,8 @@ export default function HeroTypographyField() {
     let frame = 0;
     let lastTime = 0;
     let elapsed = 0;
-    let visible = true;
+    let visible = document.visibilityState === 'visible';
+s    let host: HTMLElement | null = canvas.parentElement?.parentElement ?? null;
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
@@ -155,8 +156,8 @@ export default function HeroTypographyField() {
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(canvas);
     resize();
-    canvas.addEventListener('pointermove', onPointerMove, { passive: true });
-    canvas.addEventListener('pointerleave', onPointerLeave);
+    host?.addEventListener('pointermove', onPointerMove, { passive: true });
+    host?.addEventListener('pointerleave', onPointerLeave);
     document.addEventListener('visibilitychange', onVisibility);
 
     if (reduceMotion.matches) render(0);
@@ -173,8 +174,8 @@ export default function HeroTypographyField() {
     return () => {
       if (frame) window.cancelAnimationFrame(frame);
       resizeObserver.disconnect();
-      canvas.removeEventListener('pointermove', onPointerMove);
-      canvas.removeEventListener('pointerleave', onPointerLeave);
+      host?.removeEventListener('pointermove', onPointerMove);
+      host?.removeEventListener('pointerleave', onPointerLeave);
       document.removeEventListener('visibilitychange', onVisibility);
       reduceMotion.removeEventListener('change', onMotionChange);
     };
